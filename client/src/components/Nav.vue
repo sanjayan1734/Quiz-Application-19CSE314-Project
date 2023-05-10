@@ -2,7 +2,7 @@
     <nav class="navbar container" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          <strong class="is-size-4">Animal Rescue League</strong>
+          <strong class="is-size-4">Amrita</strong>
         </a>
         <a
           role="button"

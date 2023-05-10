@@ -15,14 +15,21 @@
           </div>
         </div>
       </section>
+      <EventsList />
     </div>
+    
+  
+
   </template>
   <script>
-    export default {
-      name: 'home',
-      components: {},
-    };
-  </script>
+  // import EventList from '../components/EventList';
+  // export default {
+  //   name: 'home',
+  //   components: {
+  //     EventList,
+  //   },
+  //};
+</script>
   <style lang="scss" scoped>
     .hero {
       text-align: center;
