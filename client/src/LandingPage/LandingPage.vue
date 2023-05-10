@@ -1,3 +1,16 @@
+<script>
+  import cormin from 'core.min';
+  import script from 'script';
+ // import bootstrap from 'bootstrap.css';
+
+   export default {
+    name: 'default',
+     components: {
+       script,cormin,//bootstrap,
+     },
+   };
+</script>
+
 <template >
     <div style="display: block;">
         <head>
@@ -630,15 +643,4 @@
     <!-- Javascript--></body></div>
 
 </template>
-<script>
-  import cormin from 'core.min';
-  import script from 'script';
- // import bootstrap from 'bootstrap.css';
-
-   export default {
-    name: 'default',
-     components: {
-       script,cormin,//bootstrap,
-     },
-   };
-</script> 
+ 
