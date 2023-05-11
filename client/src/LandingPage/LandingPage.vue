@@ -1,6 +1,6 @@
 <script>
-  import cormin from 'core.min';
-  import script from 'script';
+  import cormin from './core.min.js';
+  import script from './script.js';
  // import bootstrap from 'bootstrap.css';
 
    export default {
