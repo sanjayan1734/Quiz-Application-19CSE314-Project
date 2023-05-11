@@ -1,40 +1,57 @@
 <script>
-  import cormin from './core.min.js';
-  import script from './script.js';
- // import bootstrap from 'bootstrap.css';
+export default {
+  mounted() {
+    const plugin = document.createElement("script");
+    const plug = document.createElement("core.min");
+    plugin.setAttribute(
+      "src",
+      "./script.js",
+    ),
+    plug.setAttribute(
+      "src",
+      "./core.min.js",
+    )
+    plugin.async = true;
+    plug.async=true;
+    document.head.appendChild(plugin);
+    document.head.appendChild(plug);
+  }
+};
 
-   export default {
-    name: 'default',
-     components: {
-       script,cormin,//bootstrap,
-     },
-   };
 </script>
 
+<!-- <script type="application/javascript" src="./script.js"></script> -->
+
+<style>
+  @import './style.css';
+  @import './bootstrap.css';
+  @import './fonts.css';
+  
+</style>
 <template >
     <div style="display: block;">
         <head>
-            <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+            <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
             <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Work+Sans:300,700,800%7COswald:300,400,500">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="./bootstrap.css">
+    <link rel="stylesheet" href="./fonts.css">
+    <link rel="stylesheet" href="./style.css"> -->
         </head>
-        <body>
+        
     <div class="page">
-      <section class="d-none d-xl-block"><a class="d-block" href="https://www.templatemonster.com/landing-page-template/profilab-marketing-agency-clean-html-bootstrap-landing-page-template-79220.html" target="_blank"><img class="img-responsive" src="images/banner-top-2050x60.jpg" alt="" width="2050" height="60"/></a></section>
+      <section class="d-none d-xl-block"><a class="d-block" href="https://www.templatemonster.com/landing-page-template/profilab-marketing-agency-clean-html-bootstrap-landing-page-template-79220.html" target="_blank"><img class="img-responsive" src="./images/banner-top-2050x60.jpg" alt="" width="2050" height="60"/></a></section>
       <!-- Page Header-->
       <header class="section page-header" data-type="anchor">
         <!-- RD Navbar-->
         <div class="rd-navbar-wrap">
-          <nav class="rd-navbar rd-navbar-minimal" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-fixed" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+          <!-- <nav class="rd-navbar rd-navbar-minimal" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-fixed" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true"></nav> -->
             <div class="rd-navbar-main-outer">
               <div class="rd-navbar-main">
                 <!-- RD Navbar Panel-->
                 <div class="rd-navbar-panel">
                   <!-- RD Navbar Toggle-->
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle="#rd-navbar-nav-wrap-1"><span></span></button>
-                  <!-- RD Navbar Brand--><a class="rd-navbar-brand" href="index.html"><img src="images/logo-default-480x80.png" width="240" height="40" alt=""></a>
+                  <!-- RD Navbar Brand--><a class="rd-navbar-brand" href="index.html"><img src="./images/logo-default-480x80.png" width="240" height="40" alt=""></a>
                 </div>
                 <div class="rd-navbar-main-element">
                   <div class="rd-navbar-nav-wrap" id="rd-navbar-nav-wrap-1">
@@ -61,12 +78,12 @@
                 </div>
               </div>
             </div>
-          </nav>
+          
         </div>
       </header>
       <div class="swiper-container swiper-slider swiper-slider-minimal" id="home" data-loop="true" data-slide-effect="fade" data-autoplay="3500" data-simulate-touch="true">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" data-slide-bg="images/slider-minimal-slide-1-1920x888.jpg">
+          <div class="swiper-slide" data-slide-bg="./images/slider-minimal-slide-1-1920x888.jpg">
             <div class="swiper-slide-caption">
               <div class="container">
                 <div class="swiper-slide-text">
@@ -75,7 +92,7 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide" data-slide-bg="images/slider-minimal-slide-2-1920x888.jpg">
+          <div class="swiper-slide" data-slide-bg="./images/slider-minimal-slide-2-1920x888.jpg">
             <div class="swiper-slide-caption">
               <div class="container">
                 <div class="swiper-slide-text">
@@ -84,7 +101,7 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide" data-slide-bg="images/slider-minimal-slide-3-1920x888.jpg">
+          <div class="swiper-slide" data-slide-bg="./images/slider-minimal-slide-3-1920x888.jpg">
             <div class="swiper-slide-caption">
               <div class="container">
                 <div class="swiper-slide-text">
@@ -181,7 +198,7 @@
               <p class="wow-outer"><span class="wow slideInDown" data-wow-delay=".1s">We have a wide range of experience, expertise and tools to create and implement your campaigns, from carefully curating awesome content to optimising it with our great SEO powers as well as outdoor marketing skills.</span></p>
               <div class="wow-outer button-outer"><a class="button button-lg button-primary button-winona wow slideInDown" data-wow-delay=".1s" href="#">Learn more</a></div>
             </div>
-            <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInRight" src="images/large-features-2-570x368.jpg" alt="" width="570" height="368"/>
+            <div class="col-md-10 col-lg-6 wow-outer"><img class="img-responsive wow slideInRight" src="./images/large-features-2-570x368.jpg" alt="" width="570" height="368"/>
             </div>
           </div>
         </div>
@@ -205,7 +222,7 @@
           <div class="row row-50">
             <div class="col-sm-6 col-lg-4 wow-outer">
               <!-- Profile Minimal-->
-              <article class="profile-minimal wow slideInLeft"><img class="profile-minimal-image" src="images/team-2-370x368.jpg" alt="" width="370" height="368"/>
+              <article class="profile-minimal wow slideInLeft"><img class="profile-minimal-image" src="./images/team-2-370x368.jpg" alt="" width="370" height="368"/>
                 <div class="profile-minimal-caption">
                   <h4 class="profile-minimal-title">Jean Thompson</h4>
                   <p class="profile-minimal-position">PR Manager</p>
@@ -214,7 +231,7 @@
             </div>
             <div class="col-sm-6 col-lg-4 wow-outer">
               <!-- Profile Minimal-->
-              <article class="profile-minimal wow slideInLeft" data-wow-delay=".05s"><img class="profile-minimal-image" src="images/team-3-370x368.jpg" alt="" width="370" height="368"/>
+              <article class="profile-minimal wow slideInLeft" data-wow-delay=".05s"><img class="profile-minimal-image" src="./images/team-3-370x368.jpg" alt="" width="370" height="368"/>
                 <div class="profile-minimal-caption">
                   <h4 class="profile-minimal-title">Brian Payne</h4>
                   <p class="profile-minimal-position">Marketing Expert</p>
@@ -223,7 +240,7 @@
             </div>
             <div class="col-sm-6 col-lg-4 wow-outer">
               <!-- Profile Minimal-->
-              <article class="profile-minimal wow slideInLeft" data-wow-delay=".1s"><img class="profile-minimal-image" src="images/team-1-370x368.jpg" alt="" width="370" height="368"/>
+              <article class="profile-minimal wow slideInLeft" data-wow-delay=".1s"><img class="profile-minimal-image" src="./images/team-1-370x368.jpg" alt="" width="370" height="368"/>
                 <div class="profile-minimal-caption">
                   <h4 class="profile-minimal-title">Nathan Porter</h4>
                   <p class="profile-minimal-position">CEO, Founder</p>
@@ -250,7 +267,7 @@
                       <p>Profilab is, hands down, one of the best companies that we have worked with! The company has either met or exceeded all of the goals that we initially set for all of the projects that they implemented for us. I am sure that our company will partner with them again in the future.</p>
                     </div>
                     <div class="quote-modern-meta">
-                      <div class="quote-modern-avatar"><img src="images/testimonials-person-3-96x96.jpg" alt="" width="96" height="96"/>
+                      <div class="quote-modern-avatar"><img src="./images/testimonials-person-3-96x96.jpg" alt="" width="96" height="96"/>
                       </div>
                       <div class="quote-modern-info">
                         <cite class="quote-modern-cite">Albert Webb</cite>
@@ -268,7 +285,7 @@
                       <p>Profilab team provides us with a full service digital marketing service that encompasses social media, demand generation, digital advertising, search engine optimization, email and marketing automation that has increased our visibility and inbound lead generation.</p>
                     </div>
                     <div class="quote-modern-meta">
-                      <div class="quote-modern-avatar"><img src="images/testimonials-person-1-96x96.jpg" alt="" width="96" height="96"/>
+                      <div class="quote-modern-avatar"><img src="./images/testimonials-person-1-96x96.jpg" alt="" width="96" height="96"/>
                       </div>
                       <div class="quote-modern-info">
                         <cite class="quote-modern-cite">Kelly McMillan</cite>
@@ -286,7 +303,7 @@
                       <p>We rely on Profilab for its digital marketing expertise, particularly in the areas of SEO and social media marketing. Their team is knowledgeable, responsive and committed to supporting our initiatives, making them invaluable partners in our effort to promote our company.</p>
                     </div>
                     <div class="quote-modern-meta">
-                      <div class="quote-modern-avatar"><img src="images/testimonials-person-2-96x96.jpg" alt="" width="96" height="96"/>
+                      <div class="quote-modern-avatar"><img src="./images/testimonials-person-2-96x96.jpg" alt="" width="96" height="96"/>
                       </div>
                       <div class="quote-modern-info">
                         <cite class="quote-modern-cite">Harold Barnett</cite>
@@ -302,7 +319,7 @@
                 <div class="embed-responsive embed-responsive-16by9">
                   <iframe width="570" height="320" src="//www.youtube.com/embed/QZzbm-FrkGk" allowfullscreen=""></iframe>
                 </div>
-                <div class="thumbnail-video__overlay video-overlay" style="background-image: url(images/video-preview-1-570x320.jpg)">
+                <div class="thumbnail-video__overlay video-overlay" style="background-image: url(./images/video-preview-1-570x320.jpg)">
                   <div class="button-video"></div>
                   <h5>Lawrence Alvarado</h5>
                 </div>
@@ -430,7 +447,7 @@
           <div class="row row-50">
             <div class="col-md-6 wow-outer">
               <!-- Post Modern-->
-              <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img src="images/grid-blog-1-571x353.jpg" alt="" width="571" height="353"/></a>
+              <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img src="./images/grid-blog-1-571x353.jpg" alt="" width="571" height="353"/></a>
                 <h4 class="post-modern-title"><a href="#">10 Digital Marketing Mistakes to Avoid</a></h4>
                 <ul class="post-modern-meta">
                   <li>by Theresa Barnes</li>
@@ -444,7 +461,7 @@
             </div>
             <div class="col-md-6 wow-outer">
               <!-- Post Modern-->
-              <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img src="images/grid-blog-2-571x353.jpg" alt="" width="571" height="353"/></a>
+              <article class="post-modern wow slideInLeft"><a class="post-modern-media" href="#"><img src="./images/grid-blog-2-571x353.jpg" alt="" width="571" height="353"/></a>
                 <h4 class="post-modern-title"><a href="#">Where Marketers Need to Succeed This Season</a></h4>
                 <ul class="post-modern-meta">
                   <li>by Theresa Barnes </li>
@@ -518,7 +535,7 @@
             <!--Please, add the data attribute data-key="YOUR_API_KEY" in order to insert your own API key for the Google map.-->
             <!--Please note that YOUR_API_KEY should replaced with your key.-->
             <!--Example: <div class="google-map-container" data-key="YOUR_API_KEY">-->
-            <div class="google-map-container" data-center="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-zoom="5" data-icon="images/gmap_marker.png" data-icon-active="images/gmap_marker_active.png" data-styles="[{&quot;featureType&quot;:&quot;landscape&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;lightness&quot;:60}]},{&quot;featureType&quot;:&quot;road.local&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;lightness&quot;:40},{&quot;visibility&quot;:&quot;on&quot;}]},{&quot;featureType&quot;:&quot;transit&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;visibility&quot;:&quot;simplified&quot;}]},{&quot;featureType&quot;:&quot;administrative.province&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;water&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;on&quot;},{&quot;lightness&quot;:30}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ef8c25&quot;},{&quot;lightness&quot;:40}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.stroke&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;poi.park&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#b6c54c&quot;},{&quot;lightness&quot;:40},{&quot;saturation&quot;:-40}]},{}]">
+            <div class="google-map-container" data-center="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-zoom="5" data-icon="./images/gmap_marker.png" data-icon-active="./images/gmap_marker_active.png" data-styles="[{&quot;featureType&quot;:&quot;landscape&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;lightness&quot;:60}]},{&quot;featureType&quot;:&quot;road.local&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;lightness&quot;:40},{&quot;visibility&quot;:&quot;on&quot;}]},{&quot;featureType&quot;:&quot;transit&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:-100},{&quot;visibility&quot;:&quot;simplified&quot;}]},{&quot;featureType&quot;:&quot;administrative.province&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;water&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;on&quot;},{&quot;lightness&quot;:30}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ef8c25&quot;},{&quot;lightness&quot;:40}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.stroke&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;poi.park&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#b6c54c&quot;},{&quot;lightness&quot;:40},{&quot;saturation&quot;:-40}]},{}]">
               <div class="google-map"></div>
               <ul class="google-map-markers">
                 <li data-location="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-description="9870 St Vincent Place, Glasgow"></li>
@@ -532,32 +549,32 @@
         <!-- Owl Carousel-->
         <div class="owl-carousel owl-carousel-dots-space" data-items="2" data-sm-items="3" data-md-items="4" data-lg-items="5" data-xl-items="6" data-dots="true" data-nav="false" data-stage-padding="0" data-loop="true" data-margin="0" data-lightgallery="group" data-mouse-drag="false">
           <!-- Thumbnail Thin-->
-          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="images/gallery-original-1.jpg" data-lightgallery="item">
-              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="images/galleries-1-640x640.jpg" alt="" width="640" height="640"/>
+          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="./images/gallery-original-1.jpg" data-lightgallery="item">
+              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="./images/galleries-1-640x640.jpg" alt="" width="640" height="640"/>
               </div></a></div>
           <!-- Thumbnail Thin-->
-          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="images/gallery-original-2.jpg" data-lightgallery="item">
-              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="images/galleries-2-640x640.jpg" alt="" width="640" height="640"/>
+          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="./images/gallery-original-2.jpg" data-lightgallery="item">
+              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="./images/galleries-2-640x640.jpg" alt="" width="640" height="640"/>
               </div></a></div>
           <!-- Thumbnail Thin-->
-          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="images/gallery-original-3.jpg" data-lightgallery="item">
-              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="images/galleries-3-640x640.jpg" alt="" width="640" height="640"/>
+          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="./images/gallery-original-3.jpg" data-lightgallery="item">
+              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="./images/galleries-3-640x640.jpg" alt="" width="640" height="640"/>
               </div></a></div>
           <!-- Thumbnail Thin-->
-          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="images/gallery-original-4.jpg" data-lightgallery="item">
-              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="images/galleries-4-640x640.jpg" alt="" width="640" height="640"/>
+          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="./images/gallery-original-4.jpg" data-lightgallery="item">
+              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="./images/galleries-4-640x640.jpg" alt="" width="640" height="640"/>
               </div></a></div>
           <!-- Thumbnail Thin-->
-          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="images/gallery-original-5.jpg" data-lightgallery="item">
-              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="images/galleries-5-640x640.jpg" alt="" width="640" height="640"/>
+          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="./images/gallery-original-5.jpg" data-lightgallery="item">
+              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="./images/galleries-5-640x640.jpg" alt="" width="640" height="640"/>
               </div></a></div>
           <!-- Thumbnail Thin-->
-          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="images/gallery-original-6.jpg" data-lightgallery="item">
-              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="images/galleries-6-640x640.jpg" alt="" width="640" height="640"/>
+          <div class="wow-outer"><a class="thumbnail-thin wow slideInLeft" href="./images/gallery-original-6.jpg" data-lightgallery="item">
+              <div class="thumbnail-thin-inner"><img class="thumbnail-thin-image" src="./images/galleries-6-640x640.jpg" alt="" width="640" height="640"/>
               </div></a></div>
         </div>
       </section>
-      <section><a class="d-block" href="https://www.templatemonster.com/landing-page-template/profilab-marketing-agency-clean-html-bootstrap-landing-page-template-79220.html" target="_blank"><img class="img-responsive" src="images/banner-bottom-2050x310.jpg" alt="" width="2050" height="310"/></a></section>
+      <section><a class="d-block" href="https://www.templatemonster.com/landing-page-template/profilab-marketing-agency-clean-html-bootstrap-landing-page-template-79220.html" target="_blank"><img class="img-responsive" src="./images/banner-bottom-2050x310.jpg" alt="" width="2050" height="310"/></a></section>
       <!-- Page Footer-->
       <footer class="section footer-linked bg-gray-700">
         <div class="footer-linked-main">
@@ -630,17 +647,18 @@
         </div>
       </footer>
     </div>
-    <div class="preloader">
-      <div class="preloader-logo"><img src="images/logo-default-480x80.png" width="240" height="40" alt=""></div>
+    <!-- <div class="preloader">
+      <div class="preloader-logo"><img src="./images/logo-default-480x80.png" width="240" height="40" alt=""></div>
       <div class="preloader-body">
         <div id="loadingProgressG">
           <div class="loadingProgressG" id="loadingProgressG_1"></div>
         </div>
       </div>
-    </div>
+      </div> -->
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
-    <!-- Javascript--></body></div>
+    <!-- Javascript--></div>
+  
 
 </template>
  
