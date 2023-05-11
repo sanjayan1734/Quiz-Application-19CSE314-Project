@@ -1,18 +1,26 @@
-<script setup>
-import Questioncomponent from './components/quiz-taking/QuizComponent.vue'
-import Navbar from './components/Navbar/NavBar.vue';
-import QuizzesPage from './components/quiz-taking/QuizzesPage.vue'
-let gprops 
-
-</script>
-
-<template class = "main">
-    <Navbar></Navbar>
-    <Questioncomponent v-bind="gprops"></Questioncomponent>
-    <QuizzesPage></QuizzesPage>
-    
+<template>
+  <div id="app">
+  <Land/>
+    <router-view />
+  </div>
 </template>
-
-<style scoped>
-
+<script>
+  import Nav from './components/Nav.vue';
+  import Home from './views/Home.vue';
+  import About from './views/About.vue';
+  import Land from './LandingPage/LandingPage.vue'
+  export default {
+    name: 'app',
+    components: {
+      Land,
+    },
+  };
+</script>
+<style lang="scss">
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+  }
 </style>
