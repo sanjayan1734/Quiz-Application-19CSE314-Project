@@ -6,7 +6,7 @@
 </template>
 <script>
   
-  import Land from './LandingPage/LandingPage.vue'
+  import Land from './LandingPageFinal/Home.vue'
   export default {
     name: 'app',
     components: {
