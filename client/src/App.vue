@@ -5,9 +5,7 @@
   </div>
 </template>
 <script>
-  import Nav from './components/Nav.vue';
-  import Home from './views/Home.vue';
-  import About from './views/About.vue';
+ 
   import landing from './LandingPageFinal/Landingpage.vue'
   export default {
     name: 'app',
