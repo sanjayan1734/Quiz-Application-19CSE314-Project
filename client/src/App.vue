@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <Land/>
+  <landing/>
     <router-view />
   </div>
 </template>
@@ -8,19 +8,19 @@
   import Nav from './components/Nav.vue';
   import Home from './views/Home.vue';
   import About from './views/About.vue';
-  import Land from './LandingPage/LandingPage.vue'
+  import landing from './LandingPageFinal/Landingpage.vue'
   export default {
     name: 'app',
     components: {
-      Land,
+      landing,
     },
   };
 </script>
-<style lang="scss">
+<!-- <style lang="scss">
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
   }
-</style>
+</style> -->
