@@ -10,23 +10,23 @@
             </div>
         </div>
 
-        <h1>Signup</h1>
+        <h1>Sign up</h1>
 
         <div class="in">
             <label for="name">Username</label>
             <div> <input type="text" v-model="username" placeholder="Enter your username" /><img v-if="username.length >= 5"
                     src="../assets/ok.svg" alt=""></div>
 
-            <label for="name">Adresse Mail</label>
+            <label for="name">Email Address</label>
             <div> <input type="text" v-model="mail" placeholder="Enter your email" /><img v-if="mail.length >= 6"
                     src="../assets/ok.svg" alt=""></div>
 
-            <div class="button_action">
+            <!-- <div class="button_action">
                 <button v-on:click="mail = ' @gmail.com'">@gmail.com</button> <button
                     v-on:click="mail = '@yahoo.com'">@yahoo.com</button> <button
                     v-on:click="mail = '@outlook.com'">@outlook.com</button> <button
                     v-on:click="mail = '@aol.com'">@aol.com</button>
-            </div>
+            </div> -->
 
             <label for="name">Confirm your email</label>
             <div> <input type="text" v-model="mail_confirm" placeholder="Enter confirmed email..." /><img v-if="!mail"
@@ -69,10 +69,10 @@
 
         <div class="check_bar">
             <div> <input type="checkbox" name="" id="">
-                <label for="">Se souvenir de moi</label>
+                <label for="">Remember Me</label>
             </div>
 
-            <a href="">Mot de passe oublié ? </a>
+            <a href="">Forgot your password? </a>
 
         </div>
 
@@ -89,17 +89,9 @@
   
 <script>
 export default {
-    mounted()
-    {
-        this.addstu()
-    axios.post(this.URL,JSON.stringify(x)).then((response) => {
 
-    })
-    },
     data() {
         return {
-            
-            URL: "https://localhost:7282/api/User/AddStudent",
             password: "",
             userLoggedIn: false,
             username: "",
@@ -114,15 +106,6 @@ export default {
     toggle() {
         this.isActive = !this.enable;
     },
-    addstu()
-    {
-        let x = {
-                id:  Math.random() *1000,
-                name: this.username,
-                email: this.mail,
-                password: this.password
-            }
-    }
 };
 
 </script>

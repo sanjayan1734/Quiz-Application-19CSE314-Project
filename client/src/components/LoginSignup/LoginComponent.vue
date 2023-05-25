@@ -16,12 +16,12 @@
             <div> <input type="text" v-model="username" placeholder="E-mail" /><img v-if="username.length >= 4"
                     src="../assets/ok.svg" alt=""></div>
 
-            <div class="button_action">
+            <!-- <div class="button_action">
                 <button v-on:click="username = ' @gmail.com'">@gmail.com</button> <button
                     v-on:click="username = '@yahoo.com'">@yahoo.com</button> <button
                     v-on:click="username = '@outlook.com'">@outlook.com</button> <button
                     v-on:click="username = '@aol.com'">@aol.com</button>
-            </div>
+            </div> -->
 
 
 
@@ -46,7 +46,7 @@
 
         <div class="check_bar">
             <div> <input type="checkbox" name="" id="">
-                <label for="">Se souvenir de moi</label>
+                <label for="">Remember me</label>
             </div>
 
             <a href="">Forgot Password?</a>
@@ -189,7 +189,7 @@ body {
     border-radius: .7em;
     border: 1px solid #000;
     transition: 250ms;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .box .log:hover {
