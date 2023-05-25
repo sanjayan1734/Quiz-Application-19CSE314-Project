@@ -25,9 +25,13 @@
 
         optionClick(ansval) {
           console.log(ansval)
-          
+        },
+        passReferenceValue(){
+          console.log("ref passed to parent object")
+        },
+        returnQuestionSelection() {
+          return this.questionOption
         }
-
 
       }
 }
