@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <h1>Singup</h1>
+        <h1>Signup</h1>
 
         <div class="in">
             <label for="name">Username</label>
@@ -89,9 +89,17 @@
   
 <script>
 export default {
+    mounted()
+    {
+        this.addstu()
+    axios.post(this.URL,JSON.stringify(x)).then((response) => {
 
+    })
+    },
     data() {
         return {
+            
+            URL: "https://localhost:7282/api/User/AddStudent",
             password: "",
             userLoggedIn: false,
             username: "",
@@ -106,6 +114,15 @@ export default {
     toggle() {
         this.isActive = !this.enable;
     },
+    addstu()
+    {
+        let x = {
+                id:  Math.random() *1000,
+                name: this.username,
+                email: this.mail,
+                password: this.password
+            }
+    }
 };
 
 </script>

@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   // import login from './Login/Login.vue'
   import QuizzesPage from './components/quiz-taking/QuizzesPage.vue'  // import landing from './LandingPageFinal/Landingpage.vue'
 
@@ -11,17 +11,17 @@
     data() {
       return {
       quizparameters:{
-      quizName : "sample quiz",
+      quizName : "Quiz1",
       quizId : "quiz1.1",
-      noOfQuestions: "10"
       }
     }
   }
   };
-</script>
+</script> -->
 
 <template>
-  <QuizzesPage v-bind="quizparameters" />
+  <!-- <QuizzesPage v-bind="quizparameters" /> -->
+  <router-view/>
   <!-- <div id="app">
   <login/>
     <router-view />

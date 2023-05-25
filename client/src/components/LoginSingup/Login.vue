@@ -66,11 +66,21 @@
     
 <script>
 export default {
+    mounted()
+    {
+       
+    axios.get(this.URL).then((response) => {
+        this.data1 = response.data
+    })
+    },
     data() {
+        
         return {
+            URL: "https://localhost:7282/api/User/Login?mail="+username+"&password="+password, 
             password: "",
             userLoggedIn: false,
-            username: ""
+            username: "",
+            data1:"",
         };
 
     },

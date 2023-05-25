@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router"
-import Home from "../LandingPageFinal/Landingpage.vue"
+import Home from "../components/LoginSingup/Login.vue"
 
 const routes = [
   {
