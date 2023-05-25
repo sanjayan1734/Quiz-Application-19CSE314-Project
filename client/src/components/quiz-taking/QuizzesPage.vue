@@ -8,18 +8,22 @@ import axios from 'axios'
  //Vue.use(VueAxios,axios)
 export default {
   name: 'QuizzesPage',
+  
   mounted()
   {
-    axios.get('https://localhost:7282/api/Quiz/GetAllQuestionsforQuiz1').then((response) => {
-        console.log(response.data);
-        let x=response.data[1]
-        console.log(x)
-        console.log(x.question)
-        this.questionobj.questionid=x.questionid
-        this.questionobj.questionDescription=x.question
-        this.questionobj.optionA=x.opt1
-        this.questionobj.optionB=x.opt2
-        this.questionobj.optionC=x.opt3
+    this.getQuizURL()
+    axios.get(this.URL).then((response) => {
+      this.questionData = response.data
+      console.log(response.data);
+      this.individualQuestion=response.data[this.currentQuestion]
+      console.log(this.individualQuestion)
+      console.log(this.individualQuestion.question)
+      this.questionobj.questionid=this.individualQuestion.questionid
+      this.questionobj.questionDescription=this.individualQuestion.question
+      this.questionobj.optionA=this.individualQuestion.opt1
+      this.questionobj.optionB=this.individualQuestion.opt2
+      this.questionobj.optionC=this.individualQuestion.opt3
+      this.noOfQuestions = response.data.length
       });
   },
   
@@ -29,17 +33,34 @@ export default {
   props:{
     quizName:String,
     quizId:String,
-    noOfQuestions: String
+    
   },
   data() {
     return {
-      x:[],
+      URL:'https://localhost:7282/api/Quiz/GetAllQuestionsfor',
+      questionData:[
+      {
+        question:String,
+        questionid:String,
+        opt1:String,
+        opt2:String,
+        opt3:String
+      }
+      ],
+      individualQuestion:{
+        question:String,
+        questionid:String,
+        opt1:String,
+        opt2:String,
+        opt3:String
+      },
+      noOfQuestions: String,
     questionobj:{
-      questionDescription: "",//this.x.question,
-      questionid: "",//this.x.questionid,
-      optionA:"",//this.x.opt1,
-      optionB: "",//this.x.opt2,
-      optionC: "",//this.x.opt3
+      questionDescription: "",//this.individualQuestion.question,
+      questionid: "",//this.individualQuestion.questionid,
+      optionA:"",//this.individualQuestion.opt1,
+      optionB: "",//this.individualQuestion.opt2,
+      optionC: "",//this.individualQuestion.opt3
     },
       currentQuestion: 0,
       
@@ -48,8 +69,23 @@ export default {
   methods: {
     pressedContinue() {
         this.currentQuestion += 1
+        this.renderquestion();
         
     },
+    renderquestion() {
+      this.individualQuestion=this.questionData[this.currentQuestion]
+      console.log(this.individualQuestion)
+      console.log(this.individualQuestion.question)
+      this.questionobj.questionid=this.individualQuestion.questionid
+      this.questionobj.questionDescription=this.individualQuestion.question
+      this.questionobj.optionA=this.individualQuestion.opt1
+      this.questionobj.optionB=this.individualQuestion.opt2
+      this.questionobj.optionC=this.individualQuestion.opt3
+      this.$forceUpdate()
+    },
+    getQuizURL() {
+      this.URL += this.quizName
+    }
     
   }
 }
@@ -59,17 +95,17 @@ export default {
     <div class="home-container">
       <div class="home-web">
 
-        <button class="home-group7" v-if="currentQuestion != noOfQuestions" @click="pressedContinue();">
+        <button class="home-group7" v-if="currentQuestion+1 != noOfQuestions" @click="pressedContinue();">
           <span class="home-text" >
           <span>CONTINUE</span></span>
         </button>
 
-        <button class="home-group7" v-if="currentQuestion == noOfQuestions">
+        <button class="home-group7" v-if="currentQuestion+1 == noOfQuestions">
           <span class="home-text"><span>SUBMIT</span></span>
         </button>
         
         <div class="home-group6" >
-          <span class="home-text25"><span>{{currentQuestion}}/{{ noOfQuestions }}</span></span>
+          <span class="home-text25"><span>{{currentQuestion + 1}}/{{ noOfQuestions }}</span></span>
         </div>
         
         <div class="home-group14">
