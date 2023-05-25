@@ -2,10 +2,13 @@
   // import login from './Login/Login.vue'
   import QuizzesPage from './components/quiz-taking/QuizzesPage.vue'  // import landing from './LandingPageFinal/Landingpage.vue'
   import Landingpage from './LandingPageFinal/Landingpage.vue';
+  import Landingpage from './LandingPageFinal/Landingpage.vue';
   export default {
     name: 'app',
     components: {
       // login,
+      QuizzesPage,
+      Landingpage
       QuizzesPage,
       Landingpage
     },
@@ -24,7 +27,7 @@
 <template>
 <router-view />
 
-  <Landingpage />
+ 
   <!-- <QuizzesPage v-bind="quizparameters" /> -->
 
   <!-- <div id="app">
