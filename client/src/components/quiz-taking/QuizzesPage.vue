@@ -1,10 +1,543 @@
-<script setup>
-    import QuizComponent from './QuizComponent.vue';
-    import QuizCard from './QuizCard.vue';
+<QuestionComponent v-bind="questionobj" />
 
+<script >
+import QuestionComponent from "./questionComponent.vue"
+export default {
+  name: 'QuizzesPage',
+  
+  components:{
+    QuestionComponent,
+  },
+  props:{
+    quizName:String,
+    quizId:String,
+    noOfQuestions: String
+  },
+  data() {
+    return {
+    questionobj:{
+      questionDescription: "This is a sample question",
+      questionid: "quiz1.1",
+      optionA: "sample option1",
+      optionB: "sample option2",
+      optionC: "sample option3"
+    },
+      currentQuestion: 1
+    }
+  },
+  methods: {
+    pressedContinue() {
+        this.currentQuestion += 1
+        
+    }
+  }
+}
 </script>
 
 <template>
-    <QuizCard></QuizCard>
-    <QuizComponent></QuizComponent>
-</template>
+    <div class="home-container">
+      <div class="home-web">
+
+        <button class="home-group7" v-if="currentQuestion != noOfQuestions" @click="pressedContinue();">
+          <span class="home-text" >
+          <span>CONTINUE</span></span>
+        </button>
+
+        <button class="home-group7" v-if="currentQuestion == noOfQuestions">
+          <span class="home-text"><span>SUBMIT</span></span>
+        </button>
+        
+        <div class="home-group6" >
+          <span class="home-text25"><span>{{currentQuestion}}/{{ noOfQuestions }}</span></span>
+        </div>
+        
+        <div class="home-group14">
+          <div class="home-group21">
+  
+            <span class="home-text27"><span>{{quizName}}</span></span>
+            
+          </div>
+        </div>
+        <div class="question">
+            <QuestionComponent  v-bind="questionobj"/>
+            <!--  props - :questionDescription= 'questionDesc'  questionid = 'questionId'  optionA = 'optionA' optionB = optionB optionC = optionC -->
+        </div>
+        </div>
+    </div>
+  </template>
+  
+ 
+  
+  <style scoped>
+  .home-container {
+    width: 100%;
+    height:100%;
+    display: flex;
+    overflow:hidden;
+    /* min-height: 100vh; */
+    align-items: center;
+    flex-direction: column;
+  }
+  .home-web {
+    width: 100%;
+    height: 755px;
+    display: flex;
+    overflow:visible;
+    position: relative;
+    align-items:center;
+    flex-shrink: 29;
+    background-color: rgba(237, 232, 227, 1);
+  }
+
+  .home-group7 {
+    top: 670px;
+    left: 60%;
+    width: 240px;
+    height: 60px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    background-color: rgba(208, 35, 35, 1);
+  }
+  .home-text {
+    top: 20px;
+    left: 76.9999771118164px;
+    color: rgba(237, 232, 226, 1);
+    height: auto;
+    position: absolute;
+    font-size: 16px;
+    font-style: Semibold;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: 20px;
+    font-stretch: normal;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .home-text02 {
+    top: 181px;
+    left: 375px;
+    color: rgba(25, 29, 99, 1);
+    width: 690px;
+    height: auto;
+    position: absolute;
+    font-size: 28px;
+    font-style: Semibold;
+    text-align: center;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: 38px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-group20 {
+    top: 310px;
+    left: 465px;
+    width: 510px;
+    height: 303px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .home-group3 {
+    top: 0px;
+    left: 0px;
+    width: 510px;
+    height: 81px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    background-color: rgba(244, 243, 246, 1);
+  }
+  .home-text04 {
+    top: 27px;
+    left: 103px;
+    color: rgba(6, 7, 16, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Semibold;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: 27.044775009155273px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-text06 {
+    top: 27px;
+    left: 206.791015625px;
+    color: rgba(6, 7, 16, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Medium;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 500;
+    line-height: 27.044775009155273px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-text08 {
+    top: 27px;
+    left: 286.791015625px;
+    color: rgba(164, 0, 33, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Medium;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 500;
+    line-height: 27.044775009155273px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-group1 {
+    top: 16px;
+    left: 24px;
+    width: 49px;
+    height: 49px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .home-ellipse1 {
+    top: 0px;
+    left: 0px;
+    width: 49px;
+    height: 49px;
+    position: absolute;
+  }
+  .home-text10 {
+    top: 10px;
+    left: 16.999998092651367px;
+    color: rgba(6, 7, 16, 1);
+    height: auto;
+    position: absolute;
+    font-size: 21.635820388793945px;
+    font-style: Semibold;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-group4 {
+    top: 111px;
+    left: 0px;
+    width: 510px;
+    height: 81px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    background-color: rgba(244, 243, 246, 1);
+  }
+  .home-text11 {
+    top: 26px;
+    left: 103px;
+    color: rgba(6, 7, 16, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Semibold;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: 27.044775009155273px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-text13 {
+    top: 26px;
+    left: 261.2537841796875px;
+    color: rgba(6, 7, 16, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Medium;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 500;
+    line-height: 27.044775009155273px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-text15 {
+    top: 26px;
+    left: 342.2537841796875px;
+    color: rgba(164, 0, 33, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Medium;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 500;
+    line-height: 27.044775009155273px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-group11 {
+    top: 16px;
+    left: 24px;
+    width: 49px;
+    height: 49px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .home-ellipse11 {
+    top: 0px;
+    left: 0px;
+    width: 49px;
+    height: 49px;
+    position: absolute;
+  }
+  .home-text17 {
+    top: 10px;
+    left: 16.999998092651367px;
+    color: rgba(6, 7, 16, 1);
+    height: auto;
+    position: absolute;
+    font-size: 21.635820388793945px;
+    font-style: Semibold;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-group5 {
+    top: 222px;
+    left: 0px;
+    width: 510px;
+    height: 81px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    background-color: rgba(244, 243, 246, 1);
+
+
+  }
+  .home-text18 {
+    top: 27px;
+    left: 103px;
+    color: rgba(6, 7, 16, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Semibold;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: 27.044775009155273px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-text20 {
+    top: 27px;
+    left: 238.850830078125px;
+    color: rgba(6, 7, 16, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Medium;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 500;
+    line-height: 27.044775009155273px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-text22 {
+    top: 27px;
+    left: 318.850830078125px;
+    color: rgba(31, 185, 110, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    font-style: Medium;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 500;
+    line-height: 27.044775009155273px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-group12 {
+    top: 17px;
+    left: 24px;
+    width: 49px;
+    height: 49px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .home-ellipse12 {
+    top: 0px;
+    left: 0px;
+    width: 49px;
+    height: 49px;
+    position:fixed;
+    
+  }
+  .home-text24 {
+    top: 10px;
+    left: 15.999998092651367px;
+    color: rgba(6, 7, 16, 1);
+    height: auto;
+    position: absolute;
+    font-size: 21.635820388793945px;
+    font-style: Semibold;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-group6 {
+    top: 700px;
+    left: 20%;
+    width: 240px;
+    height: 20px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .home-text25 {
+    left: 150px;
+    color: rgba(117, 117, 117, 1);
+    height: auto;
+    position: absolute;
+    font-size: 40px;
+    font-style: Semibold;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: 20px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-group9 {
+    top: 1.9999966621398926px;
+    left: 0px;
+    width: 200px;
+    height: 16px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    background-color: rgba(237, 232, 227, 1);
+  }
+  .home-rectangle3 {
+    top: 0px;
+    left: 0px;
+    width: 40px;
+    height: 16px;
+    position: absolute;
+    border-radius: 16px;
+  }
+  .home-group14 {
+    top: 40px;
+    left: 10%;
+    width: 80%;
+    height: 50px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .home-group21 {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+
+
+  .home-cancel2-outline {
+    top: 8.333333015441895px;
+    left: 8.333333015441895px;
+    width: 33px;
+    height: 33px;
+    position: absolute;
+  }
+  .home-text27 {
+    /* top: 40px;
+    left: 50%; */
+    color: rgba(0, 0, 0, 1);
+    height: auto;
+    position: absolute;
+    font-size: 30px;
+    font-style: Semibold;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: 50px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-group13 {
+    top: 7px;
+    left: 0px;
+    width: 95.45454406738281px;
+    height: 35px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    background-color: rgba(244, 243, 246, 1);
+  }
+  .home-group12 {
+    top: 6.363636493682861px;
+    left: 12.727272987365723px;
+    width: 68.63633728027344px;
+    height: 23px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .home-text29 {
+    top: -0.000011097301467088982px;
+    left: 28.636341094970703px;
+    color: rgba(25, 29, 99, 1);
+    height: auto;
+    position: absolute;
+    font-size: 22.272727966308594px;
+    font-style: Semibold;
+    text-align: left;
+    font-family: General Sans;
+    font-weight: 600;
+    line-height: 22.272727966308594px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .home-image3 {
+    top: 0px;
+    left: 0px;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+  }
+  </style>
+  

@@ -1,20 +1,35 @@
-<template>
-  <div id="app">
-  <login/>
-    <router-view />
-  </div>
-</template>
 <script>
-  import login from './Login/Login.vue'
-  import landing from './LandingPageFinal/Landingpage.vue'
+  // import login from './Login/Login.vue'
+  import QuizzesPage from './components/quiz-taking/QuizzesPage.vue'  // import landing from './LandingPageFinal/Landingpage.vue'
 
   export default {
     name: 'app',
     components: {
-      login,
+      // login,
+      QuizzesPage
     },
+    data() {
+      return {
+      quizparameters:{
+      quizName : "sample quiz",
+      quizId : "quiz1.1",
+      noOfQuestions: "10"
+      }
+    }
+  }
   };
 </script>
+
+<template>
+  <QuizzesPage v-bind="quizparameters" />
+  <!-- <div id="app">
+  <login/>
+    <router-view />
+  </div> -->
+  
+  <!-- <landing /> -->
+</template>
+
 <!-- <style lang="scss">
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;

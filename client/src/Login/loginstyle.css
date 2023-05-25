@@ -12,6 +12,7 @@ body{
 a {
 	cursor: pointer;
   transition: all 200ms linear;
+  text-decoration: wheat;
 }
 a:hover {
 	text-decoration: none;
@@ -257,6 +258,7 @@ h6 span{
   background-color: #ffeba7;
   color: #102770;
   box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+  text-decoration-color: white;
 }
 .btn:active,
 .btn:focus{  
