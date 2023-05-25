@@ -1,4 +1,4 @@
-<QuestionComponent v-bind="questionobj" />
+<!-- <QuestionComponent v-bind="questionobj" /> -->
 
 <script >
 import QuestionComponent from "./questionComponent.vue"
@@ -116,7 +116,7 @@ export default {
           </div>
         </div>
         <div class="question">
-            <QuestionComponent  v-bind="questionobj"/>
+            <QuestionComponent  v-bind="questionobj" ref="questioncomponent"/>
             <!--  props - :questionDescription= 'questionDesc'  questionid = 'questionId'  optionA = 'optionA' optionB = optionB optionC = optionC -->
         </div>
         </div>
