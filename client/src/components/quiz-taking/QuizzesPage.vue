@@ -2,8 +2,26 @@
 
 <script >
 import QuestionComponent from "./questionComponent.vue"
+//import Vue from 'vue'
+import axios from 'axios'
+//import VueAxios from 'vue-axios'
+ //Vue.use(VueAxios,axios)
 export default {
   name: 'QuizzesPage',
+  mounted()
+  {
+    axios.get('https://localhost:7282/api/Quiz/GetAllQuestionsforQuiz1').then((response) => {
+        console.log(response.data);
+        let x=response.data[1]
+        console.log(x)
+        console.log(x.question)
+        this.questionobj.questionid=x.questionid
+        this.questionobj.questionDescription=x.question
+        this.questionobj.optionA=x.opt1
+        this.questionobj.optionB=x.opt2
+        this.questionobj.optionC=x.opt3
+      });
+  },
   
   components:{
     QuestionComponent,
@@ -15,21 +33,24 @@ export default {
   },
   data() {
     return {
+      x:[],
     questionobj:{
-      questionDescription: "This is a sample question",
-      questionid: "quiz1.1",
-      optionA: "sample option1",
-      optionB: "sample option2",
-      optionC: "sample option3"
+      questionDescription: "",//this.x.question,
+      questionid: "",//this.x.questionid,
+      optionA:"",//this.x.opt1,
+      optionB: "",//this.x.opt2,
+      optionC: "",//this.x.opt3
     },
-      currentQuestion: 1
+      currentQuestion: 0,
+      
     }
   },
   methods: {
     pressedContinue() {
         this.currentQuestion += 1
         
-    }
+    },
+    
   }
 }
 </script>
