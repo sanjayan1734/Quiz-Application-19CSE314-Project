@@ -54,7 +54,7 @@
         </div>
 
 
-        <button class="log">
+        <button class="log" @click="pressedContinue();">
             Login
         </button>
 
@@ -65,18 +65,21 @@
     
     
 <script>
+//import { getDefaultResultOrder } from 'dns';
+
 export default {
     mounted()
     {
-       
+    //getUrl()
     axios.get(this.URL).then((response) => {
         this.data1 = response.data
+        console(response.data)
     })
     },
     data() {
         
         return {
-            URL: "https://localhost:7282/api/User/Login?mail="+username+"&password="+password, 
+            URL:"https://localhost:7282/api/User/Login?",
             password: "",
             userLoggedIn: false,
             username: "",
@@ -87,6 +90,10 @@ export default {
     method: {
         changeStep() {
             this.$emit("nextStep", "Signup");
+        },
+        pressedContinue() 
+        {
+            this.URL = this.URL+"mail="+this.username+"&password="+this.password;
         }
     }
 };
