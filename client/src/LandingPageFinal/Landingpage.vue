@@ -50,7 +50,7 @@ export default {
 </style>
 <template>
     <div>
-        
+        <component :is="currentView" />
         <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -99,7 +99,7 @@ export default {
                         <p class="text-white-75 mb-5">Welcome to our quiz app! Perfect way to satisfy your thirst for knowledge and have fun at the same time.</p>
                     <div class = "Login-Button">
                         <button>
-                            <span>Login/Signup</span>
+                            <span ><a href="#/Login">Login/Signup</a></span>
                         </button>
                     </div>
                     </div>
