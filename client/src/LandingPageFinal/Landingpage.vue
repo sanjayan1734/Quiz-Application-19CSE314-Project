@@ -93,7 +93,11 @@ export default {
                         <p class="text-white-75 mb-5">Welcome to our quiz app! Perfect way to satisfy your thirst for knowledge and have fun at the same time.</p>
                     <div class = "Login-Button">
                         <button>
-                            <span ><a href="/login">Login/Signup</a></span>
+                            <span >
+                            <RouterLink to="login">
+                                <a>Login/Signup</a>
+                            </RouterLink>
+                            </span>
                         </button>
                     </div>
                     </div>

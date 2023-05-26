@@ -1,9 +1,12 @@
 <!-- <QuestionComponent v-bind="questionobj" /> -->
 
 <script >
+import { RouterLink } from "vue-router"
+
 import QuestionComponent from "./questionComponent.vue"
 // import { Ref } from "vue"
 import axios from 'axios'
+import { toRaw } from 'vue'
 //import VueAxios from 'vue-axios'
  //Vue.use(VueAxios,axios)
 export default {
@@ -12,7 +15,8 @@ export default {
   mounted()
   {
     this.getQuizURL()
-    axios.get(this.URL).then((response) => {
+    this.getvalidateURL()
+    axios.get(this.quizURL).then((response) => {
       this.questionData = response.data
       console.log(response.data);
       this.individualQuestion=response.data[this.currentQuestion]
@@ -37,9 +41,11 @@ export default {
   },
   data() {
     return {
-      URL:'https://localhost:7282/api/Quiz/GetAllQuestionsfor',
+      validateURL:'https://localhost:7282/api/Quiz/ValidateAnswersfor',
+      quizURL:'https://localhost:7282/api/Quiz/GetAllQuestionsfor',
       chosenOption:String,
-      userChoices:[String],
+      userChoices:[],
+      rawUserChoices:[],
       questionData:[
       {
         question:String,
@@ -77,7 +83,14 @@ export default {
     },
     pressedSubmit() {
       this.getChosenOption()
-      console.log(this.userChoices)
+      this.rawUserChoices = toRaw(this.userChoices)
+      console.log(this.rawUserChoices)
+      axios.post(this.validateURL,this.rawUserChoices).then((response) => {
+        console.log(response.data)
+        this.$router.push({name:'results', params:{noOfQuestions:this.noOfQuestions, correctAnswers:response.data}})
+      })
+      
+      
       
     },
     renderquestion() {
@@ -94,12 +107,14 @@ export default {
       this.$forceUpdate()
     },
     getQuizURL() {
-      this.URL += this.quizName
+      this.quizURL += this.quizName
+    },
+    getvalidateURL() {
+      this.validateURL +=this.quizName
     },
     getChosenOption() {
-      this.chosenOption = this.$refs.questioncomponent.questionOption
-      this.userChoices.push(this.chosenOption)
-
+      this.chosenOption = String(this.$refs.questioncomponent.questionOption)
+      this.userChoices.push(JSON.parse(JSON.stringify(this.chosenOption)))
 
     }
     
