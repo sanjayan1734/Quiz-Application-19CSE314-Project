@@ -1,35 +1,26 @@
 <script>
+import { RouterLink } from 'vue-router';
+
 export default {
-  mounted() {
-    const plug1 = document.createElement("scripts");
-    const plug2 = document.createElement("bootstrap.bundle.min");
-    const plug3 = document.createElement("sb-forms-latest");
-    const plug4 = document.createElement("simpleLightbox.min");
-    plug1.setAttribute(
-      "src",
-      "./js/scripts.js",
-    ),
-    plug2.setAttribute(
-      "src1",
-      "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js",
-    ),
-    plug3.setAttribute(
-      "src2",
-      "https://cdn.startbootstrap.com/sb-forms-latest.js",
-    ),
-    plug4.setAttribute(
-      "src3",
-      "https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js",
-    )
-    plug1.async = true;
-    plug2.async=true;
-    plug3.async = true;
-    plug4.async=true;
-    document.head.appendChild(plug1);
-    document.head.appendChild(plug2);
-    document.head.appendChild(plug3);
-    document.head.appendChild(plug4);
-  }
+    mounted() {
+        const plug1 = document.createElement("scripts");
+        const plug2 = document.createElement("bootstrap.bundle.min");
+        const plug3 = document.createElement("sb-forms-latest");
+        const plug4 = document.createElement("simpleLightbox.min");
+        plug1.setAttribute("src", "./js/scripts.js"),
+            plug2.setAttribute("src1", "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"),
+            plug3.setAttribute("src2", "https://cdn.startbootstrap.com/sb-forms-latest.js"),
+            plug4.setAttribute("src3", "https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js");
+        plug1.async = true;
+        plug2.async = true;
+        plug3.async = true;
+        plug4.async = true;
+        document.head.appendChild(plug1);
+        document.head.appendChild(plug2);
+        document.head.appendChild(plug3);
+        document.head.appendChild(plug4);
+    },
+    components: { RouterLink }
 };
 
 </script>
@@ -222,7 +213,9 @@ export default {
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">Take a trail quiz to experience our user interface</h2>
                 <div class = "Trail">
+                    <RouterLink to="/quiz">
                     <a class="trail-button" href="https://startbootstrap.com/theme/creative/">Trail Quiz</a>
+                    </RouterLink>
                 </div>
                 
             </div>
