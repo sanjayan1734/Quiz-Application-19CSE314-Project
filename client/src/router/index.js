@@ -3,7 +3,7 @@ import { createWebHistory, createRouter } from "vue-router"
 import results from "../components/quiz-taking/QuizResults.vue"
 import Home from "../LandingPageFinal/LandingPage.vue"  
 import quiz from "../components/quiz-taking/QuizzesPage.vue"
-// import login from "../components/LoginSignup/LoginComponent.vue"
+ import login from "../components/LoginSignup/LoginComponent.vue"
 // import signup from "../components/LoginSignup/Signup.vue"
 const routes = [
 

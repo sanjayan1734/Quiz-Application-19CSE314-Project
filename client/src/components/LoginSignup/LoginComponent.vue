@@ -23,7 +23,7 @@
       URL: string,
       
       methods: {
-    pressedContinue() {
+    pressedlogin() {
         this.URL = 'https://localhost:7282/api/User/Login?mail='+mail+'&password='+password,
         axios.get(this.URL).then((response) => {
             console.log(response.data)
@@ -85,7 +85,7 @@
                   </div>
                   <div class="field btn">
                      <div class="btn-layer"></div>
-                     <input type="submit" value="Login">
+                     <input type="submit" value="Login" @click="pressedlogin();">
                   </div>
                   <div class="signup-link">
                      Not a member? <a href="">Signup now</a>
@@ -103,7 +103,7 @@
                   </div>
                   <div class="field btn">
                      <div class="btn-layer"></div>
-                     <input type="submit" value="Signup" @click="pressedContinue();">
+                     <input type="submit" value="Signup" >
                   </div>
                </form>
             </div>
