@@ -1,4 +1,18 @@
-
+<script>
+    import axios from 'axios'
+//import VueAxios from 'vue-axios'
+ //Vue.use(VueAxios,axios)
+export default {
+  name: 'LoginComponent',
+  
+  mounted()
+  {
+    axios.get(this.URL).then((response) => {
+        
+    })
+  }
+}
+</script>
 
 <template>
   <div class="section" style="background-color: silver;">
