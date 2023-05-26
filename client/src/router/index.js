@@ -6,7 +6,7 @@ import { createWebHistory, createRouter } from "vue-router"
  import Home from "../LandingPageFinal/LandingPage.vue"  
 import quiz from "../components/quiz-taking/QuizzesPage.vue"
 // import login from "../components/LoginSignup/LoginComponent.vue"
-
+import dashboard from "../components/Dashboard/layout/dashboard/DashboardLayout.vue"
 const routes = [
 
   {
@@ -14,11 +14,11 @@ const routes = [
     name: "login",
     component: login,
   },
-  // {
-  //   path:"/signup",
-  //   name: "signup",
-  //   component: signup
-  // },
+  {
+    path:"/dashboard",
+    name: "dashboard",
+    component: dashboard
+  },
   {
     path: "/quiz",
     name: "quiz",
