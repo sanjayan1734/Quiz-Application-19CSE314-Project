@@ -1,5 +1,5 @@
-<script >
-
+<script>
+import { RouterLink } from 'vue-router';
 
 export default {
     mounted() {
@@ -19,12 +19,6 @@ export default {
         document.head.appendChild(plug2);
         document.head.appendChild(plug3);
         document.head.appendChild(plug4);
-    },
-    methods: {
-        getCurrentView() {
-            const currentPath = this.$route.path.slice(1) || "/";
-            return routes[currentPath];
-        },
     },
     components: { RouterLink }
 };
@@ -220,10 +214,8 @@ export default {
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">Take a trail quiz to experience our user interface</h2>
                 <div class = "Trail">
-                    <RouterLink to ='/login'><a class="trail-button" href="https://startbootstrap.com/theme/creative/"  >
-                        
-                        Trail Quiz
-                    </a>
+                    <RouterLink to="/quiz">
+                    <a class="trail-button" href="https://startbootstrap.com/theme/creative/">Trail Quiz</a>
                     </RouterLink>
                 </div>
                 

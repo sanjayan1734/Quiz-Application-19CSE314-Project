@@ -1,15 +1,31 @@
 import { createWebHistory, createRouter } from "vue-router"
 
-// import Login frommport login from '. '../components/LoginSingup/views/LoginComponent.vue'
-// i./components/LoginSignup/LoginComponent.vue'
-
+// import Login from '../components/LoginSingup/views/LoginComponent.vue'
+// import login from '../components/LoginSignup/LoginComponent.vue'
+//import signup from '../components/LoginSignup/signup.vue'
 import Home from "../LandingPageFinal/LandingPage.vue"  
-import login from "../components/LoginSignup/LoginComponent.vue"
+import quiz from "../components/quiz-taking/QuizzesPage.vue"
 const routes = [
 
+  // {
+  //   path: "/login",
+  //   name: "login",
+  //   component: login,
+  // },
+  // {
+  //   path:"/signup",
+  //   name: "signup",
+  //   component: signup
+  // },
+  {
+    path: "/quiz",
+    name: "quiz",
+    component: quiz,
+    props: {quizName:'quiz1'}
+  },
   {
     path: "/",
-    name: "Home",
+    name: "landing",
     component: Home,
   },
   {
@@ -18,6 +34,13 @@ const routes = [
     component: login,
   },
 ]
+// this.$router.push({
+//   name: 'user',
+//   params: {
+//       quizName: 'quiz',
+//        quizId: 1
+//   }
+// }) 
 
 
 const router = createRouter({

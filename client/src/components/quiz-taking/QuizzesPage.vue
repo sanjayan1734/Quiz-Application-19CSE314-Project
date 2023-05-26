@@ -2,7 +2,7 @@
 
 <script >
 import QuestionComponent from "./questionComponent.vue"
-//import Vue from 'vue'
+// import { Ref } from "vue"
 import axios from 'axios'
 //import VueAxios from 'vue-axios'
  //Vue.use(VueAxios,axios)
@@ -38,6 +38,8 @@ export default {
   data() {
     return {
       URL:'https://localhost:7282/api/Quiz/GetAllQuestionsfor',
+      chosenOption:String,
+      userChoices:[String],
       questionData:[
       {
         question:String,
@@ -68,11 +70,18 @@ export default {
   },
   methods: {
     pressedContinue() {
+        this.getChosenOption()
         this.currentQuestion += 1
         this.renderquestion();
         
     },
+    pressedSubmit() {
+      this.getChosenOption()
+      console.log(this.userChoices)
+      
+    },
     renderquestion() {
+      
       this.individualQuestion=this.questionData[this.currentQuestion]
       console.log(this.individualQuestion)
       console.log(this.individualQuestion.question)
@@ -81,10 +90,17 @@ export default {
       this.questionobj.optionA=this.individualQuestion.opt1
       this.questionobj.optionB=this.individualQuestion.opt2
       this.questionobj.optionC=this.individualQuestion.opt3
+      
       this.$forceUpdate()
     },
     getQuizURL() {
       this.URL += this.quizName
+    },
+    getChosenOption() {
+      this.chosenOption = this.$refs.questioncomponent.questionOption
+      this.userChoices.push(this.chosenOption)
+
+
     }
     
   }
@@ -100,7 +116,7 @@ export default {
           <span>CONTINUE</span></span>
         </button>
 
-        <button class="home-group7" v-if="currentQuestion+1 == noOfQuestions">
+        <button class="home-group7" v-if="currentQuestion+1 == noOfQuestions" @click="pressedSubmit();">
           <span class="home-text"><span>SUBMIT</span></span>
         </button>
         
