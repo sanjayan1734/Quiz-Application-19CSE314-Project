@@ -5,6 +5,7 @@ import { createWebHistory, createRouter } from "vue-router"
 //import signup from '../components/LoginSignup/signup.vue'
 import Home from "../LandingPageFinal/LandingPage.vue"  
 import quiz from "../components/quiz-taking/QuizzesPage.vue"
+import login from "../components/LoginSignup/LoginComponent.vue"
 const routes = [
 
   // {

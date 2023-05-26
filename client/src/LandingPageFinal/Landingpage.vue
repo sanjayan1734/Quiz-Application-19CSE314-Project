@@ -1,5 +1,6 @@
 <script>
 import { RouterLink } from 'vue-router';
+import './js/scripts'
 
 export default {
     mounted() {
@@ -35,14 +36,15 @@ export default {
      @import 'https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700';
      @import 'https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic';
      @import 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css';
-     @import './css/styles.css';
-     @import 'https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css';
+     @import './css/styles.css'; 
+     /* @import 'https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css'; */
+     
 
 </style>
 <template>
     <div>
         
-        Current View: {{ getCurrentView() }}
+        <!-- Current View: {{ getCurrentView() }} -->
         <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
