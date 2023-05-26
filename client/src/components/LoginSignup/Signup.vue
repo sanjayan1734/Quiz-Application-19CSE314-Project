@@ -82,7 +82,7 @@
         </button>
 
 
-        <span>Have an existing account? <a href="/Login">Login</a> </span>
+        <!-- <span>Have an existing account? <a href="/Login">Login</a> </span> -->
     </div>
 </template>
   

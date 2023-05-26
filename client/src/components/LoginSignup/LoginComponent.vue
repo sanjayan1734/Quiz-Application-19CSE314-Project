@@ -59,7 +59,7 @@
         </button>
 
 
-        <span>Don't have an existing account? <a href="./Signup">Signup</a> </span>
+        <!-- <span>Don't have an existing account? <a href="./Signup">Signup</a> </span> -->
     </div>
 </template>
     
