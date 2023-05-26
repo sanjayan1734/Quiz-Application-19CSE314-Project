@@ -1,10 +1,10 @@
 import { createWebHistory, createRouter } from "vue-router"
 
-// import Login from '../components/LoginSingup/views/LoginComponent.vue'
-// import login from '../components/LoginSignup/LoginComponent.vue'
-//import signup from '../components/LoginSignup/signup.vue'
+import results from "../components/quiz-taking/QuizResults.vue"
 import Home from "../LandingPageFinal/LandingPage.vue"  
 import quiz from "../components/quiz-taking/QuizzesPage.vue"
+// import login from "../components/LoginSignup/LoginComponent.vue"
+// import signup from "../components/LoginSignup/Signup.vue"
 const routes = [
 
   // {
@@ -28,6 +28,14 @@ const routes = [
     name: "landing",
     component: Home,
   },
+  {
+    path:"/results",
+    name: "results",
+    component: results,
+    props: {
+      noOfQuestions:String  ,
+      correctAnswers:String}
+  }
   
   
 ]

@@ -1,350 +1,298 @@
-<template>
-    <div class="box">
-        <div class="banner_high">
-            <img src="../assets/logo.svg" alt="">
-            <div class="language">
-                <div class="flag"><img src="../assets/fr_flag.png" alt=""></div>
-                <div class="flag active"><img src="../assets/uk_flag.png" alt=""></div>
-            </div>
-        </div>
-
-        <h1>Login</h1>
-
-        <div class="in">
-            <label for="name">E-mail</label>
-
-            <div> <input type="text" v-model="username" placeholder="E-mail" /><img v-if="username.length >= 4"
-                    src="../assets/ok.svg" alt=""></div>
-
-            <!-- <div class="button_action">
-                <button v-on:click="username = ' @gmail.com'">@gmail.com</button> <button
-                    v-on:click="username = '@yahoo.com'">@yahoo.com</button> <button
-                    v-on:click="username = '@outlook.com'">@outlook.com</button> <button
-                    v-on:click="username = '@aol.com'">@aol.com</button>
-            </div> -->
-
-
-
-
-        </div>
-
-        <div class="in">
-            <label for="name">Password</label>
-            <div>
-                <input v-model="password" type="password" :name="string" placeholder="8 charecters minimum" required /><img
-                    v-if="password.length >= 8" src="../assets/ok.svg" alt="">
-            </div>
-
-        </div>
-
-        <div class="password_bar">
-            <div :class="{ 'bar': true, 'green': (password.length > 1) }"></div>
-            <div :class="{ 'bar': true, 'green': (password.length > 3) }"></div>
-            <div :class="{ 'bar': true, 'green': (password.length > 5) }"></div>
-            <div :class="{ 'bar': true, 'green': (password.length > 7) }"></div>
-        </div>
-
-        <div class="check_bar">
-            <div> <input type="checkbox" name="" id="">
-                <label for="">Remember me</label>
-            </div>
-
-            <a href="">Forgot Password?</a>
-
-        </div>
-
-
-        <button class="log" @click="pressedContinue();">
-            Login
-        </button>
-
-
-        <span>Don't have an existing account? <a href="./Signup">Signup</a> </span>
-    </div>
-</template>
-    
-    
 <script>
-//import { getDefaultResultOrder } from 'dns';
-
-export default {
-    mounted()
-    {
-    //getUrl()
-    axios.get(this.URL).then((response) => {
-        this.data1 = response.data
-        console(response.data)
-    })
-    },
-    data() {
+        import axios from 'axios'
+        export default {
+  name: 'LoginComponent',
+  
+  mounted()
+  {
+    this.getQuizURL()
+    this.getvalidateURL()
+    
+  },
+  
+  components:{
+    QuestionComponent,
+  },
+  props:{
+    quizName:String,
+    quizId:String,
+    
+  },
+  data() {
+    return {
+      URL: string,
+      
+      methods: {
+    pressedContinue() {
+        this.URL = 'https://localhost:7282/api/User/Login?mail='+mail+'&password='+password,
+        axios.get(this.URL).then((response) => {
+            console.log(response.data)
+      });
         
-        return {
-            URL:"https://localhost:7282/api/User/Login?",
-            password: "",
-            userLoggedIn: false,
-            username: "",
-            data1:"",
-        };
-
     },
-    method: {
-        changeStep() {
-            this.$emit("nextStep", "Signup");
-        },
-        pressedContinue() 
-        {
-            this.URL = this.URL+"mail="+this.username+"&password="+this.password;
-        }
+      
     }
-};
-
-</script>
-    
-<style>
-@import"https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap";
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #ebecf0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 110vh;
-    font-family: "Lato", sans-serif
+  
 }
-
-.box {
-    background-color: #fff;
-    display: flex;
-    border-radius: 1em;
-    width: 30vw;
-    flex-direction: column;
-    padding: 2em;
-    box-shadow: rgba(100, 100, 111, .2) 0px 7px 29px 0px;
-    position: relative
+  }
 }
-
-.box .message {
-    background-color: #ebecf0;
-    border-radius: .5em;
-    padding: 1em
+       const loginText = document.querySelector(".title-text .login");
+         const loginForm = document.querySelector("form.login");
+         const loginBtn = document.querySelector("label.login");
+         const signupBtn = document.querySelector("label.signup");
+         const signupLink = document.querySelector("form .signup-link a");
+         signupBtn.onclick = (()=>{
+           loginForm.style.marginLeft = "-50%";
+           loginText.style.marginLeft = "-50%";
+         });
+         loginBtn.onclick = (()=>{
+           loginForm.style.marginLeft = "0%";
+           loginText.style.marginLeft = "0%";
+         });
+         signupLink.onclick = (()=>{
+           signupBtn.click();
+           return false;
+         });
+    </script>
+<template>
+    <div class="wrapper">
+         <div class="title-text">
+            <div class="title login">
+               Login Form
+            </div>
+            <div class="title signup">
+               Signup Form
+            </div>
+         </div>
+         <div class="form-container">
+            <div class="slide-controls">
+               <input type="radio" name="slide" id="login" checked>
+               <input type="radio" name="slide" id="signup">
+               <label for="login" class="slide login">Login</label>
+               <label for="signup" class="slide signup">Signup</label>
+               <div class="slider-tab"></div>
+            </div>
+            <div class="form-inner">
+               <form action="#" class="login">
+                  <div class="field">
+                     <input type="text" placeholder="Email Address" v-model="mail" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" v-model="pwd" placeholder="Password" required>
+                  </div>
+                  <div class="pass-link">
+                     <a href="#">Forgot password?</a>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Login">
+                  </div>
+                  <div class="signup-link">
+                     Not a member? <a href="">Signup now</a>
+                  </div>
+               </form>
+               <form action="#" class="signup">
+                  <div class="field">
+                     <input type="text" placeholder="Email Address" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" placeholder="Password" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" placeholder="Confirm password" required>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Signup" @click="pressedContinue();">
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+ 
+</template>
+<style >
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-
-.box .red {
-    background-color: #e45656a4;
-    color: #fff;
-    visibility: visible
+html,body{
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  background: -webkit-linear-gradient(left, #a445b2, #fa4299);
 }
-
-.box .green {
-    background-color: rgba(109, 209, 109, .664);
-    color: #fff;
-    visibility: visible
+::selection{
+  background: #fa4299;
+  color: #fff;
 }
-
-.box .visibility {
-    visibility: hidden
+.wrapper{
+  overflow: hidden;
+  max-width: 390px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
-
-.box .banner_high {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 1em 0
+.wrapper .title-text{
+  display: flex;
+  width: 200%;
 }
-
-.box .banner_high img {
-    width: 3em
+.wrapper .title{
+  width: 50%;
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
-
-.box .banner_high h1 {
-    margin: .6em;
-    font-weight: 600
+.wrapper .slide-controls{
+  position: relative;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  overflow: hidden;
+  margin: 30px 0 10px 0;
+  justify-content: space-between;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
 }
-
-.box .banner_high .language {
-    display: flex;
-    border-radius: .5em;
-    background-color: #f9fafc;
-    box-shadow: rgba(60, 64, 67, .3) 0px 0px 0px 0px, rgba(60, 64, 67, .15) 0px 0px 3px 0px
+.slide-controls .slide{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 48px;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.6s ease;
 }
-
-.box .banner_high .language .flag {
-    cursor: pointer;
-    margin: .3em;
-    border-radius: .3em;
-    padding: .3em .6em;
-    display: flex
+.slide-controls label.signup{
+  color: #000;
 }
-
-.box .banner_high .language .flag img {
-    width: 2em
+.slide-controls .slider-tab{
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  left: 0;
+  z-index: 0;
+  border-radius: 5px;
+  background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
-
-.box .log {
-    background-color: #000;
-    padding: 1.4em;
-    color: #fff;
-    border-radius: .7em;
-    border: 1px solid #000;
-    transition: 250ms;
-    cursor: pointer;
+input[type="radio"]{
+  display: none;
 }
-
-.box .log:hover {
-    border: 1px solid #000;
-    background-color: transparent;
-    color: #000
+#signup:checked ~ .slider-tab{
+  left: 50%;
 }
-
-.box .in {
-    display: flex;
-    flex-direction: column;
-    margin: .8em 0
+#signup:checked ~ label.signup{
+  color: #fff;
+  cursor: default;
+  user-select: none;
 }
-
-.box .in div {
-    display: flex;
-    align-items: center;
-    width: 100%
+#signup:checked ~ label.login{
+  color: #000;
 }
-
-.box .in label {
-    margin: .2em
+#login:checked ~ label.signup{
+  color: #000;
 }
-
-.box .in img {
-    width: 2em;
-    margin: 0 .5em
+#login:checked ~ label.login{
+  cursor: default;
+  user-select: none;
 }
-
-.box .in v-text-field {
-    display: flex;
-    width: 100%
+.wrapper .form-container{
+  width: 100%;
+  overflow: hidden;
 }
-
-.box .in input {
-    width: 100%;
-    padding: 1em;
-    display: flex;
-    border: 1px solid #ebecf0;
-    border-radius: .7em;
-    box-shadow: rgba(60, 64, 67, .3) 0px 0px 0px 0px, rgba(60, 64, 67, .15) 0px 0px 3px 0px;
-    background-size: 50px
+.form-container .form-inner{
+  display: flex;
+  width: 200%;
 }
-
-.box .in .button_action {
-    display: flex;
-    flex-direction: row;
-    margin: .5em 0
+.form-container .form-inner form{
+  width: 50%;
+  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
-
-.box .in .button_action button {
-    border: 0;
-    padding: .4em .8em;
-    margin: .2em;
-    background-color: #fff;
-    border: 1px solid #ebecf0;
-    cursor: pointer;
-    transition: 250ms;
-    border-radius: 5em
+.form-inner form .field{
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
 }
-
-.box .in .button_action button:hover {
-    background-color: #e8e8e8
+.form-inner form .field input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
 }
-
-.box .check_bar {
-    margin: 1em 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between
+.form-inner form .field input:focus{
+  border-color: #fc83bb;
+  /* box-shadow: inset 0 0 3px #fb6aae; */
 }
-
-.box .check_bar a {
-    color: #000
+.form-inner form .field input::placeholder{
+  color: #999;
+  transition: all 0.3s ease;
 }
-
-.box .check_bar div input[type=checkbox] {
-    margin: 0 1em
+form .field input:focus::placeholder{
+  color: #b3b3b3;
 }
-
-.box span {
-    text-align: center;
-    margin: 1em 0;
-    color: #677083
+.form-inner form .pass-link{
+  margin-top: 5px;
 }
-
-.box span a {
-    color: #000
+.form-inner form .signup-link{
+  text-align: center;
+  margin-top: 30px;
 }
-
-.box .password_bar {
-    display: flex;
-    width: 100%
+.form-inner form .pass-link a,
+.form-inner form .signup-link a{
+  color: #fa4299;
+  text-decoration: none;
 }
-
-.box .password_bar .bar {
-    width: 25%;
-    height: 6px;
-    background-color: #ebecf0;
-    border-radius: 1em;
-    margin: 6px
+.form-inner form .pass-link a:hover,
+.form-inner form .signup-link a:hover{
+  text-decoration: underline;
 }
-
-.box .password_bar .green {
-    background-color: #6dd16d
+form .btn{
+  height: 50px;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
 }
-
-.gold-mid {
-    background-color: #666
+form .btn .btn-layer{
+  height: 100%;
+  width: 300%;
+  position: absolute;
+  left: -100%;
+  background: -webkit-linear-gradient(right, #a445b2, #fa4299, #a445b2, #fa4299);
+  border-radius: 5px;
+  transition: all 0.4s ease;;
 }
-
-.gray-lighter {
-    background-color: #c2c2c2
+form .btn:hover .btn-layer{
+  left: 0;
 }
-
-.toggle-wrapper {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    width: 32px;
-    height: 18px;
-    border-radius: 9999px
+form .btn input[type="submit"]{
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+  background: none;
+  border: none;
+  color: #fff;
+  padding-left: 0;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
 }
+</style>
 
-.toggle-wrapper:focus {
-    outline: 0
-}
-
-.toggle-background {
-    display: inline-block;
-    border-radius: 9999px;
-    height: 100%;
-    width: 100%;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1);
-    transition: background-color .4s ease
-}
-
-.toggle-indicator {
-    position: absolute;
-    height: 14px;
-    width: 14px;
-    left: 2px;
-    bottom: 2px;
-    background-color: #fff;
-    border-radius: 9999px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-    transition: transform .4s ease
-}
-
-.active {
-    background-color: #fff;
-    box-shadow: rgba(60, 64, 67, .3) 0px 0px 0px 0px, rgba(60, 64, 67, .15) 0px 0px 3px 0px
-}
-
-/*# sourceMappingURL=style.css.map */</style>
-    
-    
-    
