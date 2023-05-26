@@ -1,344 +1,353 @@
+
+
 <template>
-    <div class="box">
-        <div class="banner_high">
-            <img src="../assets/logo.svg" alt="">
-            <div class="language">
-                <div class="flag"><img src="../assets/fr_flag.png" alt=""></div>
-                <div class="flag active"><img src="../assets/uk_flag.png" alt=""></div>
-            </div>
-        </div>
-
-        <h1>Login</h1>
-
-        <div class="in">
-            <label for="name">E-mail</label>
-
-            <div> <input type="text" v-model="username" placeholder="E-mail" /><img v-if="username.length >= 4"
-                    src="../assets/ok.svg" alt=""></div>
-
-            <!-- <div class="button_action">
-                <button v-on:click="username = ' @gmail.com'">@gmail.com</button> <button
-                    v-on:click="username = '@yahoo.com'">@yahoo.com</button> <button
-                    v-on:click="username = '@outlook.com'">@outlook.com</button> <button
-                    v-on:click="username = '@aol.com'">@aol.com</button>
-            </div> -->
-
-
-
-
-        </div>
-
-        <div class="in">
-            <label for="name">Password</label>
-            <div>
-                <input v-model="password" type="password" :name="string" placeholder="8 charecters minimum" required /><img
-                    v-if="password.length >= 8" src="../assets/ok.svg" alt="">
-            </div>
-
-        </div>
-
-        <div class="password_bar">
-            <div :class="{ 'bar': true, 'green': (password.length > 1) }"></div>
-            <div :class="{ 'bar': true, 'green': (password.length > 3) }"></div>
-            <div :class="{ 'bar': true, 'green': (password.length > 5) }"></div>
-            <div :class="{ 'bar': true, 'green': (password.length > 7) }"></div>
-        </div>
-
-        <div class="check_bar">
-            <div> <input type="checkbox" name="" id="">
-                <label for="">Remember me</label>
-            </div>
-
-            <a href="">Forgot Password?</a>
-
-        </div>
-
-
-        <button class="log">
-            Login
-        </button>
-
-
-        <!-- <span>Don't have an existing account? <a href="./Signup">Signup</a> </span> -->
-    </div>
+  <div class="section" style="background-color: silver;">
+		<div class="container">
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+						<h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+			          	<input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+			          	<label for="reg-log"></label>
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3" style="color: #ffeba7;">Log In</h4>
+											<div class="form-group">
+												<input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+												<i class="input-icon uil uil-at"></i>
+											</div>	
+											<div class="form-group mt-2">
+												<input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+											<a href="#" class="btn mt-4" style="color: #ffeba7;">submit</a>
+                            				<p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+				      					</div>
+			      					</div>
+			      				</div>
+								<div class="card-back">
+									<div class="center-wrap">
+										<div class="section text-center">
+											<h4 class="mb-4 pb-3" style="color: #ffeba7;">Sign Up</h4>
+											<div class="form-group">
+												<input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
+												<i class="input-icon uil uil-user"></i>
+											</div>	
+											<div class="form-group mt-2">
+												<input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+												<i class="input-icon uil uil-at"></i>
+											</div>	
+											<div class="form-group mt-2">
+												<input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+												<i class="input-icon uil uil-lock-alt"></i>
+											</div>
+											<a href="#" class="btn mt-4" style="color: #ffeba7;">submit</a>
+				      					</div>
+			      					</div>
+			      				</div>
+			      			</div>
+			      		</div>
+			      	</div>
+		      	</div>
+	      	</div>
+	    </div>
+	</div>
 </template>
-    
-    
-<script>
-import axios from 'axios';
-export default {
-    mounted()
-    {
-       
-        axios.get(this.URL).then((response) => {
-        this.data1 = response.data
-    })
-    },
-    data() {
-        
-        return {
-            URL: "https://localhost:7282/api/User/Login?mail="+this.username+"&password="+this.password, 
-            password: "",
-            userLoggedIn: false,
-            username: "",
-            data1:"",
-        };
-
-    },
-    // method: {
-    //     changeStep() {
-    //         this.$emit("nextStep", "Signup");
-    //     }
-    // }
-};
-
-</script>
-    
 <style>
-@import"https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap";
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 
-body {
+body{
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 1.7;
+	color: #c4c3ca;
+	background-color: #e3e3e3;
+	overflow-x: hidden;
+}
+a {
+	cursor: pointer;
+  transition: all 200ms linear;
+}
+a:hover {
+	text-decoration: none;
+}
+.link {
+  color: #c4c3ca;
+}
+.link:hover {
+  color: #ffeba7;
+}
+p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.7;
+}
+h4 {
+  font-weight: 600;
+}
+h6 span{
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.section{
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.full-height{
+  min-height: 100vh;
+}
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked){
+  position: absolute;
+  left: -9999px;
+}
+.checkbox:checked + label,
+.checkbox:not(:checked) + label{
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #ffeba7;
+}
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before{
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #ffeba7;
+  background-color: #102770;
+  font-family: 'unicons';
+  content: '\eb4f';
+  z-index: 20;
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  transition: all 0.5s ease;
+}
+.checkbox:checked + label:before {
+  transform: translateX(44px) rotate(-270deg);
+}
+
+
+.card-3d-wrap {
+  position: relative;
+  width: 440px;
+  max-width: 100%;
+  height: 400px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  margin-top: 60px;
+}
+.card-3d-wrapper {
+  width: 100%;
+  height: 100%;
+  position:absolute;    
+  top: 0;
+  left: 0;  
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: all 600ms ease-out; 
+}
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  background-color: #2a2b38;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 300%;
+  position: absolute;
+  border-radius: 6px;
+  left: 0;
+  top: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+  transform: rotateY(180deg);
+}
+.center-wrap{
+  position: absolute;
+  width: 100%;
+  padding: 0 35px;
+  top: 50%;
+  left: 0;
+  transform: translate3d(0, -50%, 35px) perspective(100px);
+  z-index: 20;
+  display: block;
+}
+
+
+.form-group{ 
+  position: relative;
+  display: block;
     margin: 0;
     padding: 0;
-    background-color: #ebecf0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 110vh;
-    font-family: "Lato", sans-serif
+}
+.form-style {
+  padding: 13px 20px;
+  padding-left: 55px;
+  height: 48px;
+  width: 100%;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: #c4c3ca;
+  background-color: #1f2029;
+  border: none;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+.form-style:focus,
+.form-style:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+.input-icon {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 48px;
+  font-size: 24px;
+  line-height: 48px;
+  text-align: left;
+  color: #ffeba7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
 }
 
-.box {
-    background-color: #fff;
-    display: flex;
-    border-radius: 1em;
-    width: 30vw;
-    flex-direction: column;
-    padding: 2em;
-    box-shadow: rgba(100, 100, 111, .2) 0px 7px 29px 0px;
-    position: relative
+.form-group input:-ms-input-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input::-moz-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input:-moz-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input::-webkit-input-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input:focus:-ms-input-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input:focus::-moz-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input:focus:-moz-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input:focus::-webkit-input-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
 }
 
-.box .message {
-    background-color: #ebecf0;
-    border-radius: .5em;
-    padding: 1em
+.btn{  
+  border-radius: 4px;
+  height: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transition : all 200ms linear;
+  transition: all 200ms linear;
+  padding: 0 30px;
+  letter-spacing: 1px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  background-color: #ffeba7;
+  color: #102770;
+  box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+}
+.btn:active,
+.btn:focus{  
+  background-color: #102770;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+.btn:hover{  
+  background-color: #102770;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
 
-.box .red {
-    background-color: #e45656a4;
-    color: #fff;
-    visibility: visible
-}
 
-.box .green {
-    background-color: rgba(109, 209, 109, .664);
-    color: #fff;
-    visibility: visible
-}
 
-.box .visibility {
-    visibility: hidden
-}
 
-.box .banner_high {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 1em 0
+.logo {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	display: block;
+	z-index: 100;
+	transition: all 250ms linear;
 }
-
-.box .banner_high img {
-    width: 3em
+.logo img {
+	height: 26px;
+	width: auto;
+	display: block;
 }
-
-.box .banner_high h1 {
-    margin: .6em;
-    font-weight: 600
-}
-
-.box .banner_high .language {
-    display: flex;
-    border-radius: .5em;
-    background-color: #f9fafc;
-    box-shadow: rgba(60, 64, 67, .3) 0px 0px 0px 0px, rgba(60, 64, 67, .15) 0px 0px 3px 0px
-}
-
-.box .banner_high .language .flag {
-    cursor: pointer;
-    margin: .3em;
-    border-radius: .3em;
-    padding: .3em .6em;
-    display: flex
-}
-
-.box .banner_high .language .flag img {
-    width: 2em
-}
-
-.box .log {
-    background-color: #000;
-    padding: 1.4em;
-    color: #fff;
-    border-radius: .7em;
-    border: 1px solid #000;
-    transition: 250ms;
-    cursor: pointer;
-}
-
-.box .log:hover {
-    border: 1px solid #000;
-    background-color: transparent;
-    color: #000
-}
-
-.box .in {
-    display: flex;
-    flex-direction: column;
-    margin: .8em 0
-}
-
-.box .in div {
-    display: flex;
-    align-items: center;
-    width: 100%
-}
-
-.box .in label {
-    margin: .2em
-}
-
-.box .in img {
-    width: 2em;
-    margin: 0 .5em
-}
-
-.box .in v-text-field {
-    display: flex;
-    width: 100%
-}
-
-.box .in input {
-    width: 100%;
-    padding: 1em;
-    display: flex;
-    border: 1px solid #ebecf0;
-    border-radius: .7em;
-    box-shadow: rgba(60, 64, 67, .3) 0px 0px 0px 0px, rgba(60, 64, 67, .15) 0px 0px 3px 0px;
-    background-size: 50px
-}
-
-.box .in .button_action {
-    display: flex;
-    flex-direction: row;
-    margin: .5em 0
-}
-
-.box .in .button_action button {
-    border: 0;
-    padding: .4em .8em;
-    margin: .2em;
-    background-color: #fff;
-    border: 1px solid #ebecf0;
-    cursor: pointer;
-    transition: 250ms;
-    border-radius: 5em
-}
-
-.box .in .button_action button:hover {
-    background-color: #e8e8e8
-}
-
-.box .check_bar {
-    margin: 1em 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between
-}
-
-.box .check_bar a {
-    color: #000
-}
-
-.box .check_bar div input[type=checkbox] {
-    margin: 0 1em
-}
-
-.box span {
-    text-align: center;
-    margin: 1em 0;
-    color: #677083
-}
-
-.box span a {
-    color: #000
-}
-
-.box .password_bar {
-    display: flex;
-    width: 100%
-}
-
-.box .password_bar .bar {
-    width: 25%;
-    height: 6px;
-    background-color: #ebecf0;
-    border-radius: 1em;
-    margin: 6px
-}
-
-.box .password_bar .green {
-    background-color: #6dd16d
-}
-
-.gold-mid {
-    background-color: #666
-}
-
-.gray-lighter {
-    background-color: #c2c2c2
-}
-
-.toggle-wrapper {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    width: 32px;
-    height: 18px;
-    border-radius: 9999px
-}
-
-.toggle-wrapper:focus {
-    outline: 0
-}
-
-.toggle-background {
-    display: inline-block;
-    border-radius: 9999px;
-    height: 100%;
-    width: 100%;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .1);
-    transition: background-color .4s ease
-}
-
-.toggle-indicator {
-    position: absolute;
-    height: 14px;
-    width: 14px;
-    left: 2px;
-    bottom: 2px;
-    background-color: #fff;
-    border-radius: 9999px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-    transition: transform .4s ease
-}
-
-.active {
-    background-color: #fff;
-    box-shadow: rgba(60, 64, 67, .3) 0px 0px 0px 0px, rgba(60, 64, 67, .15) 0px 0px 3px 0px
-}
-
-/*# sourceMappingURL=style.css.map */</style>
+</style>
     
     
+
     
+

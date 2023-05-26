@@ -6,6 +6,7 @@ import router from './router'
 // import "//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
 //import './Login/login.js'
 
+
 import { createApp } from 'vue'
 import App from './App.vue'
 
