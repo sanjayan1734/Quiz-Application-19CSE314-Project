@@ -7,16 +7,16 @@ import quiz from "../components/quiz-taking/QuizzesPage.vue"
 // import signup from "../components/LoginSignup/Signup.vue"
 const routes = [
 
-  // {
-  //   path: "/login",
-  //   name: "login",
-  //   component: login,
-  // },
-  // {
-  //   path:"/signup",
-  //   name: "signup",
-  //   component: signup
-  // },
+  {
+    path: "/login",
+    name: "login",
+    component: login,
+  },
+  {
+    path:"/dashboard",
+    name: "dashboard",
+    component: dashboard
+  },
   {
     path: "/quiz",
     name: "quiz",
@@ -25,7 +25,7 @@ const routes = [
   },
   {
     path: "/",
-    name: "landing",
+    name: "home",
     component: Home,
   },
   {

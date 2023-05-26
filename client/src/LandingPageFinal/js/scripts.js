@@ -6,6 +6,8 @@
 //
 // Scripts
 // 
+// eslint-disable-next-line no-undef
+
 
 window.addEventListener('DOMContentLoaded', event => {
 
