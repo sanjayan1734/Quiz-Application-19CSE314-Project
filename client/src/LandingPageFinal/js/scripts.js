@@ -7,7 +7,7 @@
 // Scripts
 // 
 // eslint-disable-next-line no-undef
-//const bootstrap = require('bootstrap');
+const bootstrap = require('bootstrap');
 
 window.addEventListener('DOMContentLoaded', event => {
 
