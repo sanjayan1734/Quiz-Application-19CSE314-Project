@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard">
       <div class="dashboard-header">
-        <h1 class="dashboard-title">Welcome, {{this.mail}}!</h1>
+        <h1 class="dashboard-title">Welcome, {{$route.params.mail}}!</h1>
         <div class="dashboard-stats">
           <div class="dashboard-stat-item">
             <p class="dashboard-stat-label">Total Quizzes</p>
