@@ -1,6 +1,7 @@
 <script>
-    import axios from 'axios'
-import { toRaw } from 'vue'
+  import axios from 'axios'
+  import { toRaw } from 'vue'
+  import navBar from '../Navbar/NavBar.vue'
 //import VueAxios from 'vue-axios'
  //Vue.use(VueAxios,axios)
 export default {
@@ -12,8 +13,9 @@ export default {
     this.smail=""
     this.Name=""
   },
-  
-  
+  components:{
+    navBar,
+  },  
   
   props:{
     quizName:String,
@@ -88,6 +90,7 @@ export default {
 </script>
 
 <template>
+    <navBar />
     <div class="section" style="background-color: silver;">
           <div class="container">
               <div class="row full-height justify-content-center">
