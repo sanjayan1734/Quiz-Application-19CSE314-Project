@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard">
       <div class="dashboard-header">
-        <h1 class="dashboard-title">Welcome, {{ studentName }}!</h1>
+        <h1 class="dashboard-title">Welcome, {{this.mail}}!</h1>
         <div class="dashboard-stats">
           <div class="dashboard-stat-item">
             <p class="dashboard-stat-label">Total Quizzes</p>
@@ -68,7 +68,9 @@
     components: {
       PieChart: {
         extends: Pie,
-        props: ['chartData'],
+        props: {
+          mail: String
+        },
         mounted() {
           this.renderChart(this.chartData, {
             responsive: true,
@@ -96,7 +98,7 @@
     },
     data() {
       return {
-        studentName: "John Doe",
+        
         totalQuizzes: 5,
         quizzesCompleted: 3,
         correctAnswers: 12,

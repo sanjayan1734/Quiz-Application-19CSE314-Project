@@ -41,10 +41,14 @@ export default {
 },
     methods: {
     pressedlogin() {
-        this.loginURL = 'https://localhost:7282/api/User/Login?mail='+this.mail+'&password='+this.pass,
+        this.loginURL = 'https://localhost:7282/api/User/Login?mail='+this.mail+'&password='+this.pass
         
-        axios.get(this.loginURL).then((response) => {
-            console.log(response.data)
+        // axios.get(this.loginURL).then((response) => {
+        //     console.log(response.data)
+            const response = {
+              data:String,
+            }
+            response.data("Account Not found")
             if(response.data == "Account Not found")
             {
                 console.log(this.URL)
@@ -53,10 +57,10 @@ export default {
                 alert("Invalid Username or password!! Try Again")
             }
             else{
-                this.$router.push({name:'dashboard'})
+                this.$router.push({name:'dashboard', params:{mail:this.mail}})
             }
 
-      });
+      // });
     },
     datachange(){
         this.x.name=this.Name,

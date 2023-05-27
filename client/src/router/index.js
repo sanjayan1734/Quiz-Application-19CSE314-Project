@@ -1,10 +1,14 @@
 import { createWebHistory, createRouter } from "vue-router"
 
 import results from "../components/quiz-taking/QuizResults.vue"
-import Home from "../LandingPageFinal/LandingPage.vue"  
+import Home from "../components/LandingPageFinal/LandingPage.vue"  
 import quiz from "../components/quiz-taking/QuizzesPage.vue"
  import login from "../components/LoginSignup/LoginComponent.vue"
 import dashboard from "../components/dashboard/Dashboard.vue"
+
+
+
+
 const routes = [
 
   {
@@ -13,9 +17,10 @@ const routes = [
     component: login,
   },
   {
-    path: "/dashboard",
+    path: "/dashboard/:mail",
     name: "dashboard",
     component: dashboard,
+    props: true,
   },
   
   {
