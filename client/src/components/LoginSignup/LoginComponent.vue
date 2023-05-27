@@ -53,7 +53,7 @@ export default {
                 alert("Invalid Username or password!! Try Again")
             }
             else{
-                this.$router.push({name:'quiz'})
+                this.$router.push({name:'dashboard'})
             }
 
       });
