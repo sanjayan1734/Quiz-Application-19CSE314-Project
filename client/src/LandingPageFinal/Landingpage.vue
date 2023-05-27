@@ -351,7 +351,7 @@ export default {
      </div>
    </div>
    <div class="bottom">
-     <p>Copyright © 2020 <a href="#">Quiz App</a> All rights reserved</p>
+     <p>Copyright © 2023 <a href="#">Quiz App</a> All rights reserved</p>
    </div>
  </footer>
        

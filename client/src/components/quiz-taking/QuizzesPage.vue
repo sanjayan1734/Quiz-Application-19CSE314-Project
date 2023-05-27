@@ -87,7 +87,9 @@ export default {
       console.log(this.rawUserChoices)
       axios.post(this.validateURL,this.rawUserChoices).then((response) => {
         console.log(response.data)
-        this.$router.push({name:'results', params:{noOfQuestions:this.noOfQuestions, correctAnswers:response.data}})
+        alert('Your score is ' + response.data)
+        // this.$router.push({name:'results', params:{noOfQuestions:this.noOfQuestions, correctAnswers:response.data}})
+        this.$router.push({path:'/'})
       })
       
       
