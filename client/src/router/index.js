@@ -4,13 +4,18 @@ import results from "../components/quiz-taking/QuizResults.vue"
 import Home from "../LandingPageFinal/LandingPage.vue"  
 import quiz from "../components/quiz-taking/QuizzesPage.vue"
  import login from "../components/LoginSignup/LoginComponent.vue"
-// import signup from "../components/LoginSignup/Signup.vue"
+import dashboard from "../components/dashboard/Dashboard.vue"
 const routes = [
 
   {
     path: "/login",
     name: "login",
     component: login,
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: dashboard,
   },
   
   {
