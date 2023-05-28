@@ -63,42 +63,25 @@
   
   <script>
   import { Pie } from 'vue-chartjs';
+  import axios from 'axios';
   
   export default {
     components: {
       PieChart: {
         extends: Pie,
-        props: {
-          mail: String
-        },
+        props: ['chartData', 'options'],
         mounted() {
-          this.renderChart(this.chartData, {
-            responsive: true,
-            maintainAspectRatio: false,
-            legend: {
-              position: 'bottom',
-              labels: {
-                boxWidth: 12
-              }
-            },
-            tooltips: {
-              callbacks: {
-                label: function(tooltipItem, data) {
-                  const dataset = data.datasets[tooltipItem.datasetIndex];
-                  const total = dataset.data.reduce((acc, value) => acc + value, 0);
-                  const currentValue = dataset.data[tooltipItem.index];
-                  const percentage = Math.round((currentValue / total) * 100);
-                  return `${dataset.labels[tooltipItem.index]}: ${currentValue} (${percentage}%)`;
-                }
-              }
-            }
-          });
+          this.renderChart(this.chartData, this.options);
         }
       }
     },
+    mounted() {
+      axios.get('https://localhost:7282/api/User/GetStudentsbyEmail', $route.params.mail).then((response) => {
+        console.log(response.data);
+      });
+    },
     data() {
       return {
-        
         totalQuizzes: 5,
         quizzesCompleted: 3,
         correctAnswers: 12,
@@ -258,7 +241,9 @@
   .event-item {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
   }
   
   .event-info {
@@ -268,14 +253,12 @@
   .event-title {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color: #30336b;
   }
   
   .event-description {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   
   .event-date {
@@ -290,36 +273,20 @@
   
   .event-register-button,
   .event-details-button {
-    padding: 8px 16px;
+    padding: 8px 12px;
     background-color: #30336b;
     color: #fff;
-    text-decoration: none;
+    border: none;
     border-radius: 4px;
+    cursor: pointer;
   }
   
-  .event-details-button {
-    background-color: #55a630;
+  /* Additional styles for the pie chart */
+  .chartjs-render-monitor {
+    width: 100% !important;
+    height: 100% !important;
   }
   
-  /* Additional styles for the chart tooltip */
-  
-  .tooltip {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #ccc;
-    padding: 10px;
-    opacity: 0.9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .tooltip .tooltip-title {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .tooltip .tooltip-value {
-    font-size: 14px;
-  }
-  
+  /* Add more custom styles as needed */
   </style>
   
