@@ -88,7 +88,7 @@
         });
 
     },
-    data() {
+    data(){
       return {
         profileInfo:
         {
