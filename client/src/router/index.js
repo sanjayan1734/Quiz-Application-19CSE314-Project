@@ -24,10 +24,10 @@ const routes = [
   },
   
   {
-    path: "/quiz",
+    path: "/quiz/:quizId",
     name: "quiz",
     component: quiz,
-    props: {quizName:'quiz1'}
+    props: true
   },
   {
     path: "/",

@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard">
       <div class="dashboard-header">
-        <h1 class="dashboard-title">Welcome, {{$route.params.mail}}!</h1>
+        <h1 class="dashboard-title">Welcome, {{this.profileInfo.name}}!</h1>
         <div class="dashboard-stats">
           <div class="dashboard-stat-item">
             <p class="dashboard-stat-label">Total Quizzes</p>
@@ -64,24 +64,34 @@
   <script>
   import { Pie } from 'vue-chartjs';
   import axios from 'axios';
+
   
   export default {
-    components: {
-      PieChart: {
-        extends: Pie,
-        props: ['chartData', 'options'],
-        mounted() {
-          this.renderChart(this.chartData, this.options);
-        }
-      }
-    },
+    // components: {
+    //   PieChart: {
+    //     extends: Pie,
+    //     props: ['chartData', 'options'],
+    //     mounted() {
+    //       this.renderChart(this.chartData, this.options);
+    //     }
+    //   }
+    // },
     mounted() {
-      axios.get('https://localhost:7282/api/User/GetStudentsbyEmail', $route.params.mail).then((response) => {
-        console.log(response.data);
-      });
+        console.log(this.$route.params.mail)
+        axios.get('https://localhost:7282/api/User/GetStudentsbyEmail?mail='+ this.$route.params.mail).then((response) => {
+            this.profileInfo = response.data
+            console.log(response.data)
+        });
+
     },
     data() {
       return {
+        profileInfo:
+        {
+            Email:String,
+            Id:Number,
+            Name:String
+        },
         totalQuizzes: 5,
         quizzesCompleted: 3,
         correctAnswers: 12,

@@ -36,16 +36,17 @@ export default {
   },
   props:{
     quizName:String,
-    quizId:String,
+    quizId: String,
     
   },
   data() {
     return {
       validateURL:'https://localhost:7282/api/Quiz/ValidateAnswersfor',
-      quizURL:'https://localhost:7282/api/Quiz/GetAllQuestionsfor',
+      quizURL:'https://localhost:7282/api/Quiz/GetQuestionsbyquiz?qid=',
       chosenOption:String,
       userChoices:[],
       rawUserChoices:[],
+      quizId:String,
       questionData:[
       {
         question:String,
@@ -109,7 +110,12 @@ export default {
       this.$forceUpdate()
     },
     getQuizURL() {
-      this.quizURL += this.quizName
+      this.quizId = this.$route.params.quizId
+      this.quizURL += this.quizId
+      console.log(this.quizURL)
+      console.log()
+      this.quizURL += this.quizid
+  
     },
     getvalidateURL() {
       this.validateURL +=this.quizName
