@@ -5,15 +5,15 @@
         <div class="dashboard-stats">
           <div class="dashboard-stat-item">
             <p class="dashboard-stat-label">Total Quizzes</p>
-            <p class="dashboard-stat-value">{{ totalQuizzes }}</p>
+            <p class="dashboard-stat-value">{{ this.profileInfo.totalQuizzes }}</p>
           </div>
           <div class="dashboard-stat-item">
             <p class="dashboard-stat-label">Quizzes Completed</p>
-            <p class="dashboard-stat-value">{{ quizzesCompleted }}</p>
+            <p class="dashboard-stat-value">{{ this.profileInfo.quizcount }}</p>
           </div>
           <div class="dashboard-stat-item">
             <p class="dashboard-stat-label">Correct Answers</p>
-            <p class="dashboard-stat-value">{{ correctAnswers }}</p>
+            <p class="dashboard-stat-value">{{ this.profileInfo.totalcorrectq }}</p>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
   <script>
   import { Pie } from 'vue-chartjs';
   import axios from 'axios';
-
+  import { toRaw } from 'vue';
   
   export default {
     // components: {
@@ -79,8 +79,12 @@
     mounted() {
         console.log(this.$route.params.mail)
         axios.get('https://localhost:7282/api/User/GetStudentsbyEmail?mail='+ this.$route.params.mail).then((response) => {
-            this.profileInfo = response.data
+            this.tempprofileInfo = response.data
+            this.profileInfo = toRaw(this.tempprofileInfo)
             console.log(response.data)
+            console.log(this.profileInfo)
+            console.log(this.profileInfo.totalcorrectq)
+            console.log(this.profileInfo.quizcount)
         });
 
     },
@@ -90,7 +94,17 @@
         {
             Email:String,
             Id:Number,
-            Name:String
+            Name:String,
+            quizcount:Number,
+            totalcorrectq:Number,
+            totalQuizzes:3
+        },
+        tempprofileInfo:{
+            Email:String,
+            Id:Number,
+            Name:String,
+            quizcount:Number,
+            totalcorrectq:Number
         },
         totalQuizzes: 5,
         quizzesCompleted: 3,
