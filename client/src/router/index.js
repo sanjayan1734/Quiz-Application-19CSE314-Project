@@ -5,6 +5,7 @@ import Home from "../components/LandingPageFinal/LandingPage.vue"
 import quiz from "../components/quiz-taking/QuizzesPage.vue"
  import login from "../components/LoginSignup/LoginComponent.vue"
 import dashboard from "../components/dashboard/Dashboard.vue"
+import Instructions from "../components/Instructions/Instructions.vue"
 
 
 
@@ -41,6 +42,11 @@ const routes = [
     props: {
       noOfQuestions:String  ,
       correctAnswers:String}
+  }
+    {
+    path: "/Instructions",
+    name: "Instructions",
+    component: Instructions,
   }
   
   
