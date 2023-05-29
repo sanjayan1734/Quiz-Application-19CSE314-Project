@@ -7,6 +7,8 @@ import QuestionComponent from "./questionComponent.vue"
 // import { Ref } from "vue"
 import axios from 'axios'
 import { toRaw } from 'vue'
+import VueRouter from 'vue-router'
+import {routes} from './routes'
 //import VueAxios from 'vue-axios'
  //Vue.use(VueAxios,axios)
 export default {
@@ -16,7 +18,11 @@ export default {
   {
     this.getQuizURL()
     this.getvalidateURL()
-    axios.get(this.quizURL).then((response) => {
+    //
+    //this.quizURL + this.$route.params.quizId
+    axios.get('https://localhost:7282/api/Quiz/GetQuestionsbyquiz?qid=' + this.$route.params.quizId).then((response) => {
+      console.log(this.$route.params.quizId)
+      console.log(response)
       this.questionData = response.data
       console.log(response.data);
       this.individualQuestion=response.data[this.currentQuestion]
@@ -37,6 +43,7 @@ export default {
   props:{
     quizName:String,
     quizId: String,
+    userMail: String
     
   },
   data() {
@@ -86,11 +93,14 @@ export default {
       this.getChosenOption()
       this.rawUserChoices = toRaw(this.userChoices)
       console.log(this.rawUserChoices)
-      axios.post(this.validateURL,this.rawUserChoices).then((response) => {
+      console.log(this.validateURL)
+      this.rawUserChoices.unshift(this.$route.params.quizId)
+      axios.post('https://localhost:7282/api/Quiz/ValidateAnswersforquiz' , this.rawUserChoices).then((response) => {
         console.log(response.data)
         alert('Your score is ' + response.data)
         // this.$router.push({name:'results', params:{noOfQuestions:this.noOfQuestions, correctAnswers:response.data}})
-        this.$router.push({path:'/'})
+        // this.$route.push(this.$router.options.history.state.back)
+        // console.log($router.go(-1))
       })
       
       

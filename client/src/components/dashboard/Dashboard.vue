@@ -110,9 +110,9 @@
         quizzesCompleted: 3,
         correctAnswers: 12,
         quizzes: [
-          { id: 1, title: "Quiz 1" },
-          { id: 2, title: "Quiz 2" },
-          { id: 3, title: "Quiz 3" },
+          { id: 'quiz1', title: "Quiz 1" },
+          { id: 'quiz2', title: "Quiz 2" },
+          { id: 'quiz3', title: "Quiz 3" },
           // Add more quizzes as needed
         ],
         notifications: [
