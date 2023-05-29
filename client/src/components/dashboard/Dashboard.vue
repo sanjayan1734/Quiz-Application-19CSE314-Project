@@ -1,5 +1,5 @@
 <template>
-    <div class="dashboard">
+    <div class="dashboard" style="background-color:#e5dada ;">
       <div class="dashboard-header">
         <h1 class="dashboard-title">Welcome, {{this.profileInfo.name}}!</h1>
         <div class="dashboard-stats">

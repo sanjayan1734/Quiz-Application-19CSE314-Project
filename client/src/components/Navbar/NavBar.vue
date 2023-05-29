@@ -14,7 +14,7 @@ export default{
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Features</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Feedback</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Dashboard</a></li>
                     </ul>
                 </div>
             </div>

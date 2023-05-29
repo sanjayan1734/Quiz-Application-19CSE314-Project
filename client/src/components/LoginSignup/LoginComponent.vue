@@ -91,13 +91,28 @@ export default {
 </script>
 
 <template>
-    <navBar />
-    <div class="section" style="background-color: silver;">
+  <div style="background-color: #e5dada;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="color:#bf5700;" >
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#page-top" style="color:#bf5700">Quiz App</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/" style="color:#bf5700">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/" style="color:#bf5700">Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/" style="color:#bf5700">Feedback</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login" style="color:#bf5700">Dashboard</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br><br>
+    <div class="section">
           <div class="container">
               <div class="row full-height justify-content-center">
                   <div class="col-12 text-center align-self-center py-5">
                       <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                          <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+                          <h6 class="mb-0 pb-3"><span style="color: #58355e;">Log In </span><span style="color: #58355e;">Sign Up</span></h6>
                             <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
                             <label for="reg-log"></label>
                           <div class="card-3d-wrap mx-auto">
@@ -105,7 +120,7 @@ export default {
                                   <div class="card-front">
                                       <div class="center-wrap">
                                           <div class="section text-center">
-                                              <h4 class="mb-4 pb-3" style="color: #ffeba7;">Log In</h4>
+                                              <h4 class="mb-4 pb-3" style="color: #bf5700;">Log In</h4>
                                               <div class="form-group">
                                                   <input type="email" name="logemail" class="form-style" v-model="mail"  id="logemail" autocomplete="off" placeholder="Enter your Name">
                                                   <i class="input-icon uil uil-at"></i>
@@ -122,7 +137,7 @@ export default {
                                   <div class="card-back">
                                       <div class="center-wrap">
                                           <div class="section text-center">
-                                              <h4 class="mb-4 pb-3" style="color: #ffeba7;">Sign Up</h4>
+                                              <h4 class="mb-4 pb-3" style="color: #bf5700;">Sign Up</h4>
                                               <div class="form-group">
                                                   <input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" v-model="Name" autocomplete="off">
                                                   <i class="input-icon uil uil-user"></i>
@@ -145,6 +160,7 @@ export default {
                     </div>
                 </div>
           </div>
+      </div>
       </div>
   </template>
 <style >
@@ -170,7 +186,7 @@ a:hover {
   color: #c4c3ca;
 }
 .link:hover {
-  color: #ffeba7;
+  color:#e5dada;
 }
 p {
   font-weight: 500;
@@ -209,7 +225,7 @@ h6 span{
   padding: 0;
   margin: 10px auto;
   cursor: pointer;
-  background-color: #ffeba7;
+  background-color: #bf5700;
 }
 .checkbox:checked + label:before,
 .checkbox:not(:checked) + label:before{
@@ -218,8 +234,8 @@ h6 span{
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: #ffeba7;
-  background-color: #102770;
+  color: #e5dada;
+  background-color:#bf5700;
   font-family: 'unicons';
   content: '\eb4f';
   z-index: 20;
@@ -330,7 +346,7 @@ h6 span{
   font-size: 24px;
   line-height: 48px;
   text-align: left;
-  color: #ffeba7;
+  color: #e5dada;
   -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
 }
