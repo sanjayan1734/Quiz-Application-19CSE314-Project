@@ -6,7 +6,7 @@ import quiz from "../components/quiz-taking/QuizzesPage.vue"
  import login from "../components/LoginSignup/LoginComponent.vue"
 import dashboard from "../components/dashboard/Dashboard.vue"
 import Instructions from "../components/Instructions/Instructions.vue"
-
+import faculty from "../components/Faculty/FacultyPage.vue"
 
 
 
@@ -16,6 +16,11 @@ const routes = [
     path: "/login",
     name: "login",
     component: login,
+  },
+  {
+    path: "/faculty",
+    name: "faculty",
+    component: faculty,
   },
   {
     path: "/dashboard/:mail",
@@ -42,7 +47,7 @@ const routes = [
     props: {
       noOfQuestions:String  ,
       correctAnswers:String}
-  }
+  },
     {
     path: "/Instructions",
     name: "Instructions",

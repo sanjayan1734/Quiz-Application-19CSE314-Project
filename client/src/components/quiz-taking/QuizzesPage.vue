@@ -7,8 +7,8 @@ import QuestionComponent from "./questionComponent.vue"
 // import { Ref } from "vue"
 import axios from 'axios'
 import { toRaw } from 'vue'
-import VueRouter from 'vue-router'
-import {routes} from './routes'
+//import VueRouter from 'vue-router'
+//import {routes} from './routes'
 //import VueAxios from 'vue-axios'
  //Vue.use(VueAxios,axios)
 export default {
@@ -19,6 +19,7 @@ export default {
     this.getQuizURL()
     this.getvalidateURL()
     //
+    
     //this.quizURL + this.$route.params.quizId
     axios.get('https://localhost:7282/api/Quiz/GetQuestionsbyquiz?qid=' + this.$route.params.quizId).then((response) => {
       console.log(this.$route.params.quizId)
@@ -97,11 +98,12 @@ export default {
       this.rawUserChoices.unshift(this.$route.params.quizId)
       axios.post('https://localhost:7282/api/Quiz/ValidateAnswersforquiz' , this.rawUserChoices).then((response) => {
         console.log(response.data)
-        alert('Your score is ' + response.data)
+        confirm('Your score is ' + response.data)
+        this.$router.push({name:'dashboard', params:{mail:'indu@gmail.com'}})
         // this.$router.push({name:'results', params:{noOfQuestions:this.noOfQuestions, correctAnswers:response.data}})
         // this.$route.push(this.$router.options.history.state.back)
-        // console.log($router.go(-1))
       })
+      
       
       
       
