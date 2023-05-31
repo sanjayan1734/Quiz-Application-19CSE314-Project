@@ -1,16 +1,12 @@
-<!-- <QuestionComponent v-bind="questionobj" /> -->
+
 
 <script >
-import { RouterLink } from "vue-router"
 
 import QuestionComponent from "./questionComponent.vue"
-// import { Ref } from "vue"
 import axios from 'axios'
 import { toRaw } from 'vue'
-import VueRouter from 'vue-router'
-import {routes} from './routes'
-//import VueAxios from 'vue-axios'
- //Vue.use(VueAxios,axios)
+import {useTimer} from 'vue-timer-hook'
+
 export default {
   name: 'QuizzesPage',
   
@@ -35,6 +31,10 @@ export default {
       this.questionobj.optionC=this.individualQuestion.opt3
       this.noOfQuestions = response.data.length
       });
+
+      const time = new Date()
+      time.setMinutes(time.getMinutes+1)
+      this.timer = useTimer(time);
   },
   
   components:{
@@ -79,7 +79,7 @@ export default {
       optionC: "",//this.individualQuestion.opt3
     },
       currentQuestion: 0,
-      
+      timer:Date
     }
   },
   methods: {
@@ -165,6 +165,7 @@ export default {
           </div>
         </div>
         <div class="question">
+            this.timer
             <QuestionComponent  v-bind="questionobj" ref="questioncomponent"/>
             <!--  props - :questionDescription= 'questionDesc'  questionid = 'questionId'  optionA = 'optionA' optionB = optionB optionC = optionC -->
         </div>
