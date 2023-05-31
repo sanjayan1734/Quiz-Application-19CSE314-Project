@@ -90,6 +90,15 @@ export default {
     },
     data(){
       return {
+        data: [
+          ['Daily Routine', 'Hours per Day'],
+          ['Correct Answers',     10],
+          ['Wrong Answers',      2],
+      ],
+      options: {
+        width: 350,
+        height: 250
+      },
         profileInfo:
         {
             Email:String,

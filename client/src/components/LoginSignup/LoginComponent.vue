@@ -54,7 +54,14 @@ export default {
                 alert("Invalid Username or password!! Try Again")
             }
             else{
+              console.log(this.name)
+              if(this.mail == "fac@gmail.com")
+              {
+                this.$router.push({name:'faculty', params:{mail:this.mail}})
+              }
+              else{
                 this.$router.push({name:'dashboard', params:{mail:this.mail}})
+              }
             }
 
       });
@@ -73,7 +80,9 @@ export default {
         axios.post(this.signupURL,this.x).then((response) => {
             console.log(response.data)
             alert(response.data)
-            this.$router.push({name:'quiz'})
+            if(response.data != 'User Already Exists'){
+            this.$router.push({name:'dashboard', params:{mail:this.x.email}})
+            }
             // if(response.data == "Added new Skill with Id "+this.x+" successfully.")
             // {
             //     
@@ -129,7 +138,7 @@ export default {
                                                   <input type="password" name="logpass" class="form-style" v-model="pass"  id="logpass" autocomplete="off" placeholder="Enter your Password">
                                                   <i class="input-icon uil uil-lock-alt"></i>
                                               </div>
-                                              <button  class="btn mt-4" @click="pressedlogin();">LogIn</button>
+                                              <button  class="btn mt-4" @click="pressedlogin();" style="background-color:antiquewhite;">LogIn</button>
                                               <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
                                             </div>
                                         </div>
@@ -150,7 +159,7 @@ export default {
                                                   <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" v-model="spass" autocomplete="off">
                                                   <i class="input-icon uil uil-lock-alt"></i>
                                               </div>
-                                              <button class="btn mt-4" @click="pressedsignup();">Signup</button>
+                                              <button class="btn mt-4" @click="pressedsignup();" style="background-color:antiquewhite;">Signup</button>
                                             </div>
                                         </div>
                                     </div>
@@ -165,7 +174,6 @@ export default {
   </template>
 <style >
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
-
 body{
 	font-family: 'Poppins', sans-serif;
 	font-weight: 300;
@@ -249,8 +257,6 @@ h6 span{
 .checkbox:checked + label:before {
   transform: translateX(44px) rotate(-270deg);
 }
-
-
 .card-3d-wrap {
   position: relative;
   width: 440px;
@@ -306,8 +312,6 @@ h6 span{
   z-index: 20;
   display: block;
 }
-
-
 .form-group{ 
   position: relative;
   display: block;
@@ -350,7 +354,6 @@ h6 span{
   -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
 }
-
 .form-group input:-ms-input-placeholder  {
   color: #c4c3ca;
   opacity: 0.7;
@@ -395,7 +398,6 @@ h6 span{
   -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
 }
-
 .btn{  
   border-radius: 4px;
   height: 44px;
@@ -435,10 +437,6 @@ h6 span{
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
-
-
-
-
 .logo {
 	position: absolute;
 	top: 30px;
@@ -453,4 +451,3 @@ h6 span{
 	display: block;
 }
 </style>
-

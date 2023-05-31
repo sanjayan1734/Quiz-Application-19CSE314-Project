@@ -1,37 +1,37 @@
 <template>
-    <div class="faculty-page">
-      <header class="header">
-        <h1 class="faculty-heading">Welcome, {{ facultyName }}</h1>
+    <div class="faculty-pages">
+      <header class="headers">
+        <h1 class="faculty-headings">Welcome, Dr.Radhika N</h1>
       </header>
   
-      <div class="main-content">
-        <section class="section">
-          <h2 class="section-heading">Create Quiz</h2>
+      <div class="main-contents">
+        <section class="sectionss">
+          <h2 class="section-headings">Create Quiz</h2>
           <form @submit.prevent="startQuizCreation">
-            <input type="text" v-model="quizTitle" placeholder="Quiz Title" required>
-            <button type="submit">Start Quiz Creation</button>
+            <input type="text" v-model="quizTitle" placeholder="Quiz Title" class ="inputs" required>
+            <button type="submit" class="buttons">Start Quiz Creation</button>
           </form>
           <div v-if="quizCreationStarted">
             <h3>Add Questions</h3>
-            <form @submit.prevent="addQuestion">
-              <input type="text" v-model="newQuestion" placeholder="Question" required>
-              <button type="submit">Add Question</button>
+            <form @submit.prevent="addQuestion" class="forms">
+              <input type="text" v-model="newQuestion" placeholder="Question" class="inputs" required>
+              <button type="submit" class="buttons">Add Question</button>
             </form>
             <ul v-if="quizQuestions.length > 0">
               <li v-for="(question, index) in quizQuestions" :key="index">
                 {{ question }}
-                <button @click="deleteQuestion(index)">Delete</button>
+                <button @click="deleteQuestion(index)" class="buttons">Delete</button>
               </li>
             </ul>
             <div v-else>
               <p>No questions added yet.</p>
             </div>
-            <button @click="finishQuizCreation">Finish Quiz Creation</button>
+            <button @click="finishQuizCreation" class="buttons">Finish Quiz Creation</button>
           </div>
         </section>
   
-        <section class="section">
-          <h2 class="section-heading">Student Details</h2>
+        <section class="sectionss">
+          <h2 class="section-headings">Student Details</h2>
           <ul v-if="studentDetails.length > 0">
             <li v-for="(student, index) in studentDetails" :key="index">
               <span>{{ student.name }}</span> - <span>{{ student.grade }}</span>
@@ -59,8 +59,26 @@
           { name: 'Bob', grade: 'B' },
           { name: 'Charlie', grade: 'A+' }
         ],
-        quizCreationStarted: false
+        quizCreationStarted: false,
+
+        profileInfo:
+        {
+            Email:String,
+            Id:Number,
+            Name:String,
+            quizcount:Number,
+            totalcorrectq:Number,
+            totalQuizzes:3
+        },
       };
+    },
+    mounted() {
+    console.log(this.$route.params.mail)
+    axios.get('https://localhost:7282/api/User/GetStudentsbyEmail?mail=' + this.$route.params.mail).then((response) => {
+      this.profileInfo = response.data
+      console.log(response.data)
+    });
+
     },
     methods: {
       startQuizCreation() {
@@ -87,7 +105,7 @@
   </script>
   
   <style>
-  .faculty-page {
+  .faculty-pages {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,53 +114,53 @@
     font-family: Arial, sans-serif;
   }
   
-  .header {
+  .headers {
     background-color: #333;
     color: #fff;
     padding: 20px;
     text-align: center;
   }
   
-  .faculty-heading {
+  .faculty-headings {
     font-size: 32px;
     font-weight: bold;
     margin: 0;
   }
   
-  .main-content {
+  .main-contents {
     max-width: 800px;
     width: 90%;
     margin-top: 40px;
   }
   
-  .section {
+  .sectionss {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-  }
+  } */
   
-  .section-heading {
+  .section-headings {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
   }
   
-  form {
+  .forms {
     display: flex;
     gap: 10px;
     margin-top: 10px;
   }
   
-  input[type='text'] {
+  .inputs {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     flex: 1;
   }
   
-  button {
+  .buttons {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: #fff;
@@ -151,9 +169,7 @@
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #45a049;
-  }
+ 
   
   ul {
     list-style-type: none;
