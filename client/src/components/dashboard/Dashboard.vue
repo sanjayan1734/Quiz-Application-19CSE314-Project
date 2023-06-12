@@ -64,7 +64,7 @@
 </template>
   
 <script>
-import { Pie } from 'vue-chartjs';
+// import { Pie } from 'vue-chartjs';
 import axios from 'axios';
 import { GChart } from "vue-google-charts";
 

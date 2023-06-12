@@ -7,6 +7,10 @@ export default {
     Username : String,
     ratings: String,
     },
+    mounted() {
+        console.log(this.Username)
+        console.log(this.ratings)
+    }
 
     
 }

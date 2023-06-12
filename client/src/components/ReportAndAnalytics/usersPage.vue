@@ -9,16 +9,26 @@ export default {
         UserCard,
     },
     mounted() {
-        axios.get('https://localhost:7282/api/User/GetAllStudents').then((response) => {
-            console.log(response[0])
-            console.log(response)
+        axios.get('http://harish2511-001-site1.btempurl.com/api/User/GetAllStudents').then((response) => {
+            console.log(response.data[0])
+            console.log(response.data)
+            this.profileInfo = response.data
+            console.log("profileInfo = ")
+            console.log(this.profileInfo)
+            
         })  
     },
     data() {
         return {
-            ParticipantDetails:[{
-                name:String
-            }]
+            profileInfo:
+        [{
+            Email:String,
+            Id:Number,
+            Name:String,
+            quizcount:Number,
+            totalcorrectq:Number,
+            totalQuizzes:3
+        }]
         }
     },
 }
@@ -28,8 +38,11 @@ export default {
 <template>
     <h2 class="heading">Users</h2>
 <br><br>
-    <UserCard />
-    <UserCard />
+    <div class="user-cards" v-for="item in this.profileInfo" :key="item.Id">
+        <p>
+            <UserCard :Username = "item.name" :ratings = "item.totalcorrectq" />
+        </p>
+    </div>
 </template>
 
 <style>
