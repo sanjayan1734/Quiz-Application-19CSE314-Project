@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router"
 
 import results from "../components/quiz-taking/QuizResults.vue"
-// import Home from "../components/LandingPageFinal/LandingPage.vue"  
+ import Home from "../components/LandingPageFinal/LandingPage.vue"  
 import quiz from "../components/quiz-taking/QuizzesPage.vue"
  import login from "../components/LoginSignup/LoginComponent.vue"
 import dashboard from "../components/dashboard/Dashboard.vue"
@@ -47,7 +47,7 @@ const routes = [
     props: true
   },
   {
-    path: "/",
+    path: "/users",
     name: "usersPage",
     component: UsersPage,
     
@@ -64,6 +64,11 @@ const routes = [
     path: "/Instructions",
     name: "Instructions",
     component: Instructions,
+  },
+  {
+    path: "/home",
+    name: "home",
+    component: Home,
   }
   
   
