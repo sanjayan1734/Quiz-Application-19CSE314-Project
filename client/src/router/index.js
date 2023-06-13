@@ -7,8 +7,8 @@ import quiz from "../components/quiz-taking/QuizzesPage.vue"
 import dashboard from "../components/dashboard/Dashboard.vue"
 import Instructions from "../components/Instructions/Instructions.vue"
 import faculty from "../components/Faculty/FacultyPage.vue"
-
-
+import forgotpassword from "../components/LoginSignup/ForgotPassword.vue"
+import resetpwd from "../components/LoginSignup/ResetPassword.vue"
 
 const routes = [
 
@@ -16,6 +16,16 @@ const routes = [
     path: "/login",
     name: "login",
     component: login,
+  },
+  {
+    path: "/reset",
+    name: "reset",
+    component: resetpwd,
+  },
+  {
+    path: "/forgotpwd",
+    name: "forgotpwd",
+    component: forgotpassword,
   },
   {
     path: "/faculty",
