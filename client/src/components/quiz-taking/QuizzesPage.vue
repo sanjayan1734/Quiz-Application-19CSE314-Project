@@ -54,7 +54,6 @@ export default {
       chosenOption:String,
       userChoices:[],
       rawUserChoices:[],
-      quizId:String,
       questionData:[
       {
         question:String,
@@ -122,8 +121,8 @@ export default {
       this.$forceUpdate()
     },
     getQuizURL() {
-      this.quizId = this.$route.params.quizId
-      this.quizURL += this.quizId
+      // this.quizId = this.$route.params.quizId
+      this.quizURL += this.$route.params.quizId
       console.log(this.quizURL)
       console.log()
       this.quizURL += this.quizid

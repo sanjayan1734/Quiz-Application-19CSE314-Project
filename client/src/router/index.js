@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router"
 
 import results from "../components/quiz-taking/QuizResults.vue"
-import Home from "../components/LandingPageFinal/LandingPage.vue"  
+// import Home from "../components/LandingPageFinal/LandingPage.vue"  
 import quiz from "../components/quiz-taking/QuizzesPage.vue"
  import login from "../components/LoginSignup/LoginComponent.vue"
 import dashboard from "../components/dashboard/Dashboard.vue"
@@ -9,6 +9,7 @@ import Instructions from "../components/Instructions/Instructions.vue"
 import faculty from "../components/Faculty/FacultyPage.vue"
 import forgotpassword from "../components/LoginSignup/ForgotPassword.vue"
 import resetpwd from "../components/LoginSignup/ResetPassword.vue"
+import UsersPage from "../components/ReportAndAnalytics/UsersPage.vue"
 
 const routes = [
 
@@ -47,8 +48,9 @@ const routes = [
   },
   {
     path: "/",
-    name: "home",
-    component: Home,
+    name: "usersPage",
+    component: UsersPage,
+    
   },
   {
     path:"/results",
