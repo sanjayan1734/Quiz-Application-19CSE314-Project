@@ -1,201 +1,272 @@
 <template>
   <div class="dashboard">
-    <div class="dashboard-header">
-      <h1 class="dashboard-title">Welcome, {{ this.profileInfo.name }}!</h1>
-      <div class="dashboard-stats">
-        <div class="dashboard-stat-item">
-          <p class="dashboard-stat-label">Total Quizzes</p>
-          <p class="dashboard-stat-value">{{ totalQuizzes }}</p>
-        </div>
-        <div class="dashboard-stat-item">
-          <p class="dashboard-stat-label">Quizzes Completed</p>
-          <p class="dashboard-stat-value">{{ quizzesCompleted }}</p>
-        </div>
-        <div class="dashboard-stat-item">
-          <p class="dashboard-stat-label">Correct Answers</p>
-          <p class="dashboard-stat-value">{{ correctAnswers }}</p>
-        </div>
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">Quiz App</h2>
       </div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item">
+          <router-link to="/" class="sidebar-menu-link">Home</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/quizzes" class="sidebar-menu-link">Quizzes</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/certificates" class="sidebar-menu-link">Certificates</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/discussions" class="sidebar-menu-link">Discussions</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/feedback" class="sidebar-menu-link">Feedback</router-link>
+        </li>
+      </ul>
     </div>
-    <div class="dashboard-content">
-      <div class="dashboard-section">
-        <h2 class="dashboard-section-title">Statistics</h2>
-
-        <div class="dashboard-chart">
-          <GChart type="PieChart" :options="options" :data="data" />
+    <div class="main-content">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">Welcome, {{ profileInfo.name }}!</h1>
+        <div class="dashboard-stats">
+          <div class="dashboard-stat-item">
+            <p class="dashboard-stat-label">Total Quizzes</p>
+            <p class="dashboard-stat-value">{{ profileInfo.quizcount }}</p>
+          </div>
+          <div class="dashboard-stat-item">
+            <p class="dashboard-stat-label">Quizzes Completed</p>
+            <p class="dashboard-stat-value">{{ profileInfo.quizzesCompleted }}</p>
+          </div>
+          <div class="dashboard-stat-item">
+            <p class="dashboard-stat-label">Correct Answers</p>
+            <p class="dashboard-stat-value">{{ profileInfo.totalcorrectq }}</p>
+          </div>
         </div>
-
       </div>
-      <div class="dashboard-section">
-        <h2 class="dashboard-section-title">Available Quizzes</h2>
-        <ul class="quiz-list">
-          <li class="quiz-item" v-for="quiz in quizzes" :key="quiz.id">
-            <router-link :to="'/quiz/' + quiz.id" class="quiz-link">{{ quiz.title }}</router-link>
-          </li>
-        </ul>
-      </div>
-      <div class="dashboard-section">
-        <h2 class="dashboard-section-title">Notifications</h2>
-        <ul class="notification-list">
-          <li class="notification-item" v-for="notification in notifications" :key="notification.id">
-            <p>{{ notification.message }}</p>
-            <span class="notification-date">{{ notification.date }}</span>
-          </li>
-        </ul>
-      </div>
-      <div class="dashboard-section">
-        <h2 class="dashboard-section-title">Upcoming Events</h2>
-        <ul class="event-list">
-          <li class="event-item" v-for="event in events" :key="event.id">
-            <div class="event-info">
-              <h3 class="event-title">{{ event.title }}</h3>
-              <p class="event-description">{{ event.description }}</p>
-              <span class="event-date">{{ event.date }}</span>
+      <div class="dashboard-content">
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">Statistics</h2>
+          <div class="dashboard-chart">
+            <GChart type="PieChart" :options="options" :data="data" />
+          </div>
+          <div class="progress-container">
+            <div class="progress-label">Level Progress</div>
+            <div class="progress-bar">
+              <div class="progress-value" :style="{ width: levelProgress + '%' }"></div>
             </div>
-            <div class="event-actions">
-              <button class="event-register-button">Register</button>
-              <button class="event-details-button">Details</button>
+          </div>
+        </div>
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">Available Quizzes</h2>
+          <div class="quiz-grid">
+            <div v-for="quiz in quizzes" :key="quiz.id" class="quiz-item">
+              <router-link :to="'/quiz/' + quiz.id" class="quiz-link">{{ quiz.title }}</router-link>
+              <div class="quiz-meta">
+                <div class="quiz-meta-item">
+                  <span class="quiz-meta-label">Questions:</span>
+                  <span class="quiz-meta-value">{{ quiz.questions }}</span>
+                </div>
+                <div class="quiz-meta-item">
+                  <span class="quiz-meta-label">Duration:</span>
+                  <span class="quiz-meta-value">{{ quiz.duration }} mins</span>
+                </div>
+              </div>
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">Notifications</h2>
+          <ul class="notification-list">
+            <li class="notification-item" v-for="notification in notifications" :key="notification.id">
+              <p>{{ notification.message }}</p>
+              <span class="notification-date">{{ notification.date }}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">Upcoming Events</h2>
+          <div class="event-grid">
+            <div v-for="event in events" :key="event.id" class="event-item">
+              <div class="event-info">
+                <h3 class="event-title">{{ event.title }}</h3>
+                <p class="event-description">{{ event.description }}</p>
+                <span class="event-date">{{ event.date }}</span>
+              </div>
+              <div class="event-actions">
+                <button class="event-register-button">Register</button>
+                <button class="event-details-button">Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
-  
+
 <script>
-// import { Pie } from 'vue-chartjs';
 import axios from 'axios';
 import { GChart } from "vue-google-charts";
 
-
 export default {
   components: {
-    // PieChart: {
-    //   extends: Pie,
-    //   props: ['chartData', 'options'],
-    //   mounted() {
-    //     this.renderChart(this.chartData, this.options);
-    //   }
-    // }
     GChart
   },
-  mounted() {
-    console.log(this.$route.params.mail)
-    axios.get('http://harish2511-001-site1.btempurl.com/api/User/GetStudentsbyEmail?mail=' + this.$route.params.mail).then((response) => {
-      this.profileInfo = response.data
-      console.log(response.data)
-    });
-
-    },
-    data(){
-      return {
-        data: [
-          ['Daily Routine', 'Hours per Day'],
-          ['Correct Answers',     10],
-          ['Wrong Answers',      2],
+  data() {
+    return {
+      profileInfo: {
+        email: '',
+        id: 0,
+        name: '',
+        quizcount: 0,
+        quizzesCompleted: 0,
+        totalcorrectq: 0
+      },
+      totalQuizzes: 5,
+      quizzes: [
+        { id: 'quiz1', title: "Quiz 1", questions: 10, duration: 20 },
+        { id: 'quiz2', title: "Quiz 2", questions: 15, duration: 30 },
+        { id: 'quiz3', title: "Quiz 3", questions: 12, duration: 25 },
+        // Add more quizzes as needed
+      ],
+      notifications: [
+        { id: 1, message: "New quiz available!", date: "2023-05-28" },
+        { id: 2, message: "Quiz result published", date: "2023-05-27" },
+        // Add more notifications as needed
+      ],
+      events: [
+        {
+          id: 1,
+          title: "Webinar: Introduction to Software Engineering",
+          description: "Join our webinar to learn the basics of software engineering.",
+          date: "2023-06-02"
+        },
+        {
+          id: 2,
+          title: "Workshop: Building IoT Applications",
+          description: "Get hands-on experience in building IoT applications.",
+          date: "2023-06-05"
+        },
+        // Add more events as needed
+      ],
+      data: [
+        ['Daily Routine', 'Hours per Day'],
+        ['Correct Answers', 10],
+        ['Wrong Answers', 2],
       ],
       options: {
         width: 350,
         height: 250
-      },
-        profileInfo:
-        {
-            Email:String,
-            Id:Number,
-            Name:String,
-            quizcount:Number,
-            totalcorrectq:Number,
-            totalQuizzes:3
-        },
-        tempprofileInfo:{
-            Email:String,
-            Id:Number,
-            Name:String,
-            quizcount:Number,
-            totalcorrectq:Number
-        },
-        totalQuizzes: 5,
-        quizzesCompleted: 3,
-        correctAnswers: 12,
-        quizzes: [
-          { id: 'quiz1', title: "Quiz 1" },
-          { id: 'quiz2', title: "Quiz 2" },
-          { id: 'quiz3', title: "Quiz 3" },
-          // Add more quizzes as needed
-        ],
-        notifications: [
-          { id: 1, message: "New quiz available!", date: "2023-05-28" },
-          { id: 2, message: "Quiz result published", date: "2023-05-27" },
-          // Add more notifications as needed
-        ],
-        events: [
-          {
-            id: 1,
-            title: "Webinar: Introduction to Software Engineering",
-            description: "Join our webinar to learn the basics of software engineering.",
-            date: "2023-06-02"
-          },
-          {
-            id: 2,
-            title: "Workshop: Building IoT Applications",
-            description: "Get hands-on experience in building IoT applications.",
-            date: "2023-06-05"
-          },
-          // Add more events as needed
-        ],
-        statisticsChartData: {
-          labels: ["Correct", "Incorrect"],
-          datasets: [
-            {
-              backgroundColor: ["#55a630", "#d41f1f"],
-              data: [this.correctAnswers, this.totalQuizzes - this.correctAnswers]
-            }
-          ]
-        }
-      };
+      }
+    };
+  },
+  created() {
+    this.fetchProfileInfo();
+  },
+  methods: {
+    fetchProfileInfo() {
+      const email = this.$route.params.mail;
+      axios.get(`http://harish2511-001-site1.btempurl.com/api/User/GetStudentsbyEmail?mail=${email}`)
+        .then(response => {
+          this.profileInfo = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
-  };
-  </script>
-  
+    levelProgress() {
+      const totalQuizzes = this.profileInfo.quizcount || 0;
+      const correctAnswers = this.profileInfo.totalcorrectq || 0;
+      return Math.floor((correctAnswers / totalQuizzes) * 100);
+    },
+    shareCertificate() {
+      // Implement certificate sharing functionality
+      // You can use external libraries or APIs for social media sharing
+    },
+    joinDiscussion() {
+      // Implement join discussion functionality
+      // You can navigate to a discussion forum page or open a modal for joining the discussion
+    },
+    provideFeedback() {
+      // Implement feedback functionality
+      // You can open a feedback form or display a modal for providing feedback
+    },
+    shareQuestion() {
+      // Implement question sharing functionality
+      // You can use external libraries or APIs for sharing the question
+    }
+  }
+};
+</script>
+
 <style>
-/* Your existing styles */
+/* Add your custom styling here */
 
 .dashboard {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f5f5f5;
+}
+
+.sidebar {
+  background-color: #f2f2f2;
+  padding: 20px;
+  min-width: 300px;
+}
+
+.sidebar-header {
+  margin-bottom: 20px;
+}
+
+.sidebar-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-menu-item {
+  margin-bottom: 10px;
+}
+
+.sidebar-menu-link {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.sidebar-menu-link:hover {
+  background-color: #eaeaea;
+}
+
+.main-content {
+  flex-grow: 1;
   padding: 20px;
 }
 
 .dashboard-header {
-  text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .dashboard-title {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: bold;
-  margin-bottom: 20px;
-  color: #30336b;
+  margin-bottom: 10px;
 }
 
 .dashboard-stats {
   display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
+  justify-content: space-between;
 }
 
 .dashboard-stat-item {
   text-align: center;
-  margin: 0 20px;
 }
 
 .dashboard-stat-label {
-  font-size: 16px;
+  font-size: 14px;
   color: #888;
-  margin-bottom: 8px;
 }
 
 .dashboard-stat-value {
@@ -204,60 +275,99 @@ export default {
 }
 
 .dashboard-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.dashboard-section {
-  flex: 1 1 400px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-gap: 30px;
 }
 
 .dashboard-section-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #30336b;
 }
 
 .dashboard-chart {
-  width: 100%;
   height: 300px;
 }
 
-.quiz-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.progress-container {
+  margin-top: 20px;
+}
+
+.progress-label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #eaeaea;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-value {
+  height: 100%;
+  background-color: #3498db;
+  transition: width 0.3s;
+}
+
+.quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
 }
 
 .quiz-item {
-  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .quiz-link {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #30336b;
-  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
   text-decoration: none;
-  border-radius: 4px;
+  transition: color 0.3s;
+}
+
+.quiz-link:hover {
+  color: #3498db;
+}
+
+.quiz-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.quiz-meta-item {
+  display: flex;
+}
+
+.quiz-meta-label {
+  font-size: 14px;
+  color: #888;
+  margin-right: 5px;
+}
+
+.quiz-meta-value {
+  font-size: 14px;
 }
 
 .notification-list {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
 .notification-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ccc;
 }
 
 .notification-date {
@@ -265,60 +375,64 @@ export default {
   color: #888;
 }
 
-.event-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
 }
 
 .event-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ccc;
 }
 
 .event-info {
-  flex: 1;
+  flex-grow: 1;
+  margin-right: 20px;
 }
 
 .event-title {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 5px;
-  color: #30336b;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .event-description {
-  margin-bottom: 5px;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 10px;
 }
 
 .event-date {
-  font-size: 12px;
+  font-size: 14px;
   color: #888;
 }
 
 .event-actions {
   display: flex;
-  gap: 10px;
 }
 
 .event-register-button,
 .event-details-button {
-  padding: 8px 12px;
-  background-color: #30336b;
+  background-color: #3498db;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-left: 10px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* Additional styles for the pie chart */
-.chartjs-render-monitor {
-  width: 100% !important;
-  height: 100% !important;
+.event-register-button:hover,
+.event-details-button:hover {
+  background-color: #2980b9;
 }
 
-/* Add more custom styles as needed */
 </style>
