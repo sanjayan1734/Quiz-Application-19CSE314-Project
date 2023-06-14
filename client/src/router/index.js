@@ -10,6 +10,7 @@ import faculty from "../components/Faculty/FacultyPage.vue"
 import forgotpassword from "../components/LoginSignup/ForgotPassword.vue"
 import resetpwd from "../components/LoginSignup/ResetPassword.vue"
 import UsersPage from "../components/ReportAndAnalytics/UsersPage.vue"
+import createQuiz from "../components/quiz-taking/createQuiz.vue"
 
 const routes = [
 
