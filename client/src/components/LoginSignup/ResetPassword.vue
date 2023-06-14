@@ -81,7 +81,7 @@ export default {
         });
     },
     pressedlogin() {
-        this.loginURL = 'https://localhost:7282/api/User/Login?mail='+this.mail+'&password='+this.pass
+        this.loginURL = 'http://harish2511-001-site1.btempurl.com/api/User/Login?mail='+this.mail+'&password='+this.pass
         
         axios.get(this.loginURL).then((response) => {
             console.log(response.data)

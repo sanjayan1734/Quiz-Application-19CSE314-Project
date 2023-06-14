@@ -49,8 +49,8 @@ export default {
     pressedpass()
     {
         this.datachange()
-        this.fpwd = 'https://localhost:7282/api/User/UserExist?mail='+this.mails
-        this.forgotpassURL = 'https://localhost:7282/api/User/forgotPassword?emails='
+        this.fpwd = 'http://harish2511-001-site1.btempurl.com/api/User/UserExist?mail='+this.mails
+        this.forgotpassURL = 'http://harish2511-001-site1.btempurl.com/api/User/forgotPassword?emails='
         this.x = toRaw(this.x)
         axios.get(this.fpwd).then((response) => {
             //console.log(response.data)
@@ -68,7 +68,7 @@ export default {
         });
     },
     pressedlogin() {
-        this.loginURL = 'https://localhost:7282/api/User/Login?mail='+this.mail+'&password='+this.pass
+        this.loginURL = 'http://harish2511-001-site1.btempurl.com/api/User/Login?mail='+this.mail+'&password='+this.pass
         
         axios.get(this.loginURL).then((response) => {
             console.log(response.data)
@@ -101,7 +101,7 @@ export default {
     },
     pressedsignup() {
         this.datachange()
-        this.signupURL = 'https://localhost:7282/api/User/AddStudent'
+        this.signupURL = 'http://harish2511-001-site1.btempurl.com/api/User/AddStudent'
 
         this.x = toRaw(this.x)
         console.log(this.x)
