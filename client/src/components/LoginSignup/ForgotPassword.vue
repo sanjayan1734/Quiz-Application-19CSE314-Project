@@ -5,13 +5,15 @@
 //import VueAxios from 'vue-axios'
  //Vue.use(VueAxios,axios)
 export default {
-  name: 'LoginComponent',
+  name: 'ForgotPassword',
   mounted(){
     this.mail = ""
     this.pass = ""
     this.spass=""
     this.smail=""
     this.Name=""
+    this.mails=""
+    this.forgotmail=""
   },
   components:{
     navBar,
@@ -26,11 +28,15 @@ export default {
     return {
       loginURL: String,
       signupURL: String,
+      forgotpassURL: String,
       mail:String,
       pass:String,
       spass:String,
       smail:String,
       Name:String,
+      mails:String,
+      fpwd:String,
+      forgotmail:String,
       x:{
         id: Math.floor(Math.random()*1000),
         name: "",
@@ -40,6 +46,27 @@ export default {
     }
 },
     methods: {
+    pressedpass()
+    {
+        this.datachange()
+        this.fpwd = 'http://harish2511-001-site1.btempurl.com/api/User/UserExist?mail='+this.mails
+        this.forgotpassURL = 'http://harish2511-001-site1.btempurl.com/api/User/forgotPassword?emails='
+        this.x = toRaw(this.x)
+        axios.get(this.fpwd).then((response) => {
+            //console.log(response.data)
+            if(response.data == 'User Exists')
+            {
+                this.forgotpassURL+=this.mails
+                axios.get(this.forgotpassURL).then((finalresponse) =>{
+                    console.log(finalresponse.data)
+                })
+            }
+            else{
+                alert('User Does Not Exist')
+            }
+            
+        });
+    },
     pressedlogin() {
         this.loginURL = 'http://harish2511-001-site1.btempurl.com/api/User/Login?mail='+this.mail+'&password='+this.pass
         
@@ -70,6 +97,7 @@ export default {
         this.x.name=this.Name,
         this.x.email=this.smail,
         this.x.password=this.spass
+        this.mails = this.forgotmail
     },
     pressedsignup() {
         this.datachange()
@@ -121,48 +149,24 @@ export default {
               <div class="row full-height justify-content-center">
                   <div class="col-12 text-center align-self-center py-5">
                       <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                          <h6 class="mb-0 pb-3"><span style="color: #58355e;">Log In </span><span style="color: #58355e;">Sign Up</span></h6>
-                            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-                            <label for="reg-log"></label>
+                          
                           <div class="card-3d-wrap mx-auto">
                               <div class="card-3d-wrapper">
                                   <div class="card-front">
                                       <div class="center-wrap">
                                           <div class="section text-center">
-                                              <h4 class="mb-4 pb-3" style="color: #bf5700;">Log In</h4>
+                                              <h4 class="mb-4 pb-3" style="color: #bf5700;">Reset Your Password</h4>
                                               <div class="form-group">
-                                                  <input type="email" name="logemail" class="form-style" v-model="mail"  id="logemail" autocomplete="off" placeholder="Enter your Name">
+                                                  <input type="email" name="passemail" class="form-style" v-model="forgotmail"  id="logemail" autocomplete="off" placeholder="Enter your Mail">
                                                   <i class="input-icon uil uil-at"></i>
                                               </div>	
-                                              <div class="form-group mt-2">
-                                                  <input type="password" name="logpass" class="form-style" v-model="pass"  id="logpass" autocomplete="off" placeholder="Enter your Password">
-                                                  <i class="input-icon uil uil-lock-alt"></i>
-                                              </div>
-                                              <button  class="btn mt-4" @click="pressedlogin();" style="background-color:antiquewhite;">LogIn</button>
-                                              <p class="mb-0 mt-4 text-center"><a href="/forgotpwd" class="link">Forgot your password?</a></p>
+                                              
+                                              <button  class="btn mt-4" @click="pressedpass();" style="background-color:antiquewhite;">Submit</button>
+                                              
                                             </div>
                                         </div>
                                     </div>
-                                  <div class="card-back">
-                                      <div class="center-wrap">
-                                          <div class="section text-center">
-                                              <h4 class="mb-4 pb-3" style="color: #bf5700;">Sign Up</h4>
-                                              <div class="form-group">
-                                                  <input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" v-model="Name" autocomplete="off">
-                                                  <i class="input-icon uil uil-user"></i>
-                                              </div>	
-                                              <div class="form-group mt-2">
-                                                  <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" v-model="smail" autocomplete="off">
-                                                  <i class="input-icon uil uil-at"></i>
-                                              </div>	
-                                              <div class="form-group mt-2">
-                                                  <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" v-model="spass" autocomplete="off">
-                                                  <i class="input-icon uil uil-lock-alt"></i>
-                                              </div>
-                                              <button class="btn mt-4" @click="pressedsignup();" style="background-color:antiquewhite;">Signup</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                  
                                 </div>
                             </div>
                         </div>

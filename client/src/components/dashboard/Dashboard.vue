@@ -82,7 +82,7 @@ export default {
   },
   mounted() {
     console.log(this.$route.params.mail)
-    axios.get('https://localhost:7282/api/User/GetStudentsbyEmail?mail=' + this.$route.params.mail).then((response) => {
+    axios.get('http://harish2511-001-site1.btempurl.com/api/User/GetStudentsbyEmail?mail=' + this.$route.params.mail).then((response) => {
       this.profileInfo = response.data
       console.log(response.data)
     });

@@ -17,7 +17,7 @@ export default {
     //
     
     //this.quizURL + this.$route.params.quizId
-    axios.get('https://localhost:7282/api/Quiz/GetQuestionsbyquiz?qid=' + this.$route.params.quizId).then((response) => {
+    axios.get('http://harish2511-001-site1.btempurl.com/api/Quiz/GetQuestionsbyquiz?qid=' + this.$route.params.quizId).then((response) => {
       console.log(this.$route.params.quizId)
       console.log(response)
       this.questionData = response.data
@@ -49,8 +49,8 @@ export default {
   },
   data() {
     return {
-      validateURL:'https://localhost:7282/api/Quiz/ValidateAnswersfor',
-      quizURL:'https://localhost:7282/api/Quiz/GetQuestionsbyquiz?qid=',
+      validateURL:'http://harish2511-001-site1.btempurl.com/api/Quiz/ValidateAnswersfor',
+      quizURL:'http://harish2511-001-site1.btempurl.com/api/Quiz/GetQuestionsbyquiz?qid=',
       chosenOption:String,
       userChoices:[],
       rawUserChoices:[],
@@ -95,7 +95,7 @@ export default {
       console.log(this.rawUserChoices)
       console.log(this.validateURL)
       this.rawUserChoices.unshift(this.$route.params.quizId)
-      axios.post('https://localhost:7282/api/Quiz/ValidateAnswersforquiz' , this.rawUserChoices).then((response) => {
+      axios.post('http://harish2511-001-site1.btempurl.com/api/Quiz/ValidateAnswersforquiz' , this.rawUserChoices).then((response) => {
         console.log(response.data)
         confirm('Your score is ' + response.data)
         this.$router.push({name:'dashboard', params:{mail:'indu@gmail.com'}})
