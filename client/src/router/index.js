@@ -8,6 +8,7 @@ import dashboard from "../components/dashboard/Dashboard.vue"
 import Instructions from "../components/Instructions/Instructions.vue"
 import faculty from "../components/Faculty/FacultyPage.vue"
 import UsersPage from "../components/ReportAndAnalytics/UsersPage.vue"
+import createQuiz from "../components/quiz-taking/createQuiz.vue"
 
 
 
@@ -38,8 +39,8 @@ const routes = [
   },
   {
     path: "/",
-    name: "usersPage",
-    component: UsersPage,
+    name: "createQuiz",
+    component: createQuiz,
     
   },
   {
