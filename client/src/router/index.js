@@ -11,13 +11,24 @@ import forgotpassword from "../components/LoginSignup/ForgotPassword.vue"
 import resetpwd from "../components/LoginSignup/ResetPassword.vue"
 import UsersPage from "../components/ReportAndAnalytics/UsersPage.vue"
 import createQuiz from "../components/quiz-taking/createQuiz.vue"
-
+import discussion from "../components/dashboard/discussions.vue"
+import studentComparison from "../components/dashboard/studentComparison.vue"
 const routes = [
 
   {
     path: "/login",
     name: "login",
     component: login,
+  },
+  {
+    path: "/discussions",
+    name: "discussion",
+    component: discussion,
+  },
+  {
+    path: "/studentComparison",
+    name: "studentComparison",
+    component: studentComparison,
   },
   {
     path: "/reset",

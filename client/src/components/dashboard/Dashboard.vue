@@ -4,9 +4,13 @@
       <div class="sidebar-header">
         <h2 class="sidebar-title">Quiz App</h2>
       </div>
-      <ul class="sidebar-menu">
+      
+      <ul class="sidebar-menu" >
         <li class="sidebar-menu-item">
-          <router-link to="/" class="sidebar-menu-link">Home</router-link>
+          <router-link to="/" class="sidebar-menu-link" style>Home</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/dashboard" class="sidebar-menu-link">Dashboard</router-link>
         </li>
         <li class="sidebar-menu-item">
           <router-link to="/quizzes" class="sidebar-menu-link">Quizzes</router-link>
@@ -20,9 +24,13 @@
         <li class="sidebar-menu-item">
           <router-link to="/feedback" class="sidebar-menu-link">Feedback</router-link>
         </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/studentComparison" class="sidebar-menu-link">Student Leaderboard</router-link>
+        </li>
       </ul>
-    </div>
-    <div class="main-content">
+      </div>
+    
+    <div class="main-content" style="background-color: #e5dada;;">
       <div class="dashboard-header">
         <h1 class="dashboard-title">Welcome, {{ profileInfo.name }}!</h1>
         <div class="dashboard-stats">
@@ -59,14 +67,21 @@
             <div v-for="quiz in quizzes" :key="quiz.id" class="quiz-item">
               <router-link :to="'/quiz/' + quiz.id" class="quiz-link">{{ quiz.title }}</router-link>
               <div class="quiz-meta">
-                <div class="quiz-meta-item">
-                  <span class="quiz-meta-label">Questions:</span>
-                  <span class="quiz-meta-value">{{ quiz.questions }}</span>
-                </div>
-                <div class="quiz-meta-item">
-                  <span class="quiz-meta-label">Duration:</span>
-                  <span class="quiz-meta-value">{{ quiz.duration }} mins</span>
-                </div>
+        <div class="quiz-meta-line">
+          <span class="quiz-meta-label">Questions:</span>
+          <span class="quiz-meta-value">{{ quiz.questions }}</span>
+          <span class="quiz-meta-label">Duration:</span>
+          <span class="quiz-meta-value">{{ quiz.duration }} mins</span>
+        </div>
+        <div class="quiz-meta-line">
+          <span class="quiz-meta-label">Progress:</span>
+          <span class="quiz-meta-value">{{ quiz.progress }}%</span>
+        </div>
+      </div>
+  
+  <div v-if="quiz.progress === 100" class="quiz-certification">
+    <a href="generateCertificationLink(quiz.id)" class="certification-link">View Certification</a>
+  </div>
               </div>
             </div>
           </div>
@@ -79,6 +94,19 @@
               <span class="notification-date">{{ notification.date }}</span>
             </li>
           </ul>
+        </div>
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">Recent Discussion</h2>
+          <div class="recent-discussion">
+            <div v-for="discussion in recentDiscussions" :key="discussion.id" class="discussion-item">
+              <h3 class="discussion-title">{{ discussion.title }}</h3>
+              <p class="discussion-content">{{ discussion.content }}</p>
+              <div class="discussion-meta">
+                <span class="discussion-user">{{ discussion.user }}</span>
+                <span class="discussion-date">{{ discussion.date }}</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="dashboard-section">
           <h2 class="dashboard-section-title">Upcoming Events</h2>
@@ -97,7 +125,7 @@
           </div>
         </div>
       </div>
-    </div>
+    
   </div>
 </template>
 
@@ -121,10 +149,27 @@ export default {
       },
       totalQuizzes: 5,
       quizzes: [
-        { id: 'quiz1', title: "Quiz 1", questions: 10, duration: 20 },
-        { id: 'quiz2', title: "Quiz 2", questions: 15, duration: 30 },
-        { id: 'quiz3', title: "Quiz 3", questions: 12, duration: 25 },
+        { id: 'quiz1', title: "Quiz 1", questions: 10, duration: 20,progress:100 },
+        { id: 'quiz2', title: "Quiz 2", questions: 15, duration: 30,progress:50},
+        { id: 'quiz3', title: "Quiz 3", questions: 12, duration: 25,progress:100 },
         // Add more quizzes as needed
+      ],
+      recentDiscussions: [
+        {
+          id: 1,
+          title: 'Discussion 1',
+          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          user: 'Jane Smith',
+          date: '2023-06-14',
+        },
+        {
+          id: 2,
+          title: 'Discussion 2',
+          content: 'Praesent non mauris ac mi consectetur tempus.',
+          user: 'John Doe',
+          date: '2023-06-13',
+        },
+        // Add more discussion objects as needed
       ],
       notifications: [
         { id: 1, message: "New quiz available!", date: "2023-05-28" },
@@ -171,6 +216,10 @@ export default {
           console.log(error);
         });
     },
+    generateCertificationLink(quizId) {
+    // Replace with your logic to generate the certification link for a specific quiz
+    return `/certifications/${quizId}`;
+  },
     levelProgress() {
       const totalQuizzes = this.profileInfo.quizcount || 0;
       const correctAnswers = this.profileInfo.totalcorrectq || 0;
@@ -198,15 +247,81 @@ export default {
 
 <style>
 /* Add your custom styling here */
+.recent-discussion {
+  display: grid;
+  grid-gap: 20px;
+}
+.progress-bar {
+  width: 200px;
+  height: 10px;
+  background-color: #eeeeee;
+  border-radius: 5px;
+  margin-left: 10px;
+  overflow: hidden;
+}
 
+.progress-bar-fill {
+  height: 100%;
+  background-color: #3366cc;
+  transition: width 0.3s ease-in-out;
+}
+
+.quiz-certification {
+  margin-top: 10px;
+}
+
+.certification-link {
+  color: #3366cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.certification-link:hover {
+  text-decoration: underline;
+}
+.discussion-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.discussion-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.discussion-content {
+  font-size: 14px;
+  color: whitesmoke;
+  margin-bottom: 10px;
+}
+
+.discussion-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.discussion-user {
+  font-size: 14px;
+  color: #888;
+}
+
+.discussion-date {
+  font-size: 14px;
+  color: #888;
+}
 .dashboard {
   display: flex;
 }
 
 .sidebar {
-  background-color: #f2f2f2;
+  background-color: #2a2b38;
   padding: 20px;
   min-width: 300px;
+  color: whitesmoke;
 }
 
 .sidebar-header {
@@ -228,7 +343,7 @@ export default {
 }
 
 .sidebar-menu-link {
-  color: #333;
+  color: whitesmoke;
   text-decoration: none;
   display: block;
   padding: 10px;
@@ -266,7 +381,7 @@ export default {
 
 .dashboard-stat-label {
   font-size: 14px;
-  color: #888;
+  color: #6D798B;
 }
 
 .dashboard-stat-value {
@@ -314,8 +429,8 @@ export default {
 
 .quiz-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .quiz-item {
@@ -323,6 +438,7 @@ export default {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
 }
 
 .quiz-link {
@@ -339,22 +455,29 @@ export default {
 
 .quiz-meta {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-around;
   margin-top: 10px;
+  margin: 10px 0;
 }
 
 .quiz-meta-item {
   display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  margin: 10px 0;
 }
 
 .quiz-meta-label {
   font-size: 14px;
   color: #888;
-  margin-right: 5px;
+  margin-right: 8px;
+  
 }
 
 .quiz-meta-value {
   font-size: 14px;
+  margin-left: 4px;
+  margin: 10px 0;
 }
 
 .notification-list {
