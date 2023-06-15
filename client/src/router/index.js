@@ -13,12 +13,18 @@ import UsersPage from "../components/ReportAndAnalytics/UsersPage.vue"
 import createQuiz from "../components/quiz-taking/createQuiz.vue"
 import discussion from "../components/dashboard/discussions.vue"
 import studentComparison from "../components/dashboard/studentComparison.vue"
+import certificates from "../components/dashboard/certificates.vue"
 const routes = [
 
   {
     path: "/login",
     name: "login",
     component: login,
+  },
+  {
+    path: "/certificates",
+    name: "certificates",
+    component: certificates,
   },
   {
     path: "/discussions",
