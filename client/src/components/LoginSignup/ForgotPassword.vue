@@ -61,6 +61,7 @@ export default {
                     console.log(finalresponse.data)
                 })
                 alert('Mail Sent Successfully! Kindly check your mail')
+                this.$router.push({name:'login'})
             }
             else{
                 alert('User Does Not Exist')

@@ -56,6 +56,7 @@ export default {
         this.reset = 'http://harish2511-001-site1.btempurl.com/api/User/reset-Password?email='+this.mails+'&pwd='+this.resets
         axios.put(this.reset).then((response)=>{
             alert(response.data)
+            this.$router.push({name:'login'})
         })
 
     },
@@ -72,7 +73,11 @@ export default {
                 this.forgotpassURL+=this.mails
                 axios.get(this.forgotpassURL).then((finalresponse) =>{
                     console.log(finalresponse.data)
+                    
+                   
+                    
                 })
+                this.$router.push({name:'login'})
             }
             else{
                 alert('User Does Not Exist')
