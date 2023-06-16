@@ -60,6 +60,8 @@ export default {
                 axios.get(this.forgotpassURL).then((finalresponse) =>{
                     console.log(finalresponse.data)
                 })
+                alert('Mail Sent Successfully! Kindly check your mail')
+                this.$router.push({name:'login'})
             }
             else{
                 alert('User Does Not Exist')

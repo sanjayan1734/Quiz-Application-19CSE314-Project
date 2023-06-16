@@ -12,6 +12,7 @@ export default {
     this.spass=""
     this.smail=""
     this.Name=""
+    this.role=""
   },
   components:{
     navBar,
@@ -26,11 +27,13 @@ export default {
     return {
       loginURL: String,
       signupURL: String,
+      facloginURL:String,
       mail:String,
       pass:String,
       spass:String,
       smail:String,
       Name:String,
+      role:String,
       x:{
         id: Math.floor(Math.random()*1000),
         name: "",
@@ -42,8 +45,10 @@ export default {
     methods: {
     pressedlogin() {
         this.loginURL = 'http://harish2511-001-site1.btempurl.com/api/User/Login?mail='+this.mail+'&password='+this.pass
-        
-        axios.get(this.loginURL).then((response) => {
+        this.facloginURL = 'http://harish2511-001-site1.btempurl.com/api/User/Loginfaculty?mail='+this.mail+'&password='+this.pass
+        if(this.role == "Student")
+        {
+          axios.get(this.loginURL).then((response) => {
             console.log(response.data)
 
             if(response.data == "Account Not found")
@@ -55,16 +60,35 @@ export default {
             }
             else{
               console.log(this.name)
-              if(this.mail == "fac@gmail.com")   
-              {
-                this.$router.push({name:'faculty', params:{mail:this.mail}})
-              }
-              else{
-                this.$router.push({name:'dashboard', params:{mail:this.mail}})
-              }
+              
+              this.$router.push({name:'dashboard', params:{mail:this.mail}})
+              
             }
 
       });
+        }
+        else if(this.role=="faculty")
+        {
+          axios.get(this.facloginURL).then((response) => {
+            console.log(response.data)
+
+            if(response.data == "Account Not found")
+            {
+                console.log(this.URL)
+                console.log(this.mail)
+                console.log(this.pass)
+                alert("Invalid Username or password!! Try Again")
+            }
+            else{
+              console.log(this.name)
+              
+              this.$router.push({name:'facdash', params:{mail:this.mail}})
+              
+            }
+
+      });
+        }
+        
     },
     datachange(){
         this.x.name=this.Name,
@@ -138,6 +162,10 @@ export default {
                                                   <input type="password" name="logpass" class="form-style" v-model="pass"  id="logpass" autocomplete="off" placeholder="Enter your Password">
                                                   <i class="input-icon uil uil-lock-alt"></i>
                                               </div>
+                                              <div class="form-group mt-2">
+                                                  <input type="text" name="role" class="form-style" placeholder="Enter your Role" id="logpass" v-model="roles" autocomplete="off">
+                                                  <i class="input-icon uil uil-lock-alt"></i>
+                                              </div>
                                               <button  class="btn mt-4" @click="pressedlogin();" style="background-color:antiquewhite;">LogIn</button>
                                               <p class="mb-0 mt-4 text-center"><a href="/forgotpwd" class="link">Forgot your password?</a></p>
                                             </div>
@@ -157,6 +185,10 @@ export default {
                                               </div>	
                                               <div class="form-group mt-2">
                                                   <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" v-model="spass" autocomplete="off">
+                                                  <i class="input-icon uil uil-lock-alt"></i>
+                                              </div>
+                                              <div class="form-group mt-2">
+                                                  <input type="text" name="role" class="form-style" placeholder="Enter your Role" id="logpass" v-model="roles" autocomplete="off">
                                                   <i class="input-icon uil uil-lock-alt"></i>
                                               </div>
                                               <button class="btn mt-4" @click="pressedsignup();" style="background-color:antiquewhite;">Signup</button>
@@ -280,6 +312,7 @@ h6 span{
 .card-front, .card-back {
   width: 100%;
   height: 100%;
+  
   background-color: #2a2b38;
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
   background-position: bottom center;
@@ -305,7 +338,7 @@ h6 span{
 .center-wrap{
   position: absolute;
   width: 100%;
-  padding: 0 35px;
+  padding: 30px;
   top: 50%;
   left: 0;
   transform: translate3d(0, -50%, 35px) perspective(100px);
