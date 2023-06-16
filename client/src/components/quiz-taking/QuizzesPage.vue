@@ -36,6 +36,7 @@ export default {
       const time = new Date()
       time.setMinutes(time.getMinutes+1)
       this.timer = useTimer(time);
+      this.timer.start()
   },
   
   components:{
@@ -88,6 +89,7 @@ export default {
         this.currentQuestion += 1
         this.renderquestion();
         
+        
     },
     pressedSubmit() {
       this.getChosenOption()
@@ -102,6 +104,8 @@ export default {
         // this.$router.push({name:'results', params:{noOfQuestions:this.noOfQuestions, correctAnswers:response.data}})
         // this.$route.push(this.$router.options.history.state.back)
       })
+      
+')
       
       
       
@@ -166,7 +170,8 @@ export default {
           </div>
         </div>
         <div class="question">
-            this.timer
+            {{this.timer['seconds']}}
+            <div v-bind="this.timer">num</div>
             <QuestionComponent  v-bind="questionobj" ref="questioncomponent"/>
             <!--  props - :questionDescription= 'questionDesc'  questionid = 'questionId'  optionA = 'optionA' optionB = optionB optionC = optionC -->
         </div>

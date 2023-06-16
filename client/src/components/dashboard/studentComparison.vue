@@ -37,21 +37,21 @@
           <i class="stat-icon fas fa-users"></i>
           <div class="stat-info">
             <div class="stat-label">Total Students</div>
-            <div class="stat-value">{{ students.length }}</div>
+            <div class="stat-value">{{ profileInfo.length }}</div>
           </div>
         </div>
         <div class="stat-card">
           <i class="stat-icon fas fa-trophy"></i>
           <div class="stat-info">
             <div class="stat-label">Top Scorer</div>
-            <div class="stat-value">{{ getTopScorer().name }}</div>
+            <div class="stat-value"> Harish</div>
           </div>
         </div>
         <div class="stat-card">
           <i class="stat-icon fas fa-star"></i>
           <div class="stat-info">
             <div class="stat-label">Highest Avg Score</div>
-            <div class="stat-value">{{ getHighestAverageScore().name }}</div>
+            <div class="stat-value">4.66</div>
           </div>
         </div>
       </div>
@@ -63,16 +63,14 @@
             <th>Student Name</th>
             <th>Correct Questions</th>
             <th>Quizzes Attempted</th>
-            <th>Average Score</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(student, index) in students" :key="student.id" @click="showStudentDetails(student.id)">
+          <tr v-for="(student, index) in profileInfo" :key="student.id" @click="showStudentDetails(student.id)">
             <td>{{ index + 1 }}</td>
             <td>{{ student.name }}</td>
-            <td>{{ student.correctQuestions }}</td>
-            <td>{{ student.quizzesAttempted }}</td>
-            <td>{{ calculateAverageScore(student) }}</td>
+            <td>{{ student.totalcorrectq }}</td>
+            <td>{{ student.quizcount }}</td>
           </tr>
         </tbody>
       </table>
@@ -92,11 +90,10 @@
             <div class="details-label">Quizzes Attempted:</div>
             <div class="details-value">{{ selectedStudent.quizzesAttempted }}</div>
           </div>
-          <div class="details-row">
+          <!-- <div class="details-row">
             <div class="details-label">Average Score:</div>
-            <div class="details-value">{{ calculateAverageScore(selectedStudent) }}</div>
-          </div>
-          <!-- Add more student details here -->
+            <div class="details-value">{{ selectedStudent.totalcorrectq }} / {{ selectedStudent.totalQuizzes }}</div>
+          </div>  -->
         </div>
       </div>
     </div>
@@ -104,31 +101,47 @@
   </template>
   
   <script>
+  import axios from 'axios';
   export default {
     data() {
       return {
-        students: [
-          { id: 1, name: 'John Doe', correctQuestions: 15, quizzesAttempted: 10, scores: [90, 85, 80] },
-          { id: 2, name: 'Jane Smith', correctQuestions: 20, quizzesAttempted: 12, scores: [95, 90, 85] },
-          { id: 3, name: 'Michael Johnson', correctQuestions: 18, quizzesAttempted: 9, scores: [80, 75, 70] },
-          // Add more student data here...
-        ],
+        profileInfo:
+        [{
+            Email:String,
+            Id:Number,
+            Name:String,
+            quizcount:Number,
+            totalcorrectq:Number,
+            totalQuizzes:3
+        }],
         selectedStudent: null,
       };
     },
+    mounted() {
+        axios.get('http://harish2511-001-site1.btempurl.com/api/User/GetAllStudents').then((response) => {
+            console.log(response.data[0])
+            console.log(response.data)
+            this.profileInfo = response.data
+            console.log("profileInfo = ")
+            console.log(this.profileInfo)
+            
+        })  
+    },
     methods: {
       getTopScorer() {
-        return this.students.reduce((prev, current) => (current.correctQuestions > prev.correctQuestions ? current : prev), this.students[0]);
+        return this.profileInfo.reduce((prev, current) => (current.correctQuestions > prev.correctQuestions ? current : prev), this.profileInfo[1]);
       },
       getHighestAverageScore() {
-        return this.students.reduce((prev, current) => (this.calculateAverageScore(current) > this.calculateAverageScore(prev) ? current : prev), this.students[0]);
+        return this.profileInfo.reduce((prev, current) => (this.calculateAverageScore(current) > this.calculateAverageScore(prev) ? current : prev), this.profileInfo[0]);
       },
-      calculateAverageScore(student) {
-        const sum = student.scores.reduce((acc, score) => acc + score, 0);
-        return sum / student.scores.length;
-      },
+      // calculateAverageScore(student) {
+      //   const sum = this.profileInfo.scores.reduce((acc, score) => acc + score, 0);
+      //   return sum / student.scores.length;
+      // },
+
       showStudentDetails(studentId) {
-        this.selectedStudent = this.students.find(student => student.id === studentId);
+        this.selectedStudent = this.profileInfo.find(profile => this.profileInfo.Id === studentId);
+        console.log(this.selectedStudent)
       },
     },
   };

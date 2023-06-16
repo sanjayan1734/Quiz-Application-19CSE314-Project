@@ -1,4 +1,9 @@
-<script>
+<template>
+    pass
+    
+</template>
+
+<!-- <script>
 export default {
     data (){
         return{
@@ -74,4 +79,4 @@ export default {
         padding: 1%;
     }
 
-</style>
+</style> -->
