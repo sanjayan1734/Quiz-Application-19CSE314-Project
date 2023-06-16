@@ -27,6 +27,9 @@
         <li class="sidebar-menu-item">
           <router-link to="/studentComparison" class="sidebar-menu-link">Student Leaderboard</router-link>
         </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/studyroom" class="sidebar-menu-link">Study Room</router-link>
+        </li>
       </ul>
       </div>
     <div class="main-content" style="background-color: #e5dada;;">

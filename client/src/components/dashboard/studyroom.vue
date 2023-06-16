@@ -1,25 +1,62 @@
 <template>
-    <div class="group-study-room">
+    <div class="studyroom">
+        <div class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">Quiz App</h2>
+      </div>
+      
+      <ul class="sidebar-menu" >
+        <li class="sidebar-menu-item">
+          <router-link to="/" class="sidebar-menu-link" style>Home</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/dashboard" class="sidebar-menu-link">Dashboard</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/quizzes" class="sidebar-menu-link">Quizzes</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/certificates" class="sidebar-menu-link">Certificates</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/discussions" class="sidebar-menu-link">Discussions</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/feedback" class="sidebar-menu-link">Feedback</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/studentComparison" class="sidebar-menu-link">Student Leaderboard</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/studyroom" class="sidebar-menu-link">Study Room</router-link>
+        </li>
+      </ul>
+      </div>
+    <div class="group-study-room"  style="background-color: #e5dada;;">
       <h2 class="group-study-title">Group Study Room</h2>
+      <br>
+      <br>
       <div class="study-room-container">
-        <div class="study-room-left">
+        
           <h3 class="study-room-heading">Participants</h3>
           <ul class="participant-list">
             <li v-for="participant in participants" :key="participant.id" class="participant-item">
               <div class="participant-avatar">
-                <img :src="participant.avatar" :alt="participant.name" class="avatar-image" />
+                <i class="fas fa-user"></i>
               </div>
               <div class="participant-details">
                 <span class="participant-name">{{ participant.name }}</span>
-                <span class="participant-status" :class="participant.status.toLowerCase()">{{ participant.status }}</span>
+                <span class="participant-status">{{ participant.status }}</span>
               </div>
             </li>
           </ul>
-          <div class="invite-section">
-            <input v-model="newParticipant" placeholder="Enter participant name" class="participant-input" />
+          <div class="invite-form">
+            <input v-model="newParticipant" class="participant-input" type="text" placeholder="Enter participant name" />
             <button @click="addParticipant" class="invite-button">Invite</button>
           </div>
         </div>
+        <br>
+        <br>
         <div class="study-room-right">
           <h3 class="study-room-heading">Study Materials</h3>
           <ul class="material-list">
@@ -33,18 +70,21 @@
               </div>
             </li>
           </ul>
-          <div class="add-material-section">
-            <input v-model="newMaterialName" placeholder="Enter material name" class="material-input" />
-            <select v-model="newMaterialType" class="material-select">
-              <option value="Book">Book</option>
-              <option value="Article">Article</option>
-              <option value="Presentation">Presentation</option>
-            </select>
+          <div class="material-form">
+            <div class="material-input-container">
+              <input v-model="newMaterialName" class="material-input" type="text" placeholder="Enter material name" />
+              <select v-model="newMaterialType" class="material-select">
+                <option value="Book">Book</option>
+                <option value="Article">Article</option>
+                <option value="Presentation">Presentation</option>
+              </select>
+            </div>
             <button @click="addMaterial" class="add-material-button">Add Material</button>
           </div>
         </div>
       </div>
     </div>
+    
   </template>
   
   <script>
@@ -52,68 +92,111 @@
     data() {
       return {
         participants: [
-          { id: 1, name: 'John Doe', status: 'Online', avatar: 'https://placeimg.com/50/50/people' },
-          { id: 2, name: 'Jane Smith', status: 'Online', avatar: 'https://placeimg.com/50/50/people' },
-          { id: 3, name: 'Alex Johnson', status: 'Offline', avatar: 'https://placeimg.com/50/50/people' }
+          { id: 1, name: "John Doe", status: "Online" },
+          { id: 2, name: "Jane Smith", status: "Offline" },
+          { id: 3, name: "Mike Johnson", status: "Online" }
         ],
-        newParticipant: '',
+        newParticipant: "",
         materials: [
-          { id: 1, name: 'Mathematics Textbook', type: 'Book', icon: 'fas fa-book' },
-          { id: 2, name: 'Physics Lecture Notes', type: 'Presentation', icon: 'fas fa-file-powerpoint' },
-          { id: 3, name: 'Chemistry Article', type: 'Article', icon: 'fas fa-newspaper' }
+          { id: 1, name: "Book 1", type: "Book", icon: "fas fa-book" },
+          { id: 2, name: "Article 1", type: "Article", icon: "fas fa-newspaper" },
+          { id: 3, name: "Presentation 1", type: "Presentation", icon: "fas fa-file-powerpoint" }
         ],
-        newMaterialName: '',
-        newMaterialType: 'Book'
+        newMaterialName: "",
+        newMaterialType: "Book"
       };
     },
     methods: {
       addParticipant() {
-        if (this.newParticipant.trim() !== '') {
+        if (this.newParticipant.trim() !== "") {
           const newParticipant = {
             id: this.participants.length + 1,
             name: this.newParticipant.trim(),
-            status: 'Online',
-            avatar: 'https://placeimg.com/50/50/people'
+            status: "Online"
           };
           this.participants.push(newParticipant);
-          this.newParticipant = '';
+          this.newParticipant = "";
         }
       },
       addMaterial() {
-        if (this.newMaterialName.trim() !== '') {
+        if (this.newMaterialName.trim() !== "") {
           const newMaterial = {
-            id: this.materials.length + 1,
+            id
+  
+  : this.materials.length + 1,
             name: this.newMaterialName.trim(),
             type: this.newMaterialType,
-            icon: this.getMaterialIcon(this.newMaterialType)
+            icon: this.MaterialIcon(this.newMaterialType)
           };
           this.materials.push(newMaterial);
-          this.newMaterialName = '';
-          this.newMaterialType = 'Book';
+          this.newMaterialName = "";
+          this.newMaterialType = "Book";
         }
       },
-      getMaterialIcon(type) {
+      MaterialIcon(type) {
         switch (type) {
-          case 'Book':
-            return 'fas fa-book';
-          case 'Article':
-            return 'fas fa-newspaper';
-          case 'Presentation':
-            return 'fas fa-file-powerpoint';
+          case "Book":
+            return "fas fa-book";
+          case "Article":
+            return "fas fa-newspaper";
+          case "Presentation":
+            return "fas fa-file-powerpoint";
           default:
-            return '';
+            return "fas fa-book";
         }
       }
     }
   };
   </script>
   
-  <style scoped>
-  .group-study-room {
+  <style>
+  .sidebar {
+  background-color: #2a2b38;
+  padding: 20px;
+  min-width: 300px;
+  color: whitesmoke;
+  height: 900px;
+}
+
+.sidebar-header {
+  margin-bottom: 20px;
+}
+
+.sidebar-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-menu-item {
+  margin-bottom: 10px;
+}
+
+.sidebar-menu-link {
+  color: whitesmoke;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.sidebar-menu-link:hover {
+  background-color: #eaeaea;
+}
+  .studyroom{
     display: flex;
-    flex-direction: column;
+  }
+  .group-study-room {
+    flex-grow: 1;
+    padding: 20px;
+    
     align-items: center;
-    margin-top: 50px;
+    
     font-family: Arial, sans-serif;
   }
   
@@ -125,18 +208,19 @@
   
   .study-room-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
-    max-width: 800px;
+    width:800px;
+    gap: 40px;
   }
   
-  .study-room-left,
+  
   .study-room-right {
-    flex: 1;
+    width:800px;
   }
   
   .study-room-heading {
-    font-size: 18px;
+    font-size: 26px;
     font-weight: bold;
     margin-bottom: 10px;
   }
@@ -145,33 +229,19 @@
   .material-list {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
   
   .participant-item,
   .material-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .participant-avatar,
-  .material-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  
-  .avatar-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
   }
   
   .participant-details,
   .material-details {
-    flex: 1;
     margin-left: 10px;
   }
   
@@ -180,54 +250,47 @@
     font-weight: bold;
   }
   
-  .participant-status,
-  .material-type {
-    color: #888;
-  }
-  
   .participant-input,
-  .material-input {
+  .material-input,
+  .material-select {
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
-    outline: none;
-  }
-  
-  .participant-input:focus,
-  .material-input:focus {
-    border-color: #007bff;
   }
   
   .invite-button,
   .add-material-button {
-    padding: 10px 20px;
-    background-color: #007bff;
+    padding: 10px;
+    background-color: #2a2b38;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
   }
   
-  .invite-button:hover,
-  .add-material-button:hover {
-    background-color: #0056b3;
+  .material-icon {
+    font-size: 18px;
+    color: #888;
   }
   
-  .material-select {
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  .material-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   
   @media (max-width: 768px) {
     .study-room-container {
       flex-direction: column;
     }
+    .study-room-left,
+    .study-room-right {
+      width: 100%;
+    }
   }
   </style>
-  

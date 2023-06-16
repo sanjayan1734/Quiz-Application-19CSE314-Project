@@ -67,9 +67,89 @@
                 </select>
                 </div>
 
-              <button onclick="scrollToSection('opts')">Proceed</button>
+              <button @click="myFunction()">Proceed</button>
 
-                <div id="opts">
+                <div id="opts" v-if="pressedButton == 1">
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Question:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 1:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 2:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 3:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Question:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 1:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 2:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 3:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Question:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 1:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 2:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 3:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Question:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 1:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 2:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 3:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Question:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 1:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 2:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
+                    </div>
+                    <div class="form-group">
+                    <label for="quizDescription">Enter Option 3:</label>
+                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
+                    </div>
                     <div class="form-group">
                     <label for="quizDescription">Enter Question:</label>
                     <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
@@ -122,11 +202,6 @@
   <script>
   //var on = document.getElementById("on");
 //var off = document.getElementById("off");
-  
-function myFunction() {
-  document.getElementById("opts").style.display = "block";
-}
-
 var closebtns = document.getElementsByClassName("close");
 var i;
 
@@ -135,11 +210,22 @@ for (i = 0; i < closebtns.length; i++) {
     this.parentElement.style.display = 'none';
   });
 }
-  
-function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId);
-  section.scrollIntoView({ behavior: 'smooth' });
+ export default {
+  data() {
+    return {
+      pressedButton: 0,
+    }
+
+  },
+  methods: {
+    myFunction() {
+    console.log("pressed button")
+    this.pressedButton = 1
 }
+  }
+ } 
+
+
 </script>
 
   
@@ -151,9 +237,9 @@ function scrollToSection(sectionId) {
 /* Googlefont Poppins CDN Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-/* #opts{
-    display: none;
-} */
+#opts{
+    visibility: visible;
+}
 *{
   margin: 0;
   padding: 0;

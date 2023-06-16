@@ -27,6 +27,9 @@
         <li class="sidebar-menu-item">
           <router-link to="/studentComparison" class="sidebar-menu-link">Student Leaderboard</router-link>
         </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/studyroom" class="sidebar-menu-link">Study Room</router-link>
+        </li>
       </ul>
       </div>
     <div class="feedback-page" style="background-color: #e5dada;;">
@@ -62,7 +65,7 @@
       </div>
       <div class="thank-you" v-if="feedbackSubmitted">Thank you for your feedback!</div>
       <div class="recent-feedback-container">
-        <h3 class="recent-feedback-title">Recent Feedback</h3>
+        <h3 class="recent-feedback-title">Recent Feedback</h3> 
         <div v-if="recentFeedback.length === 0" class="no-feedback">No feedback available</div>
         <div v-else class="feedback-item" v-for="feedbackItem in recentFeedback" :key="feedbackItem.id">
           <div class="feedback-header">
