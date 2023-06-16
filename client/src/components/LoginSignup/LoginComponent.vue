@@ -163,7 +163,7 @@ export default {
                                                   <i class="input-icon uil uil-lock-alt"></i>
                                               </div>
                                               <div class="form-group mt-2">
-                                                  <input type="text" name="role" class="form-style" placeholder="Enter your Role" id="logpass" v-model="roles" autocomplete="off">
+                                                  <input type="text" name="role" class="form-style" placeholder="Enter your Role" id="logpass" v-model="role" autocomplete="off">
                                                   <i class="input-icon uil uil-lock-alt"></i>
                                               </div>
                                               <button  class="btn mt-4" @click="pressedlogin();" style="background-color:antiquewhite;">LogIn</button>
@@ -188,7 +188,7 @@ export default {
                                                   <i class="input-icon uil uil-lock-alt"></i>
                                               </div>
                                               <div class="form-group mt-2">
-                                                  <input type="text" name="role" class="form-style" placeholder="Enter your Role" id="logpass" v-model="roles" autocomplete="off">
+                                                  <input type="text" name="role" class="form-style" placeholder="Enter your Role" id="logpass" v-model="role" autocomplete="off">
                                                   <i class="input-icon uil uil-lock-alt"></i>
                                               </div>
                                               <button class="btn mt-4" @click="pressedsignup();" style="background-color:antiquewhite;">Signup</button>
