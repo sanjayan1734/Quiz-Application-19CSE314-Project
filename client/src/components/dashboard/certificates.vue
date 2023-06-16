@@ -57,9 +57,9 @@
           <div class="certificate-image">
   <!--<img :src="photo" alt="Certificate" class="certificate-img">-->
 </div>
-          <div class="certification-item">
+<div class="certification-item">
     <span class="certification-label">Certificate:</span>
-    <a href="C:\Users\girid\Downloads\WhatsApp Image 2023-06-16 at 2.15.45 PM.jpeg" download="certificate.jpg" class="download-button">Download Certificate</a>
+    <button @click="downloadCertificate('{{quiz.certificateUrl}}')" class="download-button">Download Certificate</button>
   </div>
         </div>
       </div>

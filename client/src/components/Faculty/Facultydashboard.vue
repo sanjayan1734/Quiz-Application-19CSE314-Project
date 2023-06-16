@@ -166,7 +166,8 @@
                     <label for="quizDescription">Enter Option 3:</label>
                     <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
                     </div>
-                    <button type="submit">Next</button>
+                    <button @click="submitdata()">Create</button>
+                    <div class="thank-you" v-if="dataSubmitted">Thank you for your quiz data has been successfully added!</div>
                 </div>
             <!--<div class="button">
               <a href="#">See All</a>
@@ -178,9 +179,9 @@
             <ul class="top-sales-details">
                 
                     <ul>
-                        <li>Quiz-1<button2 class="close">x</button2></li>
-                        <li>Quiz-2<button2 class="close">x</button2></li>
-                        <li>Quiz-3<button2 class="close">x</button2></li>           
+                        <li>Quiz-1<button2 class="close" @click="closebutton()">x</button2></li>
+                        <li>Quiz-2<button2 class="close" @click="closebutton()">x</button2></li>
+                        <li>Quiz-3<button2 class="close" @click="closebutton()">x</button2></li>           
                         
                     </ul>
                 
@@ -202,7 +203,19 @@
   <script>
   //var on = document.getElementById("on");
 //var off = document.getElementById("off");
-var closebtns = document.getElementsByClassName("close");
+
+ export default {
+  data() {
+    return {
+      pressedButton: 0,
+      dataSubmitted: false,
+    }
+
+  },
+  methods: {
+    closebutton()
+    {
+      var closebtns = document.getElementsByClassName("close");
 var i;
 
 for (i = 0; i < closebtns.length; i++) {
@@ -210,17 +223,14 @@ for (i = 0; i < closebtns.length; i++) {
     this.parentElement.style.display = 'none';
   });
 }
- export default {
-  data() {
-    return {
-      pressedButton: 0,
-    }
-
-  },
-  methods: {
+    },
     myFunction() {
     console.log("pressed button")
     this.pressedButton = 1
+},
+submitdata()
+{
+  this.dataSubmitted= true;
 }
   }
  } 
@@ -240,6 +250,11 @@ for (i = 0; i < closebtns.length; i++) {
 #opts{
     visibility: visible;
 }
+.thank-you {
+    font-size: 18px;
+    color: green;
+    margin-top: 20px;
+  }
 *{
   margin: 0;
   padding: 0;

@@ -27,6 +27,18 @@
         <li class="sidebar-menu-item">
           <router-link to="/studentComparison" class="sidebar-menu-link">Student Leaderboard</router-link>
         </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/studyroom" class="sidebar-menu-link">Study Room</router-link>
+        </li>
+        <br>
+        <br>
+        <br>
+        <li class="log_out">
+          <a href="/">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
       </ul>
       </div>
     
@@ -274,7 +286,11 @@ export default {
   text-decoration: none;
   font-weight: bold;
 }
-
+.sidebar .nav-links .log_out{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 .certification-link:hover {
   text-decoration: underline;
 }
