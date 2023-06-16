@@ -55,7 +55,7 @@ export default {
             }
             else{
               console.log(this.name)
-              if(this.mail == "fac@gmail.com")
+              if(this.mail == "fac@gmail.com")   
               {
                 this.$router.push({name:'faculty', params:{mail:this.mail}})
               }

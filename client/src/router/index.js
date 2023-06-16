@@ -11,7 +11,13 @@ import forgotpassword from "../components/LoginSignup/ForgotPassword.vue"
 import resetpwd from "../components/LoginSignup/ResetPassword.vue"
 import UsersPage from "../components/ReportAndAnalytics/UsersPage.vue"
 import createQuiz from "../components/quiz-taking/createQuiz.vue"
-
+import facdash from "../components/Faculty/Facultydashboard.vue"
+import event from "../components/Faculty/Eventmanagement.vue"
+import discussion from "../components/dashboard/discussions.vue"
+import studentComparison from "../components/dashboard/studentComparison.vue"
+import certificates from "../components/dashboard/certificates.vue"
+import feedback from "../components/dashboard/feedback.vue"
+import studyroom from "../components/dashboard/studyroom.vue"
 const routes = [
 
   {
@@ -19,6 +25,31 @@ const routes = [
     name: "login",
     component: login,
   },
+  {
+    path: "/studyroom",
+    name: "studyroom",
+    component: studyroom,
+  },
+  {
+    path: "/feedback",
+    name: "feedback",
+    component: feedback,
+  },
+  {
+    path: "/certificates",
+    name: "certificates",
+    component: certificates,
+  },
+  {
+    path: "/discussions",
+    name: "discussion",
+    component: discussion,
+  },
+  {
+    path: "/studentComparison",
+    name: "studentComparison",
+    component: studentComparison,
+  },
   {
     path: "/reset",
     name: "reset",
@@ -70,6 +101,16 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
+  },
+  {
+    path: "/facdash",
+    name: "facdash",
+    component: facdash,
+  },
+  {
+    path: "/event",
+    name: "event",
+    component: event,
   }
   
   
