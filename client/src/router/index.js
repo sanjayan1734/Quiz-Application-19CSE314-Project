@@ -15,12 +15,19 @@ import discussion from "../components/dashboard/discussions.vue"
 import studentComparison from "../components/dashboard/studentComparison.vue"
 import certificates from "../components/dashboard/certificates.vue"
 import feedback from "../components/dashboard/feedback.vue"
+import studyroom from "../components/dashboard/studyroom.vue"
+
 const routes = [
 
   {
     path: "/login",
     name: "login",
     component: login,
+  },
+  {
+    path: "/studyroom",
+    name: "studyroom",
+    component: studyroom,
   },
   {
     path: "/feedback",
