@@ -1,3 +1,4 @@
+
 <template>
     <div class="certificates">
     <div class="sidebar">
@@ -54,9 +55,9 @@
   <!--<img :src="photo" alt="Certificate" class="certificate-img">-->
 </div>
           <div class="certification-item">
-            <span class="certification-label">Certificate:</span>
-            <button @click="downloadCertificate(quiz.certificateUrl)" class="download-button">Download Certificate</button>
-          </div>
+    <span class="certification-label">Certificate:</span>
+    <a href="C:\Users\girid\Downloads\WhatsApp Image 2023-06-16 at 2.15.45 PM.jpeg" download="certificate.jpg" class="download-button">Download Certificate</a>
+  </div>
         </div>
       </div>
     </div>
@@ -64,6 +65,11 @@
   </template>
   
   <script>
+
+  function downloadCertificate(certificateUrl) {
+    window.open(certificateUrl, '_blank');
+  }
+  
   export default {
     data() {
       return {
