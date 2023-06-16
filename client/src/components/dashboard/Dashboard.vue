@@ -27,9 +27,6 @@
         <li class="sidebar-menu-item">
           <router-link to="/studentComparison" class="sidebar-menu-link">Student Leaderboard</router-link>
         </li>
-        <li class="sidebar-menu-item">
-          <router-link to="/studyroom" class="sidebar-menu-link">Study Room</router-link>
-        </li>
       </ul>
       </div>
     
@@ -83,7 +80,7 @@
       </div>
   
   <div v-if="quiz.progress === 100" class="quiz-certification">
-    <a href="generateCertificationLink(quiz.id)" class="certification-link">View Certification</a>
+     <a href="https://drive.google.com/file/d/1174oBtVaiDn-8V3U78GcDRG30HwWf7AQ/view?usp=sharing" download="certificate.jpg" class="certification-link">View Certification</a>
   </div>
               </div>
             </div>
@@ -122,7 +119,6 @@
               </div>
               <div class="event-actions">
                 <button class="event-register-button">Register</button>
-                <button class="event-details-button">Details</button>
               </div>
             </div>
           </div>

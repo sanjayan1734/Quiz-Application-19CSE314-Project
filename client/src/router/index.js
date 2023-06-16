@@ -49,7 +49,7 @@ const routes = [
     path: "/studentComparison",
     name: "studentComparison",
     component: studentComparison,
-  },
+  },
   {
     path: "/reset",
     name: "reset",
@@ -129,4 +129,4 @@ const router = createRouter({
     routes
   })
   
-  export default router
+  export default router

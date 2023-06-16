@@ -1,8 +1,37 @@
-<script>
+<template>
+    pass
+    
+</template>
+
+<!-- <script>
+<template>
+    pass
+</template>
 
 
+ <script>
+export default {
+    data (){
+        return{
+            question : {
+                noOfQuestions: Number,
+                questionId:String,
+                questionDescription:String,
+                optionA:String,
+                optionB:String,
+                optionC:String,
+            }
+        }
+    },
+    methods: {
+    getFormValues (submitEvent) {
+      this.question["questionDescription"] = submitEvent.target.elements.questiondesc.value
+    }
+  }
+}
 
 </script>
+<
 
 <template>
     <h1 style="padding: 2%;"> Quiz Creation</h1>
@@ -30,6 +59,31 @@
 </template>
 
 <style>
-   
+    .question {
+        top: 15%;
+        position: absolute;
+        width: 70%;
+        height: 60%;
+        color: lightblue;
+        background-color: lightblue;
+        left: 15%;
+        display: block;
+    }
+    .createquiz {
+        position: relative;
+        width: 80%;
+        height: 40px;
+        border-radius: 10px;
+    }
+    .createquizheading {
+        color: black;
+        left: 5%;
+        display: black;
+        padding: 2%;
+    }
+    .createquiztext {
+        color: black;
+        padding: 1%;
+    }
 
-</style>
+</style> -->
