@@ -14,12 +14,18 @@ import createQuiz from "../components/quiz-taking/createQuiz.vue"
 import discussion from "../components/dashboard/discussions.vue"
 import studentComparison from "../components/dashboard/studentComparison.vue"
 import certificates from "../components/dashboard/certificates.vue"
+import feedback from "../components/dashboard/feedback.vue"
 const routes = [
 
   {
     path: "/login",
     name: "login",
     component: login,
+  },
+  {
+    path: "/feedback",
+    name: "feedback",
+    component: feedback,
   },
   {
     path: "/certificates",
