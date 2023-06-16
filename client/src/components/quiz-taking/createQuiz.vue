@@ -1,4 +1,9 @@
-<script>
+<template>
+    pass
+</template>
+
+
+<!-- <script>
 export default {
     data (){
         return{
@@ -20,6 +25,7 @@ export default {
 }
 
 </script>
+<
 
 <template>
     <h1 style="padding: 2%;"> Quiz Creation</h1>
@@ -74,4 +80,4 @@ export default {
         padding: 1%;
     }
 
-</style>
+</style> -->

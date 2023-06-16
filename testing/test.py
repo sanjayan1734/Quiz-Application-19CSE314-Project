@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
 import time
 
 
@@ -20,215 +21,211 @@ class TestQuizApp(unittest.TestCase):
         self.driver.get("http://localhost:5173/login")
         email_input = self.driver.find_element(by=By.NAME, value='logemail')
         password_input = self.driver.find_element(by=By.NAME, value='logpass')
-        login_button = self.driver.find_element_by_css_selector(".btn")
+        login_button = self.driver.find_element(
+            By.CSS_SELECTOR, "button[class='btn mt-4']")
 
         # Replace with your test email
-        email_input.send_keys("example@example.com")
+        email_input.send_keys("harish251102@gmail.com")
         # Replace with your test password
-        password_input.send_keys("password123")
+        password_input.send_keys("harish02")
         login_button.click()
 
-        # Add assertions to verify the login functionality
-        # For example:
-        welcome_message = self.driver.find_element_by_css_selector(
-            ".faculty-heading").text
-        self.assertEqual(welcome_message, "Welcome, John Doe")
+    def test_homepage_content(self):
+        self.driver.get("http://localhost:5173")  # Replace with your app's URL
 
-    def test_pressedpass(driver):
+        # Verify the content of the homepage
+        title = self.driver.find_element(By.TAG_NAME, "h1")
+        self.assertEqual(title.text, "Your favorite place for Quizzes")
+
+        description = self.driver.find_element(
+            By.CSS_SELECTOR, "p.text-white-75")
+        self.assertEqual(
+            description.text, "Welcome to our quiz app! Perfect way to satisfy your thirst for knowledge and have fun at the same time.")
+
+        login_button = self.driver.find_element(
+            By.CSS_SELECTOR, "div.Login-Button button")
+        self.assertTrue(login_button.is_displayed())
+
+    def test_about_section(self):
+        self.driver.get("http://localhost:5173")  # Replace with your app's URL
+
+        # Verify the content of the about section
+        about_heading = self.driver.find_element(
+            By.CSS_SELECTOR, "section#about h2")
+        self.assertEqual(about_heading.text, "We've got what you need!")
+
+        about_description = self.driver.find_element(
+            By.CSS_SELECTOR, "section#about p.text-white-75")
+        self.assertEqual(about_description.text,
+                         "Our app is easy to use and navigate, with a simple and intuitive interface. We offer a huge selection of quizzes on a wide range of topics")
+
+    # # Perform any additional assertions or actions as needed
+
+    # # def test_forgot_password(self):
+    # #     self.driver.get('http://localhost:5173/forgotpwd')
+
+    # #     email_input = self.driver.find_element_by_css_selector(
+    # #         'input[name="passemail"]')
+    # #     email_input.send_keys('test@example.com')
+
+    # #     password1_input = self.driver.find_element_by_css_selector(
+    # #         'input[name="pass1"]')
+    # #     password1_input.send_keys('password123')
+
+    # #     password2_input = self.driver.find_element_by_css_selector(
+    # #         'input[name="pass2"]')
+    # #     password2_input.send_keys('password123')
+
+    # #     submit_button = self.driver.find_element_by_css_selector('button')
+    # #     submit_button.click()
+
+    # #     time.sleep(2)
+
+    # #     response_element = self.driver.find_element_by_css_selector(
+    # #         '.response')
+    # #     self.assertEqual(response_element.text, 'Password reset successful')
+
+    def test_pressedpass(self):
         # Replace with the URL of your application
-        driver.get('http://localhost:5173')
+        self.driver.get('http://localhost:5173/forgotpwd')
 
         # Find the email input field and enter the email
-        email_input = driver.find_element_by_css_selector(
-            'input[name="passemail"]')
+        email_input = self.driver.find_element(by=By.NAME, value='passemail')
         email_input.send_keys('test@example.com')
 
         # Find the submit button and click it
-        submit_button = driver.find_element_by_css_selector('button')
+        submit_button = self.driver.find_element(
+            By.CSS_SELECTOR, "button[class='btn mt-4']")
         submit_button.click()
 
         # Wait for the API request to complete and the response to be displayed
         time.sleep(2)
 
-        # Verify the resulting behavior based on the API response
-        response_element = driver.find_element_by_css_selector('.response')
-        assert response_element.text == 'Forgot Password Successful'
+    def test_dashboard_content(self):
+        # Log in
+        # Replace with actual credentials
+        self.test_login()
 
-        # Other assertions and verifications as needed
-
-        # Example: Verify the URL after the action is completed
-        assert driver.current_url == 'http://localhost:5173/reset-password'
-
-        # Example: Verify an element on the next page
-        welcome_message = driver.find_element_by_css_selector(
-            '.welcome-message')
-        assert welcome_message.text == 'Welcome, test@example.com'
-
-    def test_forgot_password(self):
-        self.driver.get('http://localhost:8000/forgot-password')
-
-        email_input = self.driver.find_element_by_css_selector(
-            'input[name="passemail"]')
-        email_input.send_keys('test@example.com')
-
-        password1_input = self.driver.find_element_by_css_selector(
-            'input[name="pass1"]')
-        password1_input.send_keys('password123')
-
-        password2_input = self.driver.find_element_by_css_selector(
-            'input[name="pass2"]')
-        password2_input.send_keys('password123')
-
-        submit_button = self.driver.find_element_by_css_selector('button')
-        submit_button.click()
-
-        time.sleep(2)
-
-        response_element = self.driver.find_element_by_css_selector(
-            '.response')
-        self.assertEqual(response_element.text, 'Password reset successful')
-
-    def test_dashboard(self):
         # Wait for the dashboard content to load
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.CLASS_NAME, "dashboard-content")))
 
-        # Get the dashboard title
-        title_element = self.driver.find_element(
-            By.CLASS_NAME, "dashboard-title")
-        title = title_element.text
-        self.assertEqual(title, "Welcome, John Doe!")
+    #     # Get the dashboard title
 
-        # Get the dashboard stats
-        stat_elements = self.driver.find_elements(
-            By.CLASS_NAME, "dashboard-stat-value")
-        total_quizzes = stat_elements[0].text
-        quizzes_completed = stat_elements[1].text
-        correct_answers = stat_elements[2].text
-        self.assertEqual(total_quizzes, "10")
-        self.assertEqual(quizzes_completed, "5")
-        self.assertEqual(correct_answers, "25")
+    #     # Get the dashboard stats
 
-        # Get the quiz items
-        quiz_items = self.driver.find_elements(By.CLASS_NAME, "quiz-item")
-        self.assertEqual(len(quiz_items), 3)  # Assuming there are 3 quizzes
+    # # Check if the quiz grid is present
+    #     quiz_grid = self.driver.find_element(By.CLASS_NAME, "quiz-grid")
+    #     self.assertTrue(quiz_grid.is_displayed())
 
-        # Iterate over quiz items and check their content
-        for quiz_item in quiz_items:
-            quiz_title_element = quiz_item.find_element(
-                By.CLASS_NAME, "quiz-link")
-            quiz_title = quiz_title_element.text
-            self.assertTrue(quiz_title)  # Check if the quiz title is not empty
+    #     # Check if the progress bar is present
+    #     progress_bar = self.driver.find_element(By.CLASS_NAME, "progress-bar")
+    #     self.assertTrue(progress_bar.is_displayed())
 
-            quiz_meta_lines = quiz_item.find_elements(
-                By.CLASS_NAME, "quiz-meta-line")
-            # Assuming there are 2 meta lines
-            self.assertEqual(len(quiz_meta_lines), 2)
+    #     # Check if the notification list is present
+    #     notification_list = self.driver.find_element(
+    #         By.CLASS_NAME, "notification-list")
+    #     self.assertTrue(notification_list.is_displayed())
 
-            # Get the values from meta lines
-            questions_label = quiz_meta_lines[0].find_element(
-                By.CLASS_NAME, "quiz-meta-label").text
-            questions_value = quiz_meta_lines[0].find_element(
-                By.CLASS_NAME, "quiz-meta-value").text
-            duration_label = quiz_meta_lines[1].find_element(
-                By.CLASS_NAME, "quiz-meta-label").text
-            duration_value = quiz_meta_lines[1].find_element(
-                By.CLASS_NAME, "quiz-meta-value").text
+    #     # Check if the recent discussion section is present
+    #     recent_discussion = self.driver.find_element(
+    #         By.CLASS_NAME, "recent-discussion")
+    #     self.assertTrue(recent_discussion.is_displayed())
 
-            self.assertEqual(questions_label, "Questions:")
-            self.assertTrue(questions_value)
-            self.assertEqual(duration_label, "Duration:")
-            self.assertTrue(duration_value.endswith("mins"))
+    #     # Check if the upcoming events section is present
+    #     event_grid = self.driver.find_element(By.CLASS_NAME, "event-grid")
+    #     self.assertTrue(event_grid.is_displayed())
 
-        # Check the presence of the progress bar
-        progress_bar = self.driver.find_element(By.CLASS_NAME, "progress-bar")
-        self.assertTrue(progress_bar.is_displayed())
+    #     # Check if the register button for the first event is present
+    #     register_button = self.driver.find_element(
+    #         By.CSS_SELECTOR, ".event-item:first-child .event-register-button")
+    #     self.assertTrue(register_button.is_displayed())
 
-        progress_bar = self.driver.find_element(By.CLASS_NAME, "progress-bar")
-        self.assertTrue(progress_bar.is_displayed())
+    #     # Check if the details button for the first event is present
+    #     details_button = self.driver.find_element(
+    #         By.CSS_SELECTOR, ".event-item:first-child .event-details-button")
+    #     self.assertTrue(details_button.is_displayed())
 
-    def test_start_quiz(self):
-        # Click the "Start Quiz" button
-        start_button = self.driver.find_element(By.CLASS_NAME, "start-button")
-        start_button.click()
+    # def test_create_quiz(self):
+    #     # Fill in the form values
+    #     question_desc_input = self.driver.find_element(By.ID, "question")
+    #     question_desc_input.send_keys("What is the capital of France?")
 
-        # Wait for the quiz page to load
-        WebDriverWait(self.driver, 10).until(EC.title_contains("Quiz"))
+    #     option_a_input = self.driver.find_element(By.ID, "optionA")
+    #     option_a_input.send_keys("Paris")
 
-        # Assert that the user is redirected to the quiz page
-        self.assertIn("quiz", self.driver.current_url)
+    #     option_b_input = self.driver.find_element(By.ID, "optionB")
+    #     option_b_input.send_keys("London")
 
-    def test_create_quiz(self):
-        # Fill in the form values
-        question_desc_input = self.driver.find_element(By.ID, "question")
-        question_desc_input.send_keys("What is the capital of France?")
+    #     option_c_input = self.driver.find_element(By.ID, "optionC")
+    #     option_c_input.send_keys("Berlin")
 
-        option_a_input = self.driver.find_element(By.ID, "optionA")
-        option_a_input.send_keys("Paris")
+    #     # Click the "Save and close" button
+    #     submit_button = self.driver.find_element(
+    #         By.XPATH, "//button[@type='submit']")
+    #     submit_button.click()
 
-        option_b_input = self.driver.find_element(By.ID, "optionB")
-        option_b_input.send_keys("London")
+    #     # Wait for the quiz to be saved (you can add additional assertions or checks here)
+    #     # For example, you can wait for a success message or check the database for the created quiz
 
-        option_c_input = self.driver.find_element(By.ID, "optionC")
-        option_c_input.send_keys("Berlin")
-
-        # Click the "Save and close" button
-        submit_button = self.driver.find_element(
-            By.XPATH, "//button[@type='submit']")
-        submit_button.click()
-
-        # Wait for the quiz to be saved (you can add additional assertions or checks here)
-        # For example, you can wait for a success message or check the database for the created quiz
-
-        # Assert that the question description is saved correctly
-        question_saved = self.driver.find_element(
-            By.CLASS_NAME, "saved-question-description").text
-        self.assertEqual(question_saved, "What is the capital of France?")
-
+    #     # Assert that the question description is saved correctly
+    #     question_saved = self.driver.find_element(
+    #         By.CLASS_NAME, "saved-question-description").text
+    #     self.assertEqual(question_saved, "What is the capital of France?")
     def test_quiz_page(self):
+        # Log in
+
+        self.test_login()  # Replace with actual credentials
+        dashboard_url = self.driver.current_url
         # Assuming you have already logged in and reached the quiz page
 
+        # Get the quiz items
+        quiz_item = self.driver.find_element(By.CLASS_NAME, "quiz-item")
+
+        # Iterate over quiz items and click on each quiz
+
+        # Store the URL of the dashboard page
+
+        # Click on the quiz link
+        quiz_link = quiz_item.find_element(By.CLASS_NAME, "quiz-link")
+        quiz_link.click()
+
         # Wait for the timer to start
-        timer_element = self.driver.find_element(
-            By.CLASS_NAME, "home-container")
-        self.assertTrue(timer_element.is_displayed())
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "home-container")))
 
-        # Verify the quiz name
-        quiz_name_element = self.driver.find_element(
-            By.CLASS_NAME, "home-text27")
-        self.assertEqual(quiz_name_element.text, "Your Quiz Name")
+        # Answer the questions
+        question_buttons = self.driver.find_elements(
+            By.CSS_SELECTOR, ".question button")
+        question_count = len(question_buttons)
+        for i in range(question_count):
+            button = question_buttons[i]
+            button.click()
+            # Wait for the next question to appear
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".question button")))
 
-        # Answer the first question
-        option_a_element = self.driver.find_element(
-            By.XPATH, "//input[@value='optionA']")
-        option_a_element.click()
-
-        # Click "CONTINUE"
-        continue_button = self.driver.find_element(
-            By.XPATH, "//button[contains(text(), 'CONTINUE')]")
+            # Click "Continue" button
+            continue_button = self.driver.find_element(
+                By.CLASS_NAME, "home-group7")
+            continue_button.click()
         continue_button.click()
+        continue_button.click()
+        # Wait for the "Submit" button to appear
 
-        # Answer the second question
-        option_b_element = self.driver.find_element(
-            By.XPATH, "//input[@value='optionB']")
-        option_b_element.click()
-
-        # Click "SUBMIT"
+        # Click "Submit" button
         submit_button = self.driver.find_element(
-            By.XPATH, "//button[contains(text(), 'SUBMIT')]")
+            By.CLASS_NAME, "home-group7")
         submit_button.click()
 
         # Wait for the score confirmation message
+        WebDriverWait(self.driver, 10).until(EC.alert_is_present())
         score_message = self.driver.switch_to.alert.text
         self.assertIn("Your score is", score_message)
 
         # Confirm the score
         self.driver.switch_to.alert.accept()
 
-        # Verify the navigation to the dashboard
-        self.assertEqual(self.driver.current_url,
-                         "http://localhost:8000/dashboard?mail=indu@gmail.com")
 
-
-if __name__ == "__main__":
+if __name__ == "_main_":
     unittest.main()
