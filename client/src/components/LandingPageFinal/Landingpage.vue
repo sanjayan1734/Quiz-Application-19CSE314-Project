@@ -159,68 +159,7 @@ export default {
                 </div>
             </div>
         </section>
-        <!-- Portfolio-->
-        <!--<div id="portfolio">
-            <div class="container-fluid p-0">
-                <div class="row g-0">
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="./assets/img/portfolio/fullsize/1.jpg" title="Project Name">
-                            <img class="img-fluid" src="./assets/img/portfolio/thumbnails/1.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="./assets/img/portfolio/fullsize/2.jpg" title="Project Name">
-                            <img class="img-fluid" src="./assets/img/portfolio/thumbnails/2.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="./assets/img/portfolio/fullsize/3.jpg" title="Project Name">
-                            <img class="img-fluid" src="./assets/img/portfolio/thumbnails/3.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="./assets/img/portfolio/fullsize/4.jpg" title="Project Name">
-                            <img class="img-fluid" src="./assets/img/portfolio/thumbnails/4.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="./assets/img/portfolio/fullsize/5.jpg" title="Project Name">
-                            <img class="img-fluid" src="./assets/img/portfolio/thumbnails/5.jpg" alt="..." />
-                            <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="./assets/img/portfolio/fullsize/6.jpg" title="Project Name">
-                            <img class="img-fluid" src="./assets/img/portfolio/thumbnails/6.jpg" alt="..." />
-                            <div class="portfolio-box-caption p-3">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-        <!-- Call to action-->
+
         <section class="page-section bg-dark text-white">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">Take a trail quiz to experience our user interface</h2>
@@ -244,13 +183,7 @@ export default {
                 </div>
                 <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
                     <div class="col-lg-6">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
+
                         <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                             <!-- Name input-->
                             <div class="form-floating mb-3">
@@ -302,22 +235,10 @@ export default {
                         </form>
                     </div>
                 </div>
-                <!--<div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                        <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                        <div>+1 (555) 123-4567</div>
-                    </div>
-                </div>-->
+
             </div>
         </section>
-        <!-- Footer-->
-        <!--<footer class="bg-light py-5">
-            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Quiz App</div></div>
-        </footer>-->
 
-
-    
-        <!-- Bootstrap core JS-->
         <footer>
    <div class="content">
      <div class="left box">

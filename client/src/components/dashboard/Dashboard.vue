@@ -122,7 +122,7 @@
               </div>
               <div class="event-actions">
                 <button class="event-register-button">Register</button>
-                <button class="event-details-button">Details</button>
+               
               </div>
             </div>
           </div>

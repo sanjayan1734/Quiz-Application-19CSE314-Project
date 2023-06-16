@@ -100,7 +100,7 @@ export default {
       axios.post('http://harish2511-001-site1.btempurl.com/api/Quiz/ValidateAnswersforquiz' , this.rawUserChoices).then((response) => {
         console.log(response.data)
         confirm('Your score is ' + response.data)
-        this.$router.push({name:'dashboard', params:{mail:'indu@gmail.com'}})
+        this.$router.push({name:'dashboard', params:{mail:'harish251102@gmail.com'}})
         // this.$router.push({name:'results', params:{noOfQuestions:this.noOfQuestions, correctAnswers:response.data}})
         // this.$route.push(this.$router.options.history.state.back)
       })
