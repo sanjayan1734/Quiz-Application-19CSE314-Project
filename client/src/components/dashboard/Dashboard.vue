@@ -170,15 +170,15 @@ export default {
         {
           id: 1,
           title: 'Discussion 1',
-          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          user: 'Jane Smith',
+          content: 'What is the answer for the last question?',
+          user: 'Indravignesh',
           date: '2023-06-14',
         },
         {
           id: 2,
           title: 'Discussion 2',
-          content: 'Praesent non mauris ac mi consectetur tempus.',
-          user: 'John Doe',
+          content: 'How to check answers?',
+          user: 'Giri',
           date: '2023-06-13',
         },
         // Add more discussion objects as needed
@@ -307,7 +307,7 @@ export default {
 
 .discussion-content {
   font-size: 14px;
-  color: whitesmoke;
+  color: black;
   margin-bottom: 10px;
 }
 

@@ -1,7 +1,9 @@
+
 <template>
      <div class="sidebar">
       <div class="logo-details">
-        <span class="logo_name">Quiz App</span>
+  import QuizQuestion from './QuizQuestion.vue';
+      <span class="logo_name">Quiz App</span>
       </div>
       <ul class="nav-links">
         <li>
@@ -57,10 +59,10 @@
               </div>
               <div class="form-group">
                 <label for="Numberofquestions">Number of questions:</label>
-                <input type="text" id="Numberofquestions" name="quizDescription" placeholder="Enter number of questions">
+                <input type="text" id="Numberofquestions" name="quizDescription" placeholder="Enter number of questions" v-model="this.QuizSize">
               </div>
               <div class="form-group">
-                <label for="Number of options">Number of options:</label>
+                <label for="Number of options" >Number of options:</label>
                 <select id="Numberofoptions" name="quizName">
                   <option value="option2">3</option>
                   <!-- Add more options as needed -->
@@ -70,105 +72,13 @@
               <button @click="myFunction()">Proceed</button>
 
                 <div id="opts" v-if="pressedButton == 1">
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Question:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 1:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 2:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 3:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Question:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 1:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 2:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 3:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Question:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 1:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 2:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 3:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Question:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 1:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 2:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 3:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Question:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 1:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 2:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 3:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Question:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 1:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 1">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 2:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 2">
-                    </div>
-                    <div class="form-group">
-                    <label for="quizDescription">Enter Option 3:</label>
-                    <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
-                    </div>
+                  <div v-for="index in Number(this.QuizSize)" :key="index">
+                      <QuizQuestion />
+
+                  </div>    
                     <button @click="submitdata()">Create</button>
                     <div class="thank-you" v-if="dataSubmitted">Your quiz data has been successfully added! Please wait for 10-20 minutes to receive the change</div>
-                </div>
+                 </div> 
             <!--<div class="button">
               <a href="#">See All</a>
             </div>-->
@@ -196,38 +106,38 @@
   <script>
   //var on = document.getElementById("on");
 //var off = document.getElementById("off");
-
+  import QuizQuestion from './QuizQuestion.vue';
  export default {
-  data() {
-    return {
-      pressedButton: 0,
-      dataSubmitted: false,
-    }
-
-  },
-  methods: {
-    closebutton()
-    {
-      var closebtns = document.getElementsByClassName("close");
-var i;
-
-for (i = 0; i < closebtns.length; i++) {
-  closebtns[i].addEventListener("click", function() {
-    this.parentElement.style.display = 'none';
-  });
-}
-  alert('Quiz has been successfully deleted !')
+    data() {
+        return {
+            pressedButton: 0,
+            dataSubmitted: false,
+            QuizSize: 0
+        };
     },
-    myFunction() {
-    console.log("pressed button")
-    this.pressedButton = 1
-},
-submitdata()
-{
-  this.dataSubmitted= true;
-}
-  }
- } 
+    methods: {
+
+        closebutton() {
+            var closebtns = document.getElementsByClassName("close");
+            var i;
+            for (i = 0; i < closebtns.length; i++) {
+                closebtns[i].addEventListener("click", function () {
+                    this.parentElement.style.display = "none";
+                });
+            }
+            alert("Quiz has been successfully deleted !");
+        },
+        myFunction() {
+            console.log("pressed button");
+            console.log(this.QuizSize);
+            this.pressedButton = 1;
+        },
+        submitdata() {
+            this.dataSubmitted = true;
+        }
+    },
+    components: { QuizQuestion }
+} 
 
 
 </script>
