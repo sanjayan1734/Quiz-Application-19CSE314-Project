@@ -167,7 +167,7 @@
                     <input type="text" id="quiz" name="quizDescription" placeholder="Enter option 3">
                     </div>
                     <button @click="submitdata()">Create</button>
-                    <div class="thank-you" v-if="dataSubmitted">Thank you for your quiz data has been successfully added!</div>
+                    <div class="thank-you" v-if="dataSubmitted">Your quiz data has been successfully added! Please wait for 10-20 minutes to receive the change</div>
                 </div>
             <!--<div class="button">
               <a href="#">See All</a>
@@ -186,14 +186,7 @@
                     </ul>
                 
 
-              <form>
-                <div class="form-group">
-                  <label for="quizName">Edit Quiz Name:</label>
-                  <input type="text" id="quizName" name="quizName" placeholder="Enter new quiz name">
-                </div>
-                  <button1 type="submit">Change</button1>
-
-              </form>
+              
             </ul>
           </div>
         </div>
@@ -223,6 +216,7 @@ for (i = 0; i < closebtns.length; i++) {
     this.parentElement.style.display = 'none';
   });
 }
+  alert('Quiz has been successfully deleted !')
     },
     myFunction() {
     console.log("pressed button")

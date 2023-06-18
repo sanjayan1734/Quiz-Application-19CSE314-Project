@@ -3,8 +3,12 @@
     
 </template>
 
-<!-- <script>
-<template>
+<script>
+</script>
+<style scoped>
+
+</style>
+<!-- <template>
     pass
 </template>
 
@@ -86,4 +90,4 @@ export default {
         padding: 1%;
     }
 
-</style> -->
+</style> --> -->

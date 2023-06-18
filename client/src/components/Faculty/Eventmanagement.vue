@@ -59,8 +59,8 @@
 
                  <!-- Add more options as needed -->
                </div>
-             <button>Done</button>
-
+             <button @click="submitdata()">Create Event</button>
+             <div class="thank-you" v-if="dataSubmitted">Your Event data has been successfully added!</div>
            <!--<div class="button">
              <a href="#">See All</a>
            </div>-->
@@ -75,23 +75,45 @@
  //var on = document.getElementById("on");
 //var off = document.getElementById("off");
  
-function myFunction() {
- document.getElementById("opts").style.display = "block";
-}
 
-var closebtns = document.getElementsByClassName("close");
+
+
+  //var on = document.getElementById("on");
+//var off = document.getElementById("off");
+
+ export default {
+  data() {
+    return {
+      pressedButton: 0,
+      dataSubmitted: false,
+    }
+
+  },
+  methods: {
+    closebutton()
+    {
+      var closebtns = document.getElementsByClassName("close");
 var i;
 
 for (i = 0; i < closebtns.length; i++) {
- closebtns[i].addEventListener("click", function() {
-   this.parentElement.style.display = 'none';
- });
+  closebtns[i].addEventListener("click", function() {
+    this.parentElement.style.display = 'none';
+  });
 }
- 
-function scrollToSection(sectionId) {
- const section = document.getElementById(sectionId);
- section.scrollIntoView({ behavior: 'smooth' });
+    },
+    myFunction() {
+    console.log("pressed button")
+    this.pressedButton = 1
+},
+submitdata()
+{
+  this.dataSubmitted= true;
 }
+  }
+ } 
+
+
+
 </script>
 
  
@@ -112,6 +134,11 @@ function scrollToSection(sectionId) {
  box-sizing: border-box;
  font-family: 'Poppins', sans-serif;
 }
+.thank-you {
+    font-size: 18px;
+    color: green;
+    margin-top: 20px;
+  }
 .sidebar{
  position: fixed;
  height: 100%;

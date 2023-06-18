@@ -52,7 +52,7 @@
           </div>
           <div class="dashboard-stat-item">
             <p class="dashboard-stat-label">Quizzes Completed</p>
-            <p class="dashboard-stat-value">{{ profileInfo.quizzesCompleted }}</p>
+            <p class="dashboard-stat-value">3</p>
           </div>
           <div class="dashboard-stat-item">
             <p class="dashboard-stat-label">Correct Answers</p>
@@ -120,6 +120,7 @@
             </div>
           </div>
         </div>
+        <br>
         <div class="dashboard-section">
           <h2 class="dashboard-section-title">Upcoming Events</h2>
           <div class="event-grid">
@@ -160,9 +161,9 @@ export default {
       },
       totalQuizzes: 5,
       quizzes: [
-        { id: 'quiz1', title: "Quiz 1", questions: 10, duration: 20,progress:100 },
-        { id: 'quiz2', title: "Quiz 2", questions: 15, duration: 30,progress:50},
-        { id: 'quiz3', title: "Quiz 3", questions: 12, duration: 25,progress:100 },
+        { id: 'quiz1', title: "Quiz 1", questions: 6, duration: 20,progress:100 },
+        { id: 'quiz2', title: "Quiz 2", questions: 6, duration: 30,progress:50},
+        { id: 'quiz3', title: "Quiz 3", questions: 6, duration: 25,progress:100 },
         // Add more quizzes as needed
       ],
       recentDiscussions: [
@@ -286,11 +287,7 @@ export default {
   text-decoration: none;
   font-weight: bold;
 }
-.sidebar .nav-links .log_out{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
+
 .certification-link:hover {
   text-decoration: underline;
 }

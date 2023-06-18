@@ -155,7 +155,7 @@ export default {
                                           <div class="section text-center">
                                               <h4 class="mb-4 pb-3" style="color: #bf5700;">Log In</h4>
                                               <div class="form-group">
-                                                  <input type="email" name="logemail" class="form-style" v-model="mail"  id="logemail" autocomplete="off" placeholder="Enter your Name">
+                                                  <input type="email" name="logemail" class="form-style" v-model="mail"  id="logemail" autocomplete="off" placeholder="Enter your Mail Address">
                                                   <i class="input-icon uil uil-at"></i>
                                               </div>	
                                               <div class="form-group mt-2">
