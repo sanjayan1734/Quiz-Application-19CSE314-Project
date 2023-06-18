@@ -1,3 +1,6 @@
+
+
+
 <template>
     <div class="studyroom">
         <div class="sidebar">
@@ -150,12 +153,13 @@
   </script>
   
   <style>
+  
+
   .sidebar {
   background-color: #2a2b38;
   padding: 20px;
   min-width: 300px;
   color: whitesmoke;
-  height: 900px;
 }
 
 .sidebar-header {
@@ -293,4 +297,4 @@
       width: 100%;
     }
   }
-  </style>
+  </style> 
