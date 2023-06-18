@@ -87,7 +87,7 @@
             title: 'Quiz 1',
             completionDate: 'June 15, 2023',
             score: 90,
-            issuer: 'Sample Issuer',
+            issuer: 'Amrita University',
             //certificateImageUrl:'https://drive.google.com/file/d/1ObANxb6go-1zBtvebKd1LIKwcJjidTu7/view?usp=sharing',
             certificateUrl: 'https://drive.google.com/file/d/1eCFGBefHzYGfuiBqaxPAjWOtxPyMfSJj/view?usp=sharing'
           },
@@ -96,7 +96,7 @@
             title: 'Quiz 2',
             completionDate: 'June 16, 2023',
             score: 85,
-            issuer: 'Sample Issuer',
+            issuer: 'Amrita University',
           //  certificateImageUrl:'quiz2.png',
             certificateUrl: 'https://drive.google.com/file/d/1I910j85WG3z7pEqyh-5_S1IMRnkHcvJ6/view?usp=sharing'
           },
@@ -105,7 +105,7 @@
             title: 'Quiz 3',
             completionDate: 'June 13, 2023',
             score: 95,
-            issuer: 'Sample Issuer',
+            issuer: 'Amrita University',
             //certificateImageUrl:'quiz3.png',
             certificateUrl: 'https://drive.google.com/file/d/1ImocrdfmO5NRpcnZN8OwxjVCI7pDsnVX/view?usp=sharing'
           }

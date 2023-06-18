@@ -114,9 +114,9 @@
         ],
         selectedQuiz: 1,
         posts: [
-          { id: 1, author: 'John Doe', content: 'This is the first post.', timestamp: 1634325600000 },
-          { id: 2, author: 'Jane Smith', content: 'This is the second post.', timestamp: 1634326800000 },
-          { id: 3, author: 'Michael Johnson', content: 'This is the third post.', timestamp: 1634328000000 },
+          { id: 1, author: 'sanjayan', content: 'What is the answer to the second question in quiz 1', timestamp: 1688325600000 },
+          { id: 2, author: 'Giri', content: 'How to view results ', timestamp: 1688598609000 },
+          { id: 3, author: 'Indravignesh', content: 'What is the average score for the quiz 2', timestamp: 1688325871000 },
           // Add more sample posts here...
         ],
         currentPage: 1,

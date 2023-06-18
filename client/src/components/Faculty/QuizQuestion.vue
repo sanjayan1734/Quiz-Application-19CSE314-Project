@@ -1,11 +1,14 @@
 <script>
 export default {
+    props: {
+        questionid:Number
+    }
 }
 </script>
 
 <template >
     <div class="form-group">
-        <label for="quizDescription">Enter Question:</label>
+        <label for="quizDescription">Enter Question{{ questionid }}:</label>
         <input type="text" id="quiz" name="quizDescription" placeholder="Enter questions">
     </div>
     <div class="form-group">
