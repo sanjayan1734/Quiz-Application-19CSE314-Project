@@ -78,7 +78,7 @@
             <div class="feedback-rating">
               <span class="rating-label">Rating:</span>
               <div class="stars">
-                <span class="star" v-for="index in 5" :key="index" :class="{ 'filled': index <= feedbackItem.rating }">
+                <span class="star" v-for="index in Number(feedbackItem.rating)" :key="index" :class="{ 'filled': index <= feedbackItem.rating }">
                   &#9733;
                 </span>
               </div>
@@ -103,16 +103,16 @@
         recentFeedback: [
           {
             id: 1,
-            name: 'John Doe',
-            email: 'johndoe@example.com',
+            name: 'Sanjayan',
+            email: 'sanjayan1734@gmail.com',
             message: 'Great quiz! I learned a lot.',
             rating: 5,
             date: new Date()
           },
           {
             id: 2,
-            name: 'Jane Smith',
-            email: 'janesmith@example.com',
+            name: 'pranav',
+            email: 'pranav.a.s@gmail.com ',
             message: 'The quiz was challenging but informative.',
             rating: 4,
             date: new Date()

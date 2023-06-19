@@ -64,7 +64,7 @@
         <div class="dashboard-section">
           <h2 class="dashboard-section-title">Statistics</h2>
           <div class="dashboard-chart">
-            <GChart type="PieChart" :options="options" :data="data" />
+            <GChart type="PieChart" :options="options" :data="graphdata" />
           </div>
           <div class="progress-container">
             <div class="progress-label">Level Progress</div>
@@ -171,15 +171,15 @@ export default {
         {
           id: 1,
           title: 'Discussion 1',
-          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          user: 'Jane Smith',
+          content: 'What is the answer for the last question?',
+          user: 'Indravignesh',
           date: '2023-06-14',
         },
         {
           id: 2,
           title: 'Discussion 2',
-          content: 'Praesent non mauris ac mi consectetur tempus.',
-          user: 'John Doe',
+          content: 'How to check answers?',
+          user: 'Giri',
           date: '2023-06-13',
         },
         // Add more discussion objects as needed
@@ -204,10 +204,10 @@ export default {
         },
         // Add more events as needed
       ],
-      data: [
+      graphdata: [
         ['Daily Routine', 'Hours per Day'],
-        ['Correct Answers',14],
-        ['Wrong Answers', 4],
+        ['CorrectAnswers', 10],
+        ['WrongAnswers', 2],
       ],
       options: {
         width: 350,
@@ -227,10 +227,14 @@ export default {
       axios.get(`http://harish2511-001-site1.btempurl.com/api/User/GetStudentsbyEmail?mail=${email}`)
         .then(response => {
           this.profileInfo = response.data;
+          this.graphdata[2][1] = (Number(this.profileInfo['quizcount']) * 6) - (Number(this.profileInfo['totalcorrectq']))
+          this.graphdata[1][1] = Number(this.profileInfo['totalcorrectq'])
+          console.log(this.graphdata)
         })
         .catch(error => {
           console.log(error);
         });
+
     },
     generateCertificationLink(quizId) {
     // Replace with your logic to generate the certification link for a specific quiz
@@ -298,7 +302,7 @@ export default {
 .discussion-item {
   background-color: #fff;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -311,7 +315,7 @@ export default {
 
 .discussion-content {
   font-size: 14px;
-  color: #ccc;
+  color: black;
   margin-bottom: 10px;
 }
 
@@ -378,6 +382,9 @@ export default {
 
 .dashboard-header {
   margin-bottom: 30px;
+  background-color: whitesmoke;
+  padding: 2%;
+  border-radius: 10px;
 }
 
 .dashboard-title {
@@ -418,6 +425,7 @@ export default {
 
 .dashboard-chart {
   height: 300px;
+  border-radius: 1%;
 }
 
 .progress-container {
@@ -452,7 +460,7 @@ export default {
 .quiz-item {
   background-color: #fff;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 10px 0;
 }
@@ -504,7 +512,7 @@ export default {
 .notification-item {
   background-color: #fff;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
 }
@@ -523,7 +531,7 @@ export default {
 .event-item {
   background-color: #fff;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
