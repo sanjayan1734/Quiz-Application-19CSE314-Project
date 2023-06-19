@@ -121,6 +121,7 @@
           </div>
         </div>
         <br>
+        <br>
         <div class="dashboard-section">
           <h2 class="dashboard-section-title">Upcoming Events</h2>
           <div class="event-grid">
@@ -205,8 +206,8 @@ export default {
       ],
       data: [
         ['Daily Routine', 'Hours per Day'],
-        ['Correct Answers', 10],
-        ['Wrong Answers', 2],
+        ['Correct Answers',14],
+        ['Wrong Answers', 4],
       ],
       options: {
         width: 350,
@@ -218,6 +219,9 @@ export default {
     this.fetchProfileInfo();
   },
   methods: {
+    fetchcorrectq(){
+        return this.profileInfo.totalcorrectq;
+    },
     fetchProfileInfo() {
       const email = this.$route.params.mail;
       axios.get(`http://harish2511-001-site1.btempurl.com/api/User/GetStudentsbyEmail?mail=${email}`)
@@ -301,13 +305,13 @@ export default {
 .discussion-title {
   font-size: 18px;
   font-weight: bold;
-  color: white;
+  color: #ccc;
   margin-bottom: 10px;
 }
 
 .discussion-content {
   font-size: 14px;
-  color: whitesmoke;
+  color: #ccc;
   margin-bottom: 10px;
 }
 
