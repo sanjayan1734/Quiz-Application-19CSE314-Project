@@ -2,7 +2,7 @@
 <template>
      <div class="sidebar">
       <div class="logo-details">
-  import QuizQuestion from './QuizQuestion.vue';
+  
       <span class="logo_name">Quiz App</span>
       </div>
       <ul class="nav-links">

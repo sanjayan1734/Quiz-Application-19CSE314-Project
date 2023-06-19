@@ -6,14 +6,18 @@
       </div>
       
       <ul class="sidebar-menu" >
+        
         <li class="sidebar-menu-item">
           <router-link to="/" class="sidebar-menu-link" style>Home</router-link>
+        </li>
+        <li class="sidebar-menu-item">
+          <router-link to="/userprofile" class="sidebar-menu-link">User Profile</router-link>
         </li>
         <li class="sidebar-menu-item">
           <router-link to="/dashboard" class="sidebar-menu-link">Dashboard</router-link>
         </li>
         <li class="sidebar-menu-item">
-          <router-link to="/quizzes" class="sidebar-menu-link">Quizzes</router-link>
+          <router-link to="/quizzes" class="sidebar-menu-link" >Quizzes</router-link>
         </li>
         <li class="sidebar-menu-item">
           <router-link to="/certificates" class="sidebar-menu-link">Certificates</router-link>
@@ -30,6 +34,7 @@
         <li class="sidebar-menu-item">
           <router-link to="/studyroom" class="sidebar-menu-link">Study Room</router-link>
         </li>
+        
         <br>
         <br>
         <br>
